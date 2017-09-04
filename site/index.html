@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="css/semantic.min.js"></script>
+    <script src="js/main.js"></script>
 </head>
 
 <body>
@@ -68,6 +69,16 @@
 
     </div>
 
+    <script>
+        // When the window is loaded
+        window.addEventListener('load', function () {
+            // Create a ParkingRegistry object
+            let registry = new ParkingRegistry();
+
+            // Update the page with the information of the ParkingRegistry object
+            registry.update();
+        });
+    </script>
 </body>
 
 </html>

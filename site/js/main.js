@@ -31,7 +31,7 @@ function ParkingTokenMarket () {
 
   self.getPrice = function (amount) {
     // Return the price for the specified amount of parking tokens
-  }
+  };
 }
 
 /**
@@ -57,6 +57,9 @@ function ParkingRegistry () {
   }
   // Now we have web3 locked and loaded
 
+  // TODO: private?
+  let contract = web3.eth.contract(dappInterface).at(contractAddress);
+
   // Getters
   //////////
 
@@ -71,25 +74,32 @@ function ParkingRegistry () {
   // Methods
   //////////
 
+  /**
+   * Update the page
+   */
+  self.update = function () {
+    contract.name((error, value) => {
+      console.log(error);
+      console.log("value: " + value);
+      $('totalInOmloop').attr("placeholder", value);
+    });
+  };
+
   // TODO: don't write errors to the console
   self.park = function (id, region, payment) {
-    let contract = web3.eth.contract(dappInterface).at(contractAddress);
     contract.park(id, region, payment, (error, value) => console.log(error, value));
   };
 
   // TODO: what if not owner? js error message?
   self.updateRegion = function (region, price) {
-    let contract = web3.eth.contract(dappInterface).at(contractAddress);
     contract.updateRegion(region, price, (error, value) => console.log(error, value));
   };
 
   self.setPrices = function (newPrice) {
-    let contract = web3.eth.contract(dappInterface).at(contractAddress);
     contract.setPrices(newPrice, (error, value) => console.log(error, value));
   };
 
   self.buy = function () {
-    let contract = web3.eth.contract(dappInterface).at(contractAddress);
     contract.buy((error, value) => console.log(error, value));
   };
 }
