@@ -78,10 +78,8 @@ function ParkingRegistry () {
    * Update the page
    */
   self.update = function () {
-    contract.name((error, value) => {
-      console.log(error);
-      console.log("value: " + value);
-      $('totalInOmloop').attr("placeholder", value);
+    contract.totalSupply((error, value) => {
+      $('#totalInOmloop').attr("placeholder", value);
     });
   };
 
