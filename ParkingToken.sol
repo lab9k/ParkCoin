@@ -23,7 +23,7 @@ contract ParkingToken is mortal {
     string public name;
     string public symbol;
     uint8 public decimals;
-    uint256 public _totalSupply;
+    uint256 public totalSupply;
     uint public buyPrice;
 
 
@@ -51,7 +51,7 @@ contract ParkingToken is mortal {
     function park(uint id, uint regio, uint tokens)  {
         require(balances[msg.sender] >= tokens);
         balances[msg.sender] -= tokens;
-        _totalSupply -= tokens;
+        totalSupply -= tokens;
         uint parkingtime = (tokens * (regios[regio]/100)) * 60;
         uint time = now + parkingtime;
 
@@ -82,7 +82,7 @@ contract ParkingToken is mortal {
     //Mint tokens, owner only
     function mintToken(address target, uint256 mintedAmount) internal {
         balances[target] += mintedAmount;
-        _totalSupply += mintedAmount;
+        totalSupply += mintedAmount;
         Transfer(0, owner, mintedAmount);
         Transfer(owner, target, mintedAmount);
     }
