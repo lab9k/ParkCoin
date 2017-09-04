@@ -12,13 +12,59 @@
 
 <body>
 
-    <div class="container">
+    <div class="ui grid container">
 
-        <h1>ParkCoin</h1>
+        <div class="row">
 
-        <div class="ui input">
-            <input type="text" id="aantalTokens" placeholder="Search...">
+            <h1>ParkCoin</h1>
+
         </div>
+
+        <div class="row">
+
+            <div class="eight wide column">
+
+                <h4>Hoeveel coins zijn er in omloop?</h4>
+                <div class="ui input ">
+                    <input type="text" id="totalInOmloop" placeholder="Search...">
+                </div>
+
+            </div>
+
+            <div class="eight wide column">
+
+                <h4>Hoeveel parkeercoins Heeft u?</h4>
+
+                <div class="ui input">
+                    <input type="text" id="aantalTokensVanGebruiker" placeholder="Search...">
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+        <div class="row">
+
+            <div class="eight wide column">
+
+                <h4>Hoeveel parkeercoins wenst u te kopen?</h4>
+
+                <div class="ui right action input">
+                    <input type="text" id="aantalTokens" placeholder="10">
+                    <button class="ui teal labeled icon button">
+                        <i class="cart icon"></i> Checkout
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
 
     </div>
 
