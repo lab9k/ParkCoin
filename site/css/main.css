@@ -1,0 +1,11 @@
+body {
+    background-color: beige;
+}
+
+.column {
+    background-color: red;
+}
+
+input {
+    min-width: inherit;
+}
