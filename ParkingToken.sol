@@ -18,16 +18,16 @@ contract mortal is owned {
 
 
 
-contract ParkingToken is owned {
+contract ParkingToken is mortal {
     /*Token Variables*/
     string public name;
     string public symbol;
     uint8 public decimals;
-    uint256  _totalSupply;
-    uint256 public buyPrice;
+    uint256 public _totalSupply;
+    uint public buyPrice;
 
 
-    mapping(address => uint) balances;
+    mapping(address => uint) public balances;
     mapping(uint => uint) private regios;
     mapping(uint => mapping(uint => uint)) public tickets;
     
@@ -36,21 +36,32 @@ contract ParkingToken is owned {
     
     /* Initializes contract with initial supply tokens to the creator of the contract */
     function ParkingToken() {
-        owner = 0x6118E6A77bBBb43Bb77f7ECc1e77499600a8A6Ef;
+        owner = msg.sender;
         name = "ParkGent";                                    // Set the name for display purposes
-        symbol = "🅿️";                                    // Set the symbol for display purposes
+        symbol = "P";                                    // Set the symbol for display purposes
         decimals = 0;                                    // Amount of decimals for display purposes
         _totalSupply = 0;
-        buyPrice = 0.37 finney;
+        buyPrice = 26;
+        regios[0] = 100;
+        regios[1] = 50;
+        regios[2] = 150;
+
     }
     
     function park(uint id, uint regio, uint tokens)  {
-        require(balances[msg.sender] < tokens);
+        require(balances[msg.sender] >= tokens);
         balances[msg.sender] -= tokens;
         _totalSupply -= tokens;
-        uint parkingtime = (tokens * regios[regio]) * 60;
+        uint parkingtime = (tokens * (regios[regio]/100)) * 60;
         uint time = now + parkingtime;
-        tickets[regio][id] = time;
+
+        uint temp = tickets[regio][id];
+
+        if (temp > now){
+            tickets[regio][id] += parkingtime;
+        } else {
+            tickets[regio][id] = time;
+        }
         
     }
     
@@ -82,7 +93,7 @@ contract ParkingToken is owned {
     }
     
     function buy() payable {
-        uint tokens = (msg.value * 1 finney) / buyPrice;
+        uint tokens = (msg.value / 1000000000000000) * (buyPrice) /10 ;
         mintToken(msg.sender, tokens);
     }
     
