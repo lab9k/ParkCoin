@@ -88,7 +88,13 @@ function ParkingRegistry() {
 
     // TODO: don't write errors to the console
     self.park = function (id, region, payment) {
-        contract.park(id, region, payment, (error, value) => console.log(error, value));
+        contract.park(id, region, payment, (error, succesful) => {
+          console.log(error);
+          if(!succesful){
+            // Show error message
+            console.log('Couldn\'t park. Insufficient parking tokens.');
+          }
+        });
     };
 
     // TODO: what if not owner? js error message?
