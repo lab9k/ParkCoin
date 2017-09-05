@@ -1,2 +1,2 @@
-# Parking
-A new parking system using the distributed database ethereum.
+# Parking: Frontend
+A webapplication for the new parking system using the distributed database ethereum.
