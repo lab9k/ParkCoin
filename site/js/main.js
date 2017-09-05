@@ -173,6 +173,14 @@ function ParkingRegistry() {
         self.buy(parkingPriceMarket.getPrice(tokens));
     });
 
+    $('#parkBtn').on('click', function (event) {
+        let licenseplate = document.getElementById('licenseplate').value;
+        let regio = document.getElementById('regio').value;
+        let time = document.getElementById('time').value;
+        console.log(time);
+        self.park(licenseplate, regio, time);
+    });
+
     // Getters
     //////////
 
