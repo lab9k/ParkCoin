@@ -81,6 +81,9 @@ function ParkingRegistry () {
     contract.totalSupply((error, value) => {
       $('#totalInOmloop').attr("placeholder", value);
     });
+      contract.balances('0x4219473B52c3D8946057Ed7Ceec851B78d319D74', (error, value) => {
+          $('#aantalTokensVanGebruiker').attr("placeholder", value.valueOf());
+      });
   };
 
   // TODO: don't write errors to the console
