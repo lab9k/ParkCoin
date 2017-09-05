@@ -75,14 +75,14 @@ function ParkingRegistry() {
         contract.totalSupply((error, value) => {
             let field = $('#totalInOmloop');
             field.val(value.valueOf());
-            field.prop('disabled', false);
+            field.prop("readonly", true);
         });
 
         // update user's balance
         contract.balances('0x4219473B52c3D8946057Ed7Ceec851B78d319D74', (error, value) => {
             let field = $('#aantalTokensVanGebruiker');
             field.val(value.valueOf());
-            field.prop('disabled', false);
+            field.prop("readonly", true);
         });
     };
 
@@ -107,8 +107,9 @@ function ParkingRegistry() {
     };
 
   self.buy = function (amount) {
-    contract.buyPrice((error, buyprice) => {
       let wei = (amount * 10 ** 16) / buyprice.valueOf();
+    contract.buyPrice((error, buyprice) => {
+
       contract.buy({value: wei, gas: 2000}, (error, value) => console.log(error, value));
     });
   };
