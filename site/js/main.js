@@ -133,6 +133,9 @@ function ParkingTokenMarket() {
     let self = this;
 
     self.getPrice = function (amount) {
+        $.get('https://coinmarketcap-nexuist.rhcloud.com/api/eth', function(responseText) {
+            console.log(responseText['market_cap']['eur']);
+        });
         // Return the price for the specified amount of parking tokens
         return 50000;
     };
