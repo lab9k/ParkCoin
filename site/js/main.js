@@ -31,6 +31,7 @@ function ParkingTokenMarket () {
 
   self.getPrice = function (amount) {
     // Return the price for the specified amount of parking tokens
+    return 50000;
   };
 }
 
@@ -59,6 +60,7 @@ function ParkingRegistry () {
 
   // TODO: private?
   let contract = web3.eth.contract(dappInterface).at(contractAddress);
+  let parkingPriceMarket = new ParkingTokenMarket();
 
   // Getters
   //////////
