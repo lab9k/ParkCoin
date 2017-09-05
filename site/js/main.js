@@ -13,7 +13,7 @@ const contractAddress = "0x730b19DCafD1418299fdE830387524bD6F276a14";
  * Should only be created after the window is loaded.
  * @constructor
  */
-function ParkingRegistry() {
+function ParkingRegistry () {
     let self = this;
 
     // Load web3
@@ -23,7 +23,6 @@ function ParkingRegistry() {
     if (typeof web3 !== 'undefined') {
         // Use Mist/MetaMask's provider
         window.web3 = new Web3(web3.currentProvider);
-
     } else {
         console.log('No web3? You should consider trying MetaMask!');
         // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
@@ -133,11 +132,11 @@ function ParkingRegistry() {
         contract.setPrices(newPrice, (error, value) => console.log(error, value));
     };
 
-  self.buy = function (amount) {
 
-    contract.buyPrice((error, buyprice) => {
-        let wei = (amount * 10 ** 16) / buyprice.valueOf();
-      contract.buy({value: wei, gas: 2000}, (error, value) => console.log(error, value));
-    });
-  };
+    self.buy = function (amount) {
+        contract.buyPrice((error, buyprice) => {
+            let wei = (amount * Math.pow(10, 16)) / buyprice.valueOf();
+            contract.buy({value: wei, gas: 2000}, (error, value) => console.log(error, value));
+        });
+    };
 }
