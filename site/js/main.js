@@ -31,6 +31,8 @@ function ParkingRegistry () {
     // TODO: private?
     let contract = web3.eth.contract(dappInterface).at(contractAddress);
 
+    console.log(contract);
+
     // Event handlers
     /////////////////
 
@@ -60,9 +62,7 @@ function ParkingRegistry () {
     $('#aantalTokens').on('keydown', function (event) {
         let tokens = document.getElementById('aantalTokens').value;
         contract.buyPrice((error, buyprice) => {
-            console.log(buyprice);
             let price = ((tokens) / buyprice.valueOf()) / 10;
-            console.log(price);
             $('#priceEther').val(price);
         });
 
@@ -105,7 +105,10 @@ function ParkingRegistry () {
 
     // TODO: give alerts some nice styling
     // TODO: use whisper to confirm the transaction has been mined (if possible)
-    self.park = function (id, region, payment) {
+    self.park = function (licenseplate, region, payment) {
+        // TODO: connect to api to get id of given license plate
+        let id = null;
+
         // First execute the method with the call function to check
         // whether or not the park function will resolve correctly
         contract.park.call(id, region, payment, (error, succesful) => {
@@ -128,10 +131,31 @@ function ParkingRegistry () {
         contract.updateRegion(region, price, (error, value) => console.log(error, value));
     };
 
-    self.setPrices = function (newPrice) {
+    self.setPrice = function (newPrice) {
         contract.setPrices(newPrice, (error, value) => console.log(error, value));
     };
 
+    /**
+     * Get region
+     *
+     * Contrast to for instance google maps where latitude, longitude is used, mapit still uses the
+     * opposite in its http get request format for its API. Therefor we'll also use this order for our arguments.
+     *
+     * @param longitude
+     * @param latitude
+     */
+    self.getRegion = function (longitude, latitude) {
+        $.getJSON( 'http://global.mapit.mysociety.org/point/4326/' + longitude + ',' + latitude, function( data ) {
+            let items = [];
+            $.each( data, function( key, val ) {
+                items.push( "<li id='" + key + "'>" + val + "</li>" );
+            });
+
+            items.forEach(function (element) {
+                console.log(element);
+            })
+        });
+    };
 
     self.buy = function (amount) {
         contract.buyPrice((error, buyprice) => {
