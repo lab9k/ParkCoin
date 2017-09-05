@@ -104,42 +104,8 @@ const dappInterface = [{
     }, {"indexed": false, "name": "_value", "type": "uint256"}],
     "name": "Transfer",
     "type": "event"
-}]
+}];
 const contractAddress = "0x69562F2b548dB30903170F303d30248DFE0Cf99A";
-
-// window.addEventListener('load', function () {
-//
-//     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
-//     if (typeof web3 !== 'undefined') {
-//         // Use Mist/MetaMask's provider
-//         window.web3 = new Web3(web3.currentProvider);
-//
-//     } else {
-//         console.log('No web3? You should consider trying MetaMask!');
-//         // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
-//     }
-//
-//     // Now you can start your app & access web3 freely:
-//     contractEvents.init();
-// });
-
-/**
- * The class ParkingTokenMarket
- * Calculates the price of parking tokens
- *
- * @constructor
- */
-function ParkingTokenMarket() {
-    let self = this;
-
-    self.getPrice = function (amount) {
-        $.get('https://coinmarketcap-nexuist.rhcloud.com/api/eth', function(responseText) {
-            console.log(responseText['market_cap']['eur']);
-        });
-        // Return the price for the specified amount of parking tokens
-        return 50000;
-    };
-}
 
 /**
  * The ParkingRegistry class
@@ -165,12 +131,10 @@ function ParkingRegistry() {
     // Now we have web3 locked and loaded
     // TODO: private?
     let contract = web3.eth.contract(dappInterface).at(contractAddress);
-    let parkingPriceMarket = new ParkingTokenMarket();
 
     $('#buyBtn').on('click', function (event) {
         let tokens = document.getElementById('aantalTokens').value;
-        console.log(tokens);
-        self.buy(parkingPriceMarket.getPrice(tokens));
+        self.buy(tokens);
     });
 
     // Getters
@@ -220,7 +184,10 @@ function ParkingRegistry() {
         contract.setPrices(newPrice, (error, value) => console.log(error, value));
     };
 
-    self.buy = function (wei) {
-        contract.buy({value: wei, gas: 2000}, (error, value) => console.log(error, value));
-    };
+  self.buy = function (amount) {
+    contract.buyPrice((error, buyprice) => {
+      let wei = (amount * 10 ** 16) / buyprice.valueOf();
+      contract.buy({value: wei, gas: 2000}, (error, value) => console.log(error, value));
+    });
+  };
 }
