@@ -181,6 +181,17 @@ function ParkingRegistry() {
         self.park(licenseplate, regio, time);
     });
 
+    $('#updateRegioBtn').on('click', function (event) {
+        let regioId = document.getElementById('regioUpdate').value;
+        let regioValue = document.getElementById('regioValue').value;
+        self.updateRegion(regioId, regioValue);
+    });
+
+    $('#buyPriceBtn').on('click', function (event) {
+        let buyprice = document.getElementById('buyprice').value;
+        self.setPrices(buyprice);
+    });
+
     // Getters
     //////////
 
