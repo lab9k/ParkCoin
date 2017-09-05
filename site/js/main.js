@@ -78,12 +78,19 @@ function ParkingRegistry () {
    * Update the page
    */
   self.update = function () {
+    // update total suply
     contract.totalSupply((error, value) => {
-      $('#totalInOmloop').attr("placeholder", value);
+      let field = $('#totalInOmloop');
+      field.val(value.valueOf());
+      field.prop('disabled', false);
     });
-      contract.balances('0x4219473B52c3D8946057Ed7Ceec851B78d319D74', (error, value) => {
-          $('#aantalTokensVanGebruiker').attr("placeholder", value.valueOf());
-      });
+
+    // update user's balance
+    contract.balances('0x4219473B52c3D8946057Ed7Ceec851B78d319D74', (error, value) => {
+      let field = $('#aantalTokensVanGebruiker');
+      field.val(value.valueOf());
+      field.prop('disabled', false);
+    });
   };
 
   // TODO: don't write errors to the console
