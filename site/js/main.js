@@ -29,6 +29,9 @@ function ParkingRegistry() {
     // TODO: private?
     let contract = web3.eth.contract(dappInterface).at(contractAddress);
 
+    // Event handlers
+    /////////////////
+
     $('#buyBtn').on('click', function (event) {
         let tokens = document.getElementById('aantalTokens').value;
         self.buy(tokens);
@@ -38,7 +41,6 @@ function ParkingRegistry() {
         let licenseplate = document.getElementById('licenseplate').value;
         let regio = document.getElementById('regio').value;
         let time = document.getElementById('time').value;
-        console.log(time);
         self.park(licenseplate, regio, time);
     });
 
@@ -88,12 +90,20 @@ function ParkingRegistry() {
 
     // TODO: don't write errors to the console
     self.park = function (id, region, payment) {
-        contract.park(id, region, payment, (error, succesful) => {
-          console.log(error);
-          if(!succesful){
-            // Show error message
-            console.log('Couldn\'t park. Insufficient parking tokens.');
-          }
+        // First execute the method with the call function to check
+        // whether or not the park function will resolve correctly
+        contract.park.call(id, region, payment, (error, succesful) => {
+            if(succesful.valueOf()){
+                // Execute the park now we know it'll work
+                contract.park(id, region, payment, (error, val) => {
+                    // TODO: calculate end time instead of returning amount of tokens
+                    alert('You\'ve parked in ' + region + ' for ' + payment + ' tokens.');
+                });
+            } else {
+                // The park method cannot execute properly
+                // Show an error message to notify the user
+                alert('Couldn\'t park. Insufficient parking tokens.');
+            }
         });
     };
 
