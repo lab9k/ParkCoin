@@ -15,6 +15,7 @@
     <!--Stylesheets-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="icon" href="img/tabicon.png">
 
     <!--Scripts-->
     <script src="js/main.js"></script>
@@ -46,15 +47,24 @@
                     <form onsubmit="return false;">
                         <!-- <p>Pay parking ticket</p> -->
                         <select id="regio">
-                                        <option value="0">Regio 0</option>
-                                        <option value="1">Regio 1</option>
-                                        <option value="2">Regio 2</option>
-                                        <option value="3">Regio 3</option>
+                                        <option value="0">Regio 0 - RED</option>
+                                        <option value="1">Regio 1 - ORANGE</option>
+                                        <option value="2">Regio 2 - YELLOW</option>
+                                        <option value="3">Regio 3 - GREEN</option>
+                                        <option value="4">Regio 4 - BLUE</option>
+                                        <option value="5">Regio 5 - OLIVE</option>
                                 </select>
                         <input type="text" placeholder="License plate" id="licenseplate">
                         <input type="number" value="0" min="0" placeholder="tokens" id="time">
                         <button id="parkBtn">Pay</button>
                     </form>
+                     <p>Ticket rates</p>
+                     <p class="other">Regio 0 - RED</p>
+                     <p class="other">Regio 1 - ORANGE</p>
+                     <p class="other">Regio 2 - YELLOW</p>
+                     <p class="other">Regio 3 - GREEN</p>
+                     <p class="other">Regio 4 - BLUE</p>
+                     <p class="other">Regio 5 - OLIVE</p>
                 </section>
 
                 <section id="content2">
