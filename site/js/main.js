@@ -50,7 +50,9 @@ function ParkingRegistry () {
         let time = document.getElementById("time").value;
 
         // Validate input
-        if (Number.isInteger(time) && self.isLicenseplate(licenseplate)) {
+        console.log(time);
+        console.log(Number.isInteger(time));
+        if (/[0-9]+/.test(time)) {
             // Park
             self.park(licenseplate, regio, time);
         } else {
