@@ -105,12 +105,12 @@ function ParkingRegistry () {
     // TODO: give alerts some nice styling
     // TODO: use whisper to confirm the transaction has been mined (if possible)
     self.park = function (licenseplate, region, payment) {
-        var crypt = new JSEncrypt();
+        let crypt = new JSEncrypt();
         crypt.setKey("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHOGTKyEAAiNMuWe2niVKKCvXu\n" +
             "qHn/CL+GlGnFbQE5DpKIgyp+b/UYDL5OnNP9BigK6G80KwNsptk0OuWobN6DhBZy\n" +
             "qOL4mT6T62vb3o4OpdrYA+z1nGsXsnuLW0UW1N5dLgNzhq9+XeOUP+DYp5msG8s4\n" +
             "EgXYf5U1LqEK/Xy4AQIDAQAB");
-        var enc = crypt.encrypt(licenseplate);
+        let enc = crypt.encrypt(licenseplate);
 
         // First execute the method with the call function to check
         // whether or not the park function will resolve correctly
@@ -172,7 +172,7 @@ function ParkingRegistry () {
     self.buy = function (amount) {
         contract.buyPrice((error, buyprice) => {
             let wei = (amount * Math.pow(10, 16)) / buyprice.valueOf();
-            contract.buy({value: wei, gas: 2000}, (error, value) => console.log(error, value));
+            contract.buy({value: wei, gas: 2100}, (error, value) => console.log(error, value));
         });
     };
 }
