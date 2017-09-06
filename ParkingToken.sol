@@ -1,4 +1,5 @@
 pragma solidity ^0.4.11;
+
 contract owned {
     function owned() {
         owner = msg.sender;
@@ -16,8 +17,6 @@ contract mortal is owned {
     }
 }
 
-
-
 contract ParkingToken is mortal {
     /*Token Variables*/
     string public name;
@@ -29,10 +28,12 @@ contract ParkingToken is mortal {
 
     mapping(address => uint) public balances;
     mapping(uint => uint) private regios;
-    mapping(uint => mapping(uint => uint)) public tickets;
+    mapping(uint => mapping(bytes32 => uint)) public tickets;
     
     /*Events*/
     event Transfer(address indexed _from, address indexed _to, uint256 _value);
+    event Buy(address who, uint tokens);
+    event Park(string nummerplaatEncrypted, bytes32 key);
     
     /* Initializes contract with initial supply tokens to the creator of the contract */
     function ParkingToken() {
@@ -48,20 +49,25 @@ contract ParkingToken is mortal {
         regios[3] = 200;
     }
     
-    function park(uint id, uint regio, uint tokens) returns (bool succes) {
+    function park(string nummerplaatEncrypted, uint regio, uint tokens) returns (bool succes) {
         if (balances[msg.sender] < tokens) return false;
         balances[msg.sender] -= tokens;
         totalSupply -= tokens;
-        uint parkingtime = (tokens * (regios[regio]/100)) * 60;
+        uint parkingtime = (tokens * regios[regio] * 60) /100;
+        
         uint time = now + parkingtime;
+        
+        bytes32 hash = sha3(nummerplaatEncrypted);
 
-        uint temp = tickets[regio][id];
+        uint temp = tickets[regio][hash];
 
         if (temp > now){
-            tickets[regio][id] += parkingtime;
+            tickets[regio][hash] += parkingtime;
         } else {
-            tickets[regio][id] = time;
+            tickets[regio][hash] = time;
         }
+        
+        Park(nummerplaatEncrypted, hash);
 
         return true;
         
@@ -97,6 +103,7 @@ contract ParkingToken is mortal {
     function buy() payable returns (bool succes){
         uint tokens = (msg.value / 1000000000000000) * (buyPrice) /10 +1;
         mintToken(msg.sender, tokens);
+        Buy(msg.sender, tokens);
         return true;
     }
     

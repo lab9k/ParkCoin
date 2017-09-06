@@ -4,6 +4,10 @@
 const DAPPINTERFACE = [ { "constant": false, "inputs": [ { "name": "nummerplaatEncrypted", "type": "string" }, { "name": "regio", "type": "uint256" }, { "name": "tokens", "type": "uint256" } ], "name": "park", "outputs": [ { "name": "succes", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "name", "outputs": [ { "name": "", "type": "string", "value": "ParkGent" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "totalSupply", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "address" } ], "name": "balances", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "decimals", "outputs": [ { "name": "", "type": "uint8", "value": "0" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "kill", "outputs": [], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "buyPrice", "outputs": [ { "name": "", "type": "uint256", "value": "26" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "symbol", "outputs": [ { "name": "", "type": "string", "value": "P" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "newBuyPrice", "type": "uint256" } ], "name": "setPrices", "outputs": [], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "buy", "outputs": [ { "name": "succes", "type": "bool" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [ { "name": "to", "type": "address" }, { "name": "amount", "type": "uint256" } ], "name": "transfer", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "regio", "type": "uint256" }, { "name": "price", "type": "uint256" } ], "name": "updateRegio", "outputs": [], "payable": false, "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "uint256" }, { "name": "", "type": "bytes32" } ], "name": "tickets", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "inputs": [], "payable": false, "type": "constructor" }, { "anonymous": false, "inputs": [ { "indexed": true, "name": "_from", "type": "address" }, { "indexed": true, "name": "_to", "type": "address" }, { "indexed": false, "name": "_value", "type": "uint256" } ], "name": "Transfer", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "who", "type": "address" }, { "indexed": false, "name": "tokens", "type": "uint256" } ], "name": "Buy", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "nummerplaatEncrypted", "type": "string" }, { "indexed": false, "name": "key", "type": "bytes32" } ], "name": "Park", "type": "event" } ];
 const CONTRACTADDRESS = "0x4Ef51D61c88F77e55abE1653986E81C6a396251a";
 const MAPITSERVER = ""; // TODO: fill in!
+const PUBLICKEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHOGTKyEAAiNMuWe2niVKKCvXu\n" +
+    "qHn/CL+GlGnFbQE5DpKIgyp+b/UYDL5OnNP9BigK6G80KwNsptk0OuWobN6DhBZy\n" +
+    "qOL4mT6T62vb3o4OpdrYA+z1nGsXsnuLW0UW1N5dLgNzhq9+XeOUP+DYp5msG8s4\n" +
+    "EgXYf5U1LqEK/Xy4AQIDAQAB";
 
 // TODO: add Internationalisation with Intl
 // TODO: add account switching?
@@ -96,7 +100,7 @@ function ParkingRegistry () {
 
         // update user's balance
         contract.balances(self.defaultaccount(), (error, value) => {
-            let field = $("#aantalTokensVanGebruiker");
+            let field = $("#tokensCountUser");
             field.val(value.valueOf());
             field.prop("readonly", true);
         });
@@ -105,15 +109,16 @@ function ParkingRegistry () {
     // TODO: give alerts some nice styling
     // TODO: use whisper to confirm the transaction has been mined (if possible)
     self.park = function (licenseplate, region, payment) {
-        // TODO: encrypt the license plate with the server's public key
-        let encrypted = null;
+        let crypt = new JSEncrypt();
+        crypt.setKey(PUBLICKEY);
+        let enc = crypt.encrypt(licenseplate);
 
         // First execute the method with the call function to check
         // whether or not the park function will resolve correctly
-        contract.park.call(id, region, payment, (error, succesful) => {
+        contract.park.call(enc, region, payment, (error, succesful) => {
             if(succesful.valueOf()){
-                // Execute the park now we know it"ll work
-                contract.park(id, region, payment, (error, val) => {
+                // Execute the park now we know it'll work
+                contract.park(enc, region, payment, (error, val) => {
                     // TODO: calculate end time instead of returning amount of tokens
                     alert("You've parked in " + region + " for " + payment + " tokens.");
                 });
@@ -168,7 +173,7 @@ function ParkingRegistry () {
     self.buy = function (amount) {
         contract.buyPrice((error, buyprice) => {
             let wei = (amount * Math.pow(10, 16)) / buyprice.valueOf();
-            contract.buy({value: wei, gas: 2000}, (error, value) => console.log(error, value));
+            contract.buy({value: wei, gas: 2100}, (error, value) => console.log(error, value));
         });
     };
 }
