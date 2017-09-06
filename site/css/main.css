@@ -259,6 +259,9 @@ a {
   border-bottom: solid thin #8e9699;
   margin: 20px 0;
   padding: 20px 0;
+  margin-top: 10px;
+  /* margin-bottom: 10px; */
+  padding-top: 5px;
 }
 #content #right form input,
 #content #right form textarea,
@@ -284,7 +287,7 @@ button {
   margin-top: 5px;
 }
 
-#parkBtn {
+#parkBtn,#buyBtn {
     padding: 8px;
 }
 
@@ -352,7 +355,6 @@ h1 {
 
 section {
   display: none;
-  padding: 20px 0 0;
   border-top: 1px solid #ddd;
 }
 
@@ -406,4 +408,9 @@ input:checked + label {
 #tab3:checked ~ #content3,
 #tab4:checked ~ #content4 {
   display: block;
+}
+
+
+#logo {
+  margin-bottom: 10px;
 }
