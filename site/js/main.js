@@ -3,11 +3,13 @@
 
 const DAPPINTERFACE = [ { "constant": false, "inputs": [ { "name": "nummerplaatEncrypted", "type": "string" }, { "name": "regio", "type": "uint256" }, { "name": "tokens", "type": "uint256" } ], "name": "park", "outputs": [ { "name": "succes", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "name", "outputs": [ { "name": "", "type": "string", "value": "ParkGent" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "totalSupply", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "address" } ], "name": "balances", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "decimals", "outputs": [ { "name": "", "type": "uint8", "value": "0" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "kill", "outputs": [], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "buyPrice", "outputs": [ { "name": "", "type": "uint256", "value": "26" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "symbol", "outputs": [ { "name": "", "type": "string", "value": "P" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "newBuyPrice", "type": "uint256" } ], "name": "setPrices", "outputs": [], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "buy", "outputs": [ { "name": "succes", "type": "bool" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [ { "name": "to", "type": "address" }, { "name": "amount", "type": "uint256" } ], "name": "transfer", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "regio", "type": "uint256" }, { "name": "price", "type": "uint256" } ], "name": "updateRegio", "outputs": [], "payable": false, "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "uint256" }, { "name": "", "type": "bytes32" } ], "name": "tickets", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "inputs": [], "payable": false, "type": "constructor" }, { "anonymous": false, "inputs": [ { "indexed": true, "name": "_from", "type": "address" }, { "indexed": true, "name": "_to", "type": "address" }, { "indexed": false, "name": "_value", "type": "uint256" } ], "name": "Transfer", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "who", "type": "address" }, { "indexed": false, "name": "tokens", "type": "uint256" } ], "name": "Buy", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "nummerplaatEncrypted", "type": "string" }, { "indexed": false, "name": "key", "type": "bytes32" } ], "name": "Park", "type": "event" } ];
 const CONTRACTADDRESS = "0x4Ef51D61c88F77e55abE1653986E81C6a396251a";
-const MAPITSERVER = ""; // TODO: fill in!
+
 const PUBLICKEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHOGTKyEAAiNMuWe2niVKKCvXu\n" +
     "qHn/CL+GlGnFbQE5DpKIgyp+b/UYDL5OnNP9BigK6G80KwNsptk0OuWobN6DhBZy\n" +
     "qOL4mT6T62vb3o4OpdrYA+z1nGsXsnuLW0UW1N5dLgNzhq9+XeOUP+DYp5msG8s4\n" +
     "EgXYf5U1LqEK/Xy4AQIDAQAB";
+
+const MAPITSERVER = "http://ushahidi.lab9k.gent:8000";
 
 // TODO: add Internationalisation with Intl
 // TODO: add account switching?
@@ -32,7 +34,25 @@ function ParkingRegistry () {
         // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
     }
     // Now we have web3 locked and loaded
+
+    // Private fields
+    /////////////////
+
     let contract = web3.eth.contract(DAPPINTERFACE).at(CONTRACTADDRESS);
+
+    /**
+     * A mapping which maps all the different parking zones included in mapit to a number from the contract
+     *
+     * @type {{RED: number, ORANGE: number, YELLOW: number, GREEN: number, BLUE: number, OLIVE: number}}
+     */
+    let zoneMapping = {
+        "RED": 0,
+        "ORANGE": 1,
+        "YELLOW": 2,
+        "GREEN": 3,
+        "BLUE": 4,
+        "OLIVE": 5
+    };
 
     // Event handlers
     /////////////////
@@ -93,9 +113,15 @@ function ParkingRegistry () {
         // return web3.eth.defaultAccount;
     };
 
+    /**
+     * Asynchronous getter for the rate of a certain zone
+     *
+     * @param zone one of the following strings: RED,YELLOW,GREEN,BLUE,OLIVE
+     * @returns {Promise} when resolved it returns the rate for the given zone
+     */
     self.getRate = function (zone) {
         return new Promise((resolve, reject) => {
-            contract.regios(zone, (error, value) => {
+            contract.regios(zoneMapping[zone], (error, value) => {
                 if (error) {
                     reject(error);
                 } else {
@@ -146,7 +172,6 @@ function ParkingRegistry () {
                     else {
                         alert("User rejected transactions");
                     }
-
                 });
             } else {
                 // The park method cannot execute properly
@@ -181,18 +206,25 @@ function ParkingRegistry () {
      * @param longitude
      */
     self.getRegion = function (latitude, longitude) {
-        $.getJSON( MAPITSERVER + longitude + "," + latitude, function (data) {
-            // TODO: get region id from data and return
+        // Get the supported areatypes from the zone mapping
+        let areatypes = [];
+        for (let prop in zoneMapping) {
+            areatypes.push(prop);
+        }
 
-            // console.log("data: " + data["958855"]["name"]);
-            // let items = [];
-            // $.each( data, function( key, val ) {
-            //     items.push( "<li id='" + key + "'>" + val + "</li>" );
-            // });
-            //
-            // items.forEach(function (element) {
-            //     console.log(element);
-            // })
+        // Execute http request to mapit server to get json
+        $.getJSON( MAPITSERVER + "/point/4326/" + longitude + "," + latitude + "?type=" + areatypes.join(","), function (data) {
+            // We never get more than one zone back from mapit because none of the parking zones overlap
+            // and we only show those (see AREATYPES)
+            let zone = data[Object.keys(data)[0]]["type"];
+            if (zone === undefined) {
+                // No zone was found you're not in a parking zone
+                // Notify the user
+                alert("Couldn't find a parking zone for your location.")
+            } else {
+                // We did find a zone. Look the corresponding integer up in the mapping and get the rate for the zone
+                self.getRate(zone);
+            }
         });
     };
 
