@@ -50,7 +50,7 @@ function ParkingRegistry () {
         let time = document.getElementById("time").value;
 
         // Validate input
-        if (Number.isInteger(time) && self.isLicenseplate(licenseplate)) {
+        if (/[0-9]+/.test(time)) {
             // Park
             self.park(licenseplate, regio, time);
         } else {
@@ -91,6 +91,18 @@ function ParkingRegistry () {
         // TODO: replace address with default account
         return "0x4219473B52c3D8946057Ed7Ceec851B78d319D74";
         // return web3.eth.defaultAccount;
+    };
+
+    self.getRate = function (zone) {
+        return new Promise((resolve, reject) => {
+            contract.regios(zone, (error, value) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(value);
+                }
+            })
+        });
     };
 
     // Methods
