@@ -101,11 +101,10 @@ function ParkingRegistry() {
     });
 
     $("#tab3").on('click', () => {
-        let address = web3.eth.defaultaccount;
+        let address = web3.eth.accounts[0];
         let url = "/admin/" + address;
-        console.log("getting data");
         $.get(url, (data) => {
-            console.log(data);
+            $(".appendable").append(data);
         });
     });
 
