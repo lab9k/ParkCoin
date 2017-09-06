@@ -26,7 +26,7 @@ function ParkingRegistry () {
 
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof web3 !== "undefined") {
-        // Use Mist/MetaMask"s provider
+        // Use MetaMask's provider
         window.web3 = new Web3(web3.currentProvider);
     } else {
         alert("No web3? You should consider trying MetaMask!");
@@ -100,13 +100,6 @@ function ParkingRegistry () {
      * Update the page
      */
     self.update = function () {
-        // update total suply
-        contract.totalSupply((error, value) => {
-            let field = $("#totalInOmloop");
-            field.val(value.valueOf());
-            field.prop("readonly", true);
-        });
-
         // update user's balance
         contract.balances(self.defaultaccount(), (error, value) => {
             let field = $("#tokensCountUser");

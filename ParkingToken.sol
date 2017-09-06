@@ -13,7 +13,7 @@ contract owned {
 
 contract mortal is owned {
     function kill() {
-        if (msg.sender == owner) suicide(owner);
+        if (msg.sender == owner) selfdestruct(owner);
     }
 }
 
