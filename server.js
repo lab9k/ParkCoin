@@ -23,6 +23,19 @@ app.get('/', function (req, res) {
 
 });
 
+app.get('/admin/:address', (req, res) => {
+    let address = req.params.address;
+    contract.isAdmin(address).then((value) => {
+        if (value === true) {
+            res.send("this person is an admin");
+        } else{
+            res.send("not an admin");
+        }
+    })
+    //TODO get admin.html content.toString();
+    // send content to page.
+})
+
 app.listen(3000, () => {
     console.log('App listening on port 3000');
 });
