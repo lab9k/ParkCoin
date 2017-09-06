@@ -484,14 +484,14 @@
     </StyleMap>
     <Placemark>
       <name/>
-      <description><![CDATA[beschrijving: <br>ID: TARBLAUWS<br>Zone: Blauwe zone speciaal<br>URL: ]]></description>
+      <description><![CDATA[beschrijving: <br>ID: 4<br>Zone: Blauwe zone speciaal<br>URL: ]]></description>
       <styleUrl>#poly-0288D1-1200-148</styleUrl>
       <ExtendedData>
         <Data name="beschrijving">
           <value/>
         </Data>
         <Data name="ID">
-          <value>TARBLAUWS</value>
+          <value>4</value>
         </Data>
         <Data name="Zone">
           <value>Blauwe zone speciaal</value>
@@ -573,14 +573,14 @@
     </Placemark>
     <Placemark>
       <name/>
-      <description><![CDATA[beschrijving: <br>ID: TARBLAUW<br>Zone: Blauwe zone<br>URL: ]]></description>
+      <description><![CDATA[beschrijving: <br>ID: 4<br>Zone: Blauwe zone<br>URL: ]]></description>
       <styleUrl>#poly-0288D1-1200-143</styleUrl>
       <ExtendedData>
         <Data name="beschrijving">
           <value/>
         </Data>
         <Data name="ID">
-          <value>TARBLAUW</value>
+          <value>4</value>
         </Data>
         <Data name="Zone">
           <value>Blauwe zone</value>
@@ -1807,7 +1807,7 @@
           <value/>
         </Data>
         <Data name="ID">
-          <value>TARGROEN</value>
+          <value>3</value>
         </Data>
         <Data name="Zone">
           <value>Groene zone</value>
@@ -1959,14 +1959,14 @@
     </Placemark>
     <Placemark>
       <name/>
-      <description><![CDATA[beschrijving: <br>ID: TARBLAUW<br>Zone: Blauwe zone<br>URL: ]]></description>
+      <description><![CDATA[beschrijving: <br>ID: 4<br>Zone: Blauwe zone<br>URL: ]]></description>
       <styleUrl>#poly-0288D1-1200-130</styleUrl>
       <ExtendedData>
         <Data name="beschrijving">
           <value/>
         </Data>
         <Data name="ID">
-          <value>TARBLAUW</value>
+          <value>4</value>
         </Data>
         <Data name="Zone">
           <value>Blauwe zone</value>
@@ -2246,14 +2246,14 @@
     </Placemark>
     <Placemark>
       <name/>
-      <description><![CDATA[beschrijving: <br>ID: TARBLAUW<br>Zone: Blauwe zone<br>URL: ]]></description>
+      <description><![CDATA[beschrijving: <br>ID: 4<br>Zone: Blauwe zone<br>URL: ]]></description>
       <styleUrl>#poly-0288D1-1200-138</styleUrl>
       <ExtendedData>
         <Data name="beschrijving">
           <value/>
         </Data>
         <Data name="ID">
-          <value>TARBLAUW</value>
+          <value>4</value>
         </Data>
         <Data name="Zone">
           <value>Blauwe zone</value>
@@ -4341,14 +4341,14 @@
     </Placemark>
     <Placemark>
       <name/>
-      <description><![CDATA[beschrijving: <br>ID: TARBLAUW<br>Zone: Blauwe zone<br>URL: ]]></description>
+      <description><![CDATA[beschrijving: <br>ID: 4<br>Zone: Blauwe zone<br>URL: ]]></description>
       <styleUrl>#poly-0288D1-1200-133</styleUrl>
       <ExtendedData>
         <Data name="beschrijving">
           <value/>
         </Data>
         <Data name="ID">
-          <value>TARBLAUW</value>
+          <value>4</value>
         </Data>
         <Data name="Zone">
           <value>Blauwe zone</value>
