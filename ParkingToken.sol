@@ -27,7 +27,7 @@ contract ParkingToken is mortal {
 
 
     mapping(address => uint) public balances;
-    mapping(uint => uint) private regios;
+    mapping(uint => uint) public regios;
     mapping(uint => mapping(bytes32 => uint)) public tickets;
     
     /*Events*/
