@@ -12,6 +12,10 @@ contract Owned {
             _;
     }
 
+    function isOwner() returns (bool) {
+        return msg.sender == owner;
+    }
+
     address owner;
 }
 
