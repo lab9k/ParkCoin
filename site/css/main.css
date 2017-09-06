@@ -12,6 +12,8 @@ input {
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,600);
 @import url(http://weloveiconfonts.com/api/?family=brandico|entypo);
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 /* entypo */
 [class*="entypo-"]:before {
   font-family: 'entypo', sans-serif;
@@ -254,7 +256,6 @@ a {
   text-align: center;
 }
 #content #right form {
-  border-top: solid thin #8e9699;
   border-bottom: solid thin #8e9699;
   margin: 20px 0;
   padding: 20px 0;
@@ -346,4 +347,63 @@ h1 {
         width: 100%;
         margin-bottom: -5px;
         color: black;
+}
+
+
+section {
+  display: none;
+  padding: 20px 0 0;
+  border-top: 1px solid #ddd;
+}
+
+#tab1,#tab2,#tab3 {
+  display: none;
+}
+
+label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 5px 12px;
+  font-weight: 600;
+  text-align: center;
+  color: #bbb;
+  border: 1px solid transparent;
+}
+
+label:before {
+  font-family: fontawesome;
+  font-weight: normal;
+  margin-right: 10px;
+}
+
+label[for*='1']:before {
+  content: '\f1b9';
+}
+
+label[for*='2']:before {
+  content: '\f07a';
+}
+
+label[for*='3']:before {
+  content: '\f201';
+}
+
+label:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+input:checked + label {
+  color: #555;
+  border: 1px solid #ddd;
+  border-top: 2px solid #7BC087;
+  border-bottom: 1px solid #fff;
+  background-color: #fff;
+}
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3,
+#tab4:checked ~ #content4 {
+  display: block;
 }
