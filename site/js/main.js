@@ -1,8 +1,10 @@
 // Globals
 //////////
 
-const dappInterface = [ { "constant": false, "inputs": [ { "name": "nummerplaatEncrypted", "type": "string" }, { "name": "regio", "type": "uint256" }, { "name": "tokens", "type": "uint256" } ], "name": "park", "outputs": [ { "name": "succes", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "name", "outputs": [ { "name": "", "type": "string", "value": "ParkGent" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "totalSupply", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "address" } ], "name": "balances", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "decimals", "outputs": [ { "name": "", "type": "uint8", "value": "0" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "kill", "outputs": [], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "buyPrice", "outputs": [ { "name": "", "type": "uint256", "value": "26" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "symbol", "outputs": [ { "name": "", "type": "string", "value": "P" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "newBuyPrice", "type": "uint256" } ], "name": "setPrices", "outputs": [], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "buy", "outputs": [ { "name": "succes", "type": "bool" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [ { "name": "to", "type": "address" }, { "name": "amount", "type": "uint256" } ], "name": "transfer", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "regio", "type": "uint256" }, { "name": "price", "type": "uint256" } ], "name": "updateRegio", "outputs": [], "payable": false, "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "uint256" }, { "name": "", "type": "bytes32" } ], "name": "tickets", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "inputs": [], "payable": false, "type": "constructor" }, { "anonymous": false, "inputs": [ { "indexed": true, "name": "_from", "type": "address" }, { "indexed": true, "name": "_to", "type": "address" }, { "indexed": false, "name": "_value", "type": "uint256" } ], "name": "Transfer", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "who", "type": "address" }, { "indexed": false, "name": "tokens", "type": "uint256" } ], "name": "Buy", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "nummerplaatEncrypted", "type": "string" }, { "indexed": false, "name": "key", "type": "bytes32" } ], "name": "Park", "type": "event" } ];
-const contractAddress = "0x4Ef51D61c88F77e55abE1653986E81C6a396251a";
+const DAPPINTERFACE = [ { "constant": false, "inputs": [ { "name": "nummerplaatEncrypted", "type": "string" }, { "name": "regio", "type": "uint256" }, { "name": "tokens", "type": "uint256" } ], "name": "park", "outputs": [ { "name": "succes", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "name", "outputs": [ { "name": "", "type": "string", "value": "ParkGent" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "totalSupply", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "address" } ], "name": "balances", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "decimals", "outputs": [ { "name": "", "type": "uint8", "value": "0" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "kill", "outputs": [], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "buyPrice", "outputs": [ { "name": "", "type": "uint256", "value": "26" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "symbol", "outputs": [ { "name": "", "type": "string", "value": "P" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "newBuyPrice", "type": "uint256" } ], "name": "setPrices", "outputs": [], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "buy", "outputs": [ { "name": "succes", "type": "bool" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [ { "name": "to", "type": "address" }, { "name": "amount", "type": "uint256" } ], "name": "transfer", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "regio", "type": "uint256" }, { "name": "price", "type": "uint256" } ], "name": "updateRegio", "outputs": [], "payable": false, "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "uint256" }, { "name": "", "type": "bytes32" } ], "name": "tickets", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "inputs": [], "payable": false, "type": "constructor" }, { "anonymous": false, "inputs": [ { "indexed": true, "name": "_from", "type": "address" }, { "indexed": true, "name": "_to", "type": "address" }, { "indexed": false, "name": "_value", "type": "uint256" } ], "name": "Transfer", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "who", "type": "address" }, { "indexed": false, "name": "tokens", "type": "uint256" } ], "name": "Buy", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "nummerplaatEncrypted", "type": "string" }, { "indexed": false, "name": "key", "type": "bytes32" } ], "name": "Park", "type": "event" } ];
+const CONTRACTADDRESS = "0x4Ef51D61c88F77e55abE1653986E81C6a396251a";
+const MAPITSERVER = ""; // TODO: fill in!
+
 // TODO: add Internationalisation with Intl
 // TODO: add account switching?
 
@@ -19,50 +21,47 @@ function ParkingRegistry () {
     ////////////
 
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
-    if (typeof web3 !== 'undefined') {
-        // Use Mist/MetaMask's provider
+    if (typeof web3 !== "undefined") {
+        // Use Mist/MetaMask"s provider
         window.web3 = new Web3(web3.currentProvider);
     } else {
-        console.log('No web3? You should consider trying MetaMask!');
+        alert("No web3? You should consider trying MetaMask!");
         // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
     }
     // Now we have web3 locked and loaded
-    // TODO: private?
-    let contract = web3.eth.contract(dappInterface).at(contractAddress);
-
-    console.log(contract);
+    let contract = web3.eth.contract(DAPPINTERFACE).at(CONTRACTADDRESS);
 
     // Event handlers
     /////////////////
 
-    $('#buyBtn').on('click', function (event) {
-        let tokens = document.getElementById('aantalTokens').value;
+    $("#buyBtn").on("click", function (event) {
+        let tokens = document.getElementById("aantalTokens").value;
         self.buy(tokens);
     });
 
-    $('#parkBtn').on('click', function (event) {
-        let licenseplate = document.getElementById('licenseplate').value;
-        let regio = document.getElementById('regio').value;
-        let time = document.getElementById('time').value;
+    $("#parkBtn").on("click", function (event) {
+        let licenseplate = document.getElementById("licenseplate").value;
+        let regio = document.getElementById("regio").value;
+        let time = document.getElementById("time").value;
         self.park(licenseplate, regio, time);
     });
 
-    $('#updateRegioBtn').on('click', function (event) {
-        let regioId = document.getElementById('regioUpdate').value;
-        let regioValue = document.getElementById('regioValue').value;
+    $("#updateRegioBtn").on("click", function (event) {
+        let regioId = document.getElementById("regioUpdate").value;
+        let regioValue = document.getElementById("regioValue").value;
         self.updateRegion(regioId, regioValue);
     });
 
-    $('#buyPriceBtn').on('click', function (event) {
-        let buyprice = document.getElementById('buyprice').value;
+    $("#buyPriceBtn").on("click", function (event) {
+        let buyprice = document.getElementById("buyprice").value;
         self.setPrices(buyprice);
     });
 
-    $('#aantalTokens').on('keydown', function (event) {
-        let tokens = document.getElementById('aantalTokens').value;
+    $("#aantalTokens").on("keydown", function (event) {
+        let tokens = document.getElementById("aantalTokens").value;
         contract.buyPrice((error, buyprice) => {
             let price = ((tokens) / buyprice.valueOf()) / 10;
-            $('#priceEther').val(price);
+            $("#priceEther").val(price);
         });
 
 
@@ -76,7 +75,9 @@ function ParkingRegistry () {
     };
 
     self.defaultaccount = function () {
-        return web3.eth.defaultAccount;
+        // TODO: replace address with default account
+        return "0x4219473B52c3D8946057Ed7Ceec851B78d319D74";
+        // return web3.eth.defaultAccount;
     };
 
     // Methods
@@ -88,15 +89,14 @@ function ParkingRegistry () {
     self.update = function () {
         // update total suply
         contract.totalSupply((error, value) => {
-            let field = $('#totalInOmloop');
+            let field = $("#totalInOmloop");
             field.val(value.valueOf());
             field.prop("readonly", true);
         });
 
         // update user's balance
-        // TODO: replace address with default account
-        contract.balances('0x4219473B52c3D8946057Ed7Ceec851B78d319D74', (error, value) => {
-            let field = $('#aantalTokensVanGebruiker');
+        contract.balances(self.defaultaccount(), (error, value) => {
+            let field = $("#aantalTokensVanGebruiker");
             field.val(value.valueOf());
             field.prop("readonly", true);
         });
@@ -119,12 +119,12 @@ function ParkingRegistry () {
                 // Execute the park now we know it'll work
                 contract.park(enc, region, payment, (error, val) => {
                     // TODO: calculate end time instead of returning amount of tokens
-                    alert('You\'ve parked in ' + region + ' for ' + payment + ' tokens.');
+                    alert("You've parked in " + region + " for " + payment + " tokens.");
                 });
             } else {
                 // The park method cannot execute properly
                 // Show an error message to notify the user
-                alert('Couldn\'t park. Insufficient parking tokens.');
+                alert("Couldn't park. Insufficient parking tokens.");
             }
         });
     };
@@ -141,22 +141,31 @@ function ParkingRegistry () {
     /**
      * Get region
      *
-     * Contrast to for instance google maps where latitude, longitude is used, mapit still uses the
-     * opposite in its http get request format for its API. Therefor we'll also use this order for our arguments.
+     * Given a lat/long coordinate tuple this method will return which parking zone the coordinates belong to,
+     * using a mapit server dedicated to this purpose. The address of the server is saved in the constant MAPITSERVER.
      *
-     * @param longitude
+     * Even though EPSG:4326 specifically states that the coordinate order should be latitude/longitude, mapit still
+     * uses longitude/latitude. In the spirit of standardisation we'll use lat/long for the order of the function's
+     * arguments.
+     *
+     * Inside the function we'll have to be careful to use long/lat when communicating with the mapit server.
+     *
      * @param latitude
+     * @param longitude
      */
-    self.getRegion = function (longitude, latitude) {
-        $.getJSON( 'http://global.mapit.mysociety.org/point/4326/' + longitude + ',' + latitude, function( data ) {
-            let items = [];
-            $.each( data, function( key, val ) {
-                items.push( "<li id='" + key + "'>" + val + "</li>" );
-            });
+    self.getRegion = function (latitude, longitude) {
+        $.getJSON( MAPITSERVER + longitude + "," + latitude, function (data) {
+            // TODO: get region id from data and return
 
-            items.forEach(function (element) {
-                console.log(element);
-            })
+            // console.log("data: " + data["958855"]["name"]);
+            // let items = [];
+            // $.each( data, function( key, val ) {
+            //     items.push( "<li id='" + key + "'>" + val + "</li>" );
+            // });
+            //
+            // items.forEach(function (element) {
+            //     console.log(element);
+            // })
         });
     };
 
