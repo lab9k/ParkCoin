@@ -1,23 +1,30 @@
 pragma solidity ^0.4.11;
 
-contract owned {
-    function owned() {
+
+contract Owned {
+
+    function Owned() {
         owner = msg.sender;
     }
+
     modifier onlyowner() { 
         if (msg.sender == owner)
             _;
     }
+
     address owner;
 }
 
-contract mortal is owned {
+
+contract Mortal is Owned {
+
     function kill() {
-        if (msg.sender == owner) selfdestruct(owner);
+        if (msg.sender == owner) {selfdestruct(owner);}
     }
 }
 
-contract ParkingToken is mortal {
+
+contract ParkingToken is Mortal {
     /*Token Variables*/
     string public name;
     string public symbol;
@@ -50,10 +57,10 @@ contract ParkingToken is mortal {
     }
     
     function park(string nummerplaatEncrypted, uint regio, uint tokens) returns (bool succes) {
-        if (balances[msg.sender] < tokens) return false;
+        if (balances[msg.sender] < tokens) {return false;}
         balances[msg.sender] -= tokens;
         totalSupply -= tokens;
-        uint parkingtime = (tokens * regios[regio] * 60) /100;
+        uint parkingtime = (tokens * regios[regio] * 60) / 100;
         
         uint time = now + parkingtime;
         
@@ -79,7 +86,7 @@ contract ParkingToken is mortal {
 
     //Transfer the balance from owner's account to another account
     function transfer(address to, uint256 amount) returns (bool) {
-        if(balances[msg.sender] < amount) {
+        if (balances[msg.sender] < amount) {
             return false;
         }
         balances[msg.sender] -= amount;
@@ -93,8 +100,7 @@ contract ParkingToken is mortal {
         totalSupply += mintedAmount;
         Transfer(0, owner, mintedAmount);
         Transfer(owner, target, mintedAmount);
-    }
-    
+    }    
     
     function setPrices(uint256 newBuyPrice) onlyowner {
         buyPrice = newBuyPrice;
