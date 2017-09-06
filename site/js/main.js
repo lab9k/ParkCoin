@@ -20,7 +20,6 @@ const PUBLICKEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHOGTKyEAAiNMuWe2niVKKC
  */
 function ParkingRegistry () {
     let self = this;
-
     // Load web3
     ////////////
 
@@ -79,6 +78,7 @@ function ParkingRegistry () {
 
 
     });
+
 
     // Getters
     //////////
@@ -139,7 +139,7 @@ function ParkingRegistry () {
                 // Execute the park now we know it'll work
                 contract.park(enc, region, payment, (error, val) => {
                     // TODO: calculate end time instead of returning amount of tokens
-                    alert("You've parked in " + region + " for " + payment + " tokens.");
+                    self.confirmTransaction(enc);
                 });
             } else {
                 // The park method cannot execute properly
@@ -193,6 +193,25 @@ function ParkingRegistry () {
         contract.buyPrice((error, buyprice) => {
             let wei = (amount * Math.pow(10, 16)) / buyprice.valueOf();
             contract.buy({value: wei, gas: 2100}, (error, value) => console.log(error, value));
+        });
+    };
+
+    self.confirmTransaction = function (enc) {
+        let event = contract.Park();
+
+        // watch for changes
+        event.watch(function(error, result){
+            // result will contain various information
+            // including the argumets given to the Deposit
+            // call.
+            if (!error){
+                console.log(result);
+                if(result["args"]["nummerplaatEncrypted"] === enc) {
+                    alert("Transaction confirmed.");
+                    event.stopWatching();
+                }
+            }
+
         });
     };
 }
