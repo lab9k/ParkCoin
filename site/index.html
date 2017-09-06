@@ -19,6 +19,7 @@
 
     <!--Scripts-->
     <script src="js/main.js"></script>
+    <script src="js/CoordTuple.js"></script>
 </head>
 
 <body>
@@ -89,7 +90,7 @@
                             center: { lat: 49.496675, lng: -102.65625 }
                         });
 
-                        var georssLayer = new google.maps.KmlLayer({
+                        let georssLayer = new google.maps.KmlLayer({
                             url: 'https://raw.githubusercontent.com/lab9k/Parking/master/site/data/Parkeertariefzones.kml',
                             suppressInfoWindows: true
                         });
