@@ -46,7 +46,7 @@
                 </div>
                 <img src="https://stad.gent/sites/all/themes/contrib/gent_base/img/svg/logo--part1.svg" id="stadGentSymbol">
 
-                <form>
+                <form onsubmit="return false;">
                     <p>Pay parking ticket</p>
                     <select id="regio">
                             <option value="0">Regio 0</option>
@@ -81,78 +81,79 @@
         });
     </script>
 
-    <div class="ui grid container">
+    <!--<div class="ui grid container">-->
 
-        <div class="ui segment">
+        <!--<div class="ui segment">-->
 
-            <h1>ParkCoin</h1>
+            <!--<h1>ParkCoin</h1>-->
 
-        </div>
+        <!--</div>-->
 
-        <div class="row">
+        <!--<div class="row">-->
 
-            <div class="eight wide column">
+            <!--<div class="eight wide column">-->
 
-                <h4>Hoeveel coins zijn er in omloop?</h4>
-                <div class="ui input ">
-                    <input type="text" id="totalInOmloop" placeholder="Search...">
-                </div>
+                <!--<h4>Hoeveel coins zijn er in omloop?</h4>-->
+                <!--<div class="ui input ">-->
+                    <!--<input type="text" id="totalInOmloop" placeholder="Search...">-->
+                <!--</div>-->
 
-            </div>
+            <!--</div>-->
 
-            <div class="eight wide column">
+            <!--<div class="eight wide column">-->
 
-                <h4>Hoeveel parkeercoins Heeft u?</h4>
+                <!--<h4>Hoeveel parkeercoins Heeft u?</h4>-->
 
-                <div class="ui input">
-                    <input type="text" id="aantalTokensVanGebruiker" placeholder="Search...">
-                </div>
+                <!--<div class="ui input">-->
+                    <!--<input type="text" id="aantalTokensVanGebruiker" placeholder="Search...">-->
+                <!--</div>-->
 
-            </div>
+            <!--</div>-->
 
-        </div>
+        <!--</div>-->
 
-        <div class="row">
+        <!--<div class="row">-->
 
-            <div class="eight wide column">
+            <!--<div class="eight wide column">-->
 
-                <h4>Hoeveel parkeercoins wenst u te kopen?</h4>
+                <!--<h4>Hoeveel parkeercoins wenst u te kopen?</h4>-->
 
-                <div class="ui right action input">
-                    <input type="text" id="aantalTokens" placeholder="10">
-                    <button class="ui teal labeled icon button" id="buyBtn">
-                        <i class="cart icon"></i> Koop!
-                    </button>
-                    <input type="text"  id="priceEther">
-                </div>
-            </div>
-        </div>
+                <!--<div class="ui right action input">-->
+                    <!--<input type="text" id="aantalTokens" placeholder="10">-->
+                    <!--<button class="ui teal labeled icon button" id="buyBtn">-->
+                        <!--<i class="cart icon"></i> Koop!-->
+                    <!--</button>-->
+                    <!--<input type="text"  id="priceEther">-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
 
-        <div class="row">
-            <div class="eight wide column">
-                <h4>Regio Updaten</h4>
-                <select id="regioUpdate">
-                    <option value="0">Regio 1</option>
-                    <option value="1">Regio 2</option>
-                    <option value="2">Regio 3</option>
-                </select>
-                <input type="number" placeholder="30" id="regioValue">
-                <button class="ui teal labeled icon button" id="updateRegioBtn">
-                    <i class="cart icon"></i> Update Regio!
-                </button>
-            </div>
-        </div>
+        <!--<div class="row">-->
+            <!--<div class="eight wide column">-->
+                <!--<h4>Regio Updaten</h4>-->
+                <!--<select id="regioUpdate">-->
+                    <!--<option value="0">Regio 1</option>-->
+                    <!--<option value="1">Regio 2</option>-->
+                    <!--<option value="2">Regio 3</option>-->
+                <!--</select>-->
+                <!--<input type="number" placeholder="30" id="regioValue">-->
+                <!--<button class="ui teal labeled icon button" id="updateRegioBtn">-->
+                    <!--<i class="cart icon"></i> Update Regio!-->
+                <!--</button>-->
+            <!--</div>-->
+        <!--</div>-->
 
-        <div class="row">
-            <div class="eight wide column">
-                <h4>Buy price veranderen</h4>
-                <input type="number" placeholder="30" id="buyprice">
-                <button class="ui teal labeled icon button" id="buyPriceBtn">
-                    <i class="cart icon"></i> Park!
-                </button>
-            </div>
-        </div>
-    </div>
+        <!--<div class="row">-->
+            <!--<div class="eight wide column">-->
+                <!--<h4>Buy price veranderen</h4>-->
+                <!--<input type="number" placeholder="30" id="buyprice">-->
+                <!--<button class="ui teal labeled icon button" id="buyPriceBtn">-->
+                    <!--<i class="cart icon"></i> Park!-->
+                <!--</button>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
     <script>
         // When the window is loaded
         window.addEventListener('load', function () {
@@ -161,9 +162,6 @@
 
             // Update the page with the information of the ParkingRegistry object
             registry.update();
-
-            // TODO: test
-            registry.getRegion(51.048912, 3.735406);
         });
     </script>
 </body>
