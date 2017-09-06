@@ -90,11 +90,12 @@ function ParkingRegistry () {
         self.setPrices(buyprice);
     });
 
-    $("#aantalTokens").on("keydown", function (event) {
+    $("#aantalTokens").on("keyup", function (event) {
         let tokens = document.getElementById("aantalTokens").value;
         contract.buyPrice((error, buyprice) => {
-            let price = ((tokens) / buyprice.valueOf()) / 10;
-            $("#priceEther").val(price);
+            console.log("tokens:" + tokens);
+            let price = ((tokens) / buyprice.valueOf()) / 100;
+            $("#priceEther").val(price + " ether");
         });
 
 
@@ -163,7 +164,7 @@ function ParkingRegistry () {
                     if(!error) {
                         $("#parkBtn").addClass("ui loading button");
                         $("#parkBtn").prop('disabled', true);
-                        self.confirmTransaction(enc);
+                        self.confirmTransactionPark(enc);
                     }
                     else {
                         alert("User rejected transactions");
@@ -227,11 +228,24 @@ function ParkingRegistry () {
     self.buy = function (amount) {
         contract.buyPrice((error, buyprice) => {
             let wei = (amount * Math.pow(10, 16)) / buyprice.valueOf();
-            contract.buy({value: wei, gas: 2100}, (error, value) => console.log(error, value));
+            console.log("start");
+            contract.buy({value: wei, gas: 210000}, (error, val) => {
+                console.log("callback");
+                if(!error) {
+                    console.log("succes?");
+                    $("#buyBtn").addClass("ui loading button");
+                    $("#buyBtn").prop('disabled', true);
+                    self.confirmTransactionBuy();
+                }
+                else {
+                    alert("User rejected transactions");
+                }
+            });
+            console.log("gedaan");
         });
     };
 
-    self.confirmTransaction = function (enc) {
+    self.confirmTransactionPark = function (enc) {
         let event = contract.Park();
 
         // watch for changes
@@ -246,6 +260,27 @@ function ParkingRegistry () {
                     parkbutton.removeClass("ui loading button");
                     parkbutton.prop('disabled', false);
                     alert("Transaction confirmed.");
+                    event.stopWatching();
+                }
+            }
+
+        });
+    };
+
+    self.confirmTransactionBuy = function () {
+        let event = contract.Buy();
+
+        // watch for changes
+        event.watch(function(error, result){
+            // result will contain various information
+            // including the argumets given to the Deposit
+            // call.
+            if (!error){
+                console.log(result);
+                if(result["args"]["who"].toUpperCase() === self.defaultaccount().toUpperCase()) {
+                    $("#buyBtn").removeClass("ui loading button");
+                    $("#buyBtn").prop('disabled', false);
+                    alert("Transaction confirmed. " + result["args"]["tokens"] + " tokens added.");
                     event.stopWatching();
                 }
             }
