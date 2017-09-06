@@ -1,8 +1,8 @@
 // Globals
 //////////
 
-const DAPPINTERFACE = [ { "constant": false, "inputs": [ { "name": "nummerplaatEncrypted", "type": "string" }, { "name": "regio", "type": "uint256" }, { "name": "tokens", "type": "uint256" } ], "name": "park", "outputs": [ { "name": "succes", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "name", "outputs": [ { "name": "", "type": "string", "value": "ParkGent" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "totalSupply", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "address" } ], "name": "balances", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "decimals", "outputs": [ { "name": "", "type": "uint8", "value": "0" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "kill", "outputs": [], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "buyPrice", "outputs": [ { "name": "", "type": "uint256", "value": "26" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "symbol", "outputs": [ { "name": "", "type": "string", "value": "P" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "newBuyPrice", "type": "uint256" } ], "name": "setPrices", "outputs": [], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "buy", "outputs": [ { "name": "succes", "type": "bool" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [ { "name": "to", "type": "address" }, { "name": "amount", "type": "uint256" } ], "name": "transfer", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "regio", "type": "uint256" }, { "name": "price", "type": "uint256" } ], "name": "updateRegio", "outputs": [], "payable": false, "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "uint256" }, { "name": "", "type": "bytes32" } ], "name": "tickets", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "inputs": [], "payable": false, "type": "constructor" }, { "anonymous": false, "inputs": [ { "indexed": true, "name": "_from", "type": "address" }, { "indexed": true, "name": "_to", "type": "address" }, { "indexed": false, "name": "_value", "type": "uint256" } ], "name": "Transfer", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "who", "type": "address" }, { "indexed": false, "name": "tokens", "type": "uint256" } ], "name": "Buy", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "nummerplaatEncrypted", "type": "string" }, { "indexed": false, "name": "key", "type": "bytes32" } ], "name": "Park", "type": "event" } ];
-const CONTRACTADDRESS = "0x4Ef51D61c88F77e55abE1653986E81C6a396251a";
+const DAPPINTERFACE = [{"constant":false,"inputs":[{"name":"nummerplaatEncrypted","type":"string"},{"name":"regio","type":"uint256"},{"name":"tokens","type":"uint256"}],"name":"park","outputs":[{"name":"succes","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balances","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"regios","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"kill","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"buyPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"newBuyPrice","type":"uint256"}],"name":"setPrices","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"buy","outputs":[{"name":"succes","type":"bool"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"to","type":"address"},{"name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"regio","type":"uint256"},{"name":"price","type":"uint256"}],"name":"updateRegio","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"},{"name":"","type":"bytes32"}],"name":"tickets","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"who","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"Buy","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"nummerplaatEncrypted","type":"string"},{"indexed":false,"name":"key","type":"bytes32"}],"name":"Park","type":"event"}];
+const CONTRACTADDRESS = "0xae8fbebdb5f8386b0bc5eba80f24318da74e1389";
 
 const PUBLICKEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHOGTKyEAAiNMuWe2niVKKCvXu\n" +
     "qHn/CL+GlGnFbQE5DpKIgyp+b/UYDL5OnNP9BigK6G80KwNsptk0OuWobN6DhBZy\n" +
@@ -68,13 +68,14 @@ function ParkingRegistry () {
         let licenseplate = document.getElementById("licenseplate").value;
         let time = document.getElementById("time").value;
 
+        console.log(licenseplate);
+
         // Validate input
-        if (/[0-9]+/.test(time)) {
+        if (/[0-9]+/.test(time) && licenseplate !== "") {
             // Park
             self.park(licenseplate, regio, time);
         } else {
             // Wrong input
-            // TODO: message for licenseplate?
         }
     });
 
@@ -89,11 +90,12 @@ function ParkingRegistry () {
         self.setPrices(buyprice);
     });
 
-    $("#aantalTokens").on("keydown", function (event) {
+    $("#aantalTokens").on("keyup", function (event) {
         let tokens = document.getElementById("aantalTokens").value;
         contract.buyPrice((error, buyprice) => {
-            let price = ((tokens) / buyprice.valueOf()) / 10;
-            $("#priceEther").val(price);
+            console.log("tokens:" + tokens);
+            let price = ((tokens) / buyprice.valueOf()) / 100;
+            $("#priceEther").val(price + " ether");
         });
 
 
@@ -146,13 +148,7 @@ function ParkingRegistry () {
         });
     };
 
-    self.isLicenseplate = function (licenseplate) {
-        // TODO: validate with regex, maybe use a ghent api?
-        return true;
-    };
-
     // TODO: give alerts some nice styling
-    // TODO: use whisper to confirm the transaction has been mined (if possible)
     self.park = function (licenseplate, region, payment) {
         let crypt = new JSEncrypt();
         crypt.setKey(PUBLICKEY);
@@ -168,7 +164,7 @@ function ParkingRegistry () {
                     if(!error) {
                         $("#parkBtn").addClass("ui loading button");
                         $("#parkBtn").prop('disabled', true);
-                        self.confirmTransaction(enc);
+                        self.confirmTransactionPark(enc);
                     }
                     else {
                         alert("User rejected transactions");
@@ -232,11 +228,24 @@ function ParkingRegistry () {
     self.buy = function (amount) {
         contract.buyPrice((error, buyprice) => {
             let wei = (amount * Math.pow(10, 16)) / buyprice.valueOf();
-            contract.buy({value: wei, gas: 2100}, (error, value) => console.log(error, value));
+            console.log("start");
+            contract.buy({value: wei, gas: 210000}, (error, val) => {
+                console.log("callback");
+                if(!error) {
+                    console.log("succes?");
+                    $("#buyBtn").addClass("ui loading button");
+                    $("#buyBtn").prop('disabled', true);
+                    self.confirmTransactionBuy();
+                }
+                else {
+                    alert("User rejected transactions");
+                }
+            });
+            console.log("gedaan");
         });
     };
 
-    self.confirmTransaction = function (enc) {
+    self.confirmTransactionPark = function (enc) {
         let event = contract.Park();
 
         // watch for changes
@@ -247,9 +256,31 @@ function ParkingRegistry () {
             if (!error){
                 console.log(result);
                 if(result["args"]["nummerplaatEncrypted"] === enc) {
-                    $("#parkBtn").removeClass("ui loading button");
-                    $("#parkBtn").prop('disabled', false);
+                    let parkbutton = $("#parkBtn");
+                    parkbutton.removeClass("ui loading button");
+                    parkbutton.prop('disabled', false);
                     alert("Transaction confirmed.");
+                    event.stopWatching();
+                }
+            }
+
+        });
+    };
+
+    self.confirmTransactionBuy = function () {
+        let event = contract.Buy();
+
+        // watch for changes
+        event.watch(function(error, result){
+            // result will contain various information
+            // including the argumets given to the Deposit
+            // call.
+            if (!error){
+                console.log(result);
+                if(result["args"]["who"].toUpperCase() === self.defaultaccount().toUpperCase()) {
+                    $("#buyBtn").removeClass("ui loading button");
+                    $("#buyBtn").prop('disabled', false);
+                    alert("Transaction confirmed. " + result["args"]["tokens"] + " tokens added.");
                     event.stopWatching();
                 }
             }
