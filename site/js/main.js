@@ -139,7 +139,14 @@ function ParkingRegistry () {
                 // Execute the park now we know it'll work
                 contract.park(enc, region, payment, (error, val) => {
                     // TODO: calculate end time instead of returning amount of tokens
-                    self.confirmTransaction(enc);
+                    if(!error) {
+                        $("#parkBtn").addClass("ui loading button");
+                        self.confirmTransaction(enc);
+                    }
+                    else {
+                        alert("User rejected transactions");
+                    }
+
                 });
             } else {
                 // The park method cannot execute properly
@@ -207,6 +214,7 @@ function ParkingRegistry () {
             if (!error){
                 console.log(result);
                 if(result["args"]["nummerplaatEncrypted"] === enc) {
+                    $("#parkBtn").removeClass("ui loading button");
                     alert("Transaction confirmed.");
                     event.stopWatching();
                 }
