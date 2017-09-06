@@ -44,10 +44,19 @@ function ParkingRegistry () {
     });
 
     $("#parkBtn").on("click", function (event) {
-        let licenseplate = document.getElementById("licenseplate").value;
+        // Get input
         let regio = document.getElementById("regio").value;
+        let licenseplate = document.getElementById("licenseplate").value;
         let time = document.getElementById("time").value;
-        self.park(licenseplate, regio, time);
+
+        // Validate input
+        if (Number.isInteger(time) && self.isLicenseplate(licenseplate)) {
+            // Park
+            self.park(licenseplate, regio, time);
+        } else {
+            // Wrong input
+            // TODO: message for licenseplate?
+        }
     });
 
     $("#updateRegioBtn").on("click", function (event) {
@@ -104,6 +113,11 @@ function ParkingRegistry () {
             field.val(value.valueOf());
             field.prop("readonly", true);
         });
+    };
+
+    self.isLicenseplate = function (licenseplate) {
+        // TODO: validate with regex, maybe use a ghent api?
+        return true;
     };
 
     // TODO: give alerts some nice styling
