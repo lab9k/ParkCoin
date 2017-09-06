@@ -68,13 +68,14 @@ function ParkingRegistry () {
         let licenseplate = document.getElementById("licenseplate").value;
         let time = document.getElementById("time").value;
 
+        console.log(licenseplate);
+
         // Validate input
-        if (/[0-9]+/.test(time)) {
+        if (/[0-9]+/.test(time) && licenseplate !== "") {
             // Park
             self.park(licenseplate, regio, time);
         } else {
             // Wrong input
-            // TODO: message for licenseplate?
         }
     });
 
@@ -146,13 +147,7 @@ function ParkingRegistry () {
         });
     };
 
-    self.isLicenseplate = function (licenseplate) {
-        // TODO: validate with regex, maybe use a ghent api?
-        return true;
-    };
-
     // TODO: give alerts some nice styling
-    // TODO: use whisper to confirm the transaction has been mined (if possible)
     self.park = function (licenseplate, region, payment) {
         let crypt = new JSEncrypt();
         crypt.setKey(PUBLICKEY);
@@ -247,8 +242,9 @@ function ParkingRegistry () {
             if (!error){
                 console.log(result);
                 if(result["args"]["nummerplaatEncrypted"] === enc) {
-                    $("#parkBtn").removeClass("ui loading button");
-                    $("#parkBtn").prop('disabled', false);
+                    let parkbutton = $("#parkBtn");
+                    parkbutton.removeClass("ui loading button");
+                    parkbutton.prop('disabled', false);
                     alert("Transaction confirmed.");
                     event.stopWatching();
                 }
