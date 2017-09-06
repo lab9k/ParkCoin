@@ -75,6 +75,10 @@
                         });
                         georssLayer.setMap(map);
 
+                        georssLayer.addListener('click', function(event) {
+                            $("#regio").val(event.featureData.id);
+                        });
+
                         infoWindow = new google.maps.InfoWindow;
 
                         // Try HTML5 geolocation.

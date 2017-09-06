@@ -614,14 +614,14 @@
     </Placemark>
     <Placemark>
       <name/>
-      <description><![CDATA[beschrijving: <br>ID: TARLOOP<br>Zone: Olijfgroene zone<br>URL: https://mobiliteit.stad.gent/met-de-auto/parkeren-op-straat/betalend-parkeren/speciale-tariefzone-loop]]></description>
+      <description><![CDATA[beschrijving: <br>ID: 3<br>Zone: Olijfgroene zone<br>URL: https://mobiliteit.stad.gent/met-de-auto/parkeren-op-straat/betalend-parkeren/speciale-tariefzone-loop]]></description>
       <styleUrl>#poly-817717-1200-92</styleUrl>
       <ExtendedData>
         <Data name="beschrijving">
           <value/>
         </Data>
         <Data name="ID">
-          <value>TARLOOP</value>
+          <value>3</value>
         </Data>
         <Data name="Zone">
           <value>Olijfgroene zone</value>
@@ -658,14 +658,14 @@
     </Placemark>
     <Placemark>
       <name/>
-      <description><![CDATA[beschrijving: <br>ID: TARGEEL<br>Zone: Gele zone<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/gele-tariefzones]]></description>
+      <description><![CDATA[beschrijving: <br>ID: 2<br>Zone: Gele zone<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/gele-tariefzones]]></description>
       <styleUrl>#poly-FFEA00-1200-133</styleUrl>
       <ExtendedData>
         <Data name="beschrijving">
           <value/>
         </Data>
         <Data name="ID">
-          <value>TARGEEL</value>
+          <value>2</value>
         </Data>
         <Data name="Zone">
           <value>Gele zone</value>
@@ -1121,14 +1121,14 @@
     </Placemark>
     <Placemark>
       <name/>
-      <description><![CDATA[beschrijving: <br>ID: TARGROEN<br>Zone: Groene zone<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/groene-tariefzone]]></description>
+      <description><![CDATA[beschrijving: <br>ID: 3<br>Zone: Groene zone<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/groene-tariefzone]]></description>
       <styleUrl>#poly-7CB342-1200-133</styleUrl>
       <ExtendedData>
         <Data name="beschrijving">
           <value/>
         </Data>
         <Data name="ID">
-          <value>TARGROEN</value>
+          <value>3</value>
         </Data>
         <Data name="Zone">
           <value>Groene zone</value>
@@ -1318,14 +1318,14 @@
     </Placemark>
     <Placemark>
       <name/>
-      <description><![CDATA[beschrijving: <br>ID: TARGROEN<br>Zone: Groene zone<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/groene-tariefzone]]></description>
+      <description><![CDATA[beschrijving: <br>ID: 3<br>Zone: Groene zone<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/groene-tariefzone]]></description>
       <styleUrl>#poly-7CB342-1200-133</styleUrl>
       <ExtendedData>
         <Data name="beschrijving">
           <value/>
         </Data>
         <Data name="ID">
-          <value>TARGROEN</value>
+          <value>3</value>
         </Data>
         <Data name="Zone">
           <value>Groene zone</value>
@@ -2015,14 +2015,14 @@
     </Placemark>
     <Placemark>
       <name/>
-      <description><![CDATA[beschrijving: <br>ID: TARGROENU<br>Zone: Groene zone uitbreiding<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/groene-tariefzone]]></description>
+      <description><![CDATA[beschrijving: <br>ID: 3<br>Zone: Groene zone uitbreiding<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/groene-tariefzone]]></description>
       <styleUrl>#poly-7CB342-1200-143</styleUrl>
       <ExtendedData>
         <Data name="beschrijving">
           <value/>
         </Data>
         <Data name="ID">
-          <value>TARGROENU</value>
+          <value>3</value>
         </Data>
         <Data name="Zone">
           <value>Groene zone uitbreiding</value>
@@ -2335,14 +2335,14 @@
     </Placemark>
     <Placemark>
       <name/>
-      <description><![CDATA[beschrijving: <br>ID: TARROOD<br>Zone: Rode zone<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/rode-tariefzone]]></description>
+      <description><![CDATA[beschrijving: <br>ID: 0<br>Zone: Rode zone<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/rode-tariefzone]]></description>
       <styleUrl>#poly-A52714-2101-145</styleUrl>
       <ExtendedData>
         <Data name="beschrijving">
           <value/>
         </Data>
         <Data name="ID">
-          <value>TARROOD</value>
+          <value>0</value>
         </Data>
         <Data name="Zone">
           <value>Rode zone</value>
@@ -2903,14 +2903,14 @@
     </Placemark>
     <Placemark>
       <name/>
-      <description><![CDATA[beschrijving: <br>ID: TARORANJE<br>Zone: Oranje zone<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/oranje-tariefzone]]></description>
+      <description><![CDATA[beschrijving: <br>ID: 1<br>Zone: Oranje zone<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/oranje-tariefzone]]></description>
       <styleUrl>#poly-F9A825-1200-125</styleUrl>
       <ExtendedData>
         <Data name="beschrijving">
           <value/>
         </Data>
         <Data name="ID">
-          <value>TARORANJE</value>
+          <value>1</value>
         </Data>
         <Data name="Zone">
           <value>Oranje zone</value>
@@ -3979,14 +3979,14 @@
     </Placemark>
     <Placemark>
       <name/>
-      <description><![CDATA[beschrijving: <br>ID: TARGEEL<br>Zone: Gele zone<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/gele-tariefzones]]></description>
+      <description><![CDATA[beschrijving: <br>ID: 2<br>Zone: Gele zone<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/gele-tariefzones]]></description>
       <styleUrl>#poly-FFEA00-1200-125</styleUrl>
       <ExtendedData>
         <Data name="beschrijving">
           <value/>
         </Data>
         <Data name="ID">
-          <value>TARGEEL</value>
+          <value>2</value>
         </Data>
         <Data name="Zone">
           <value>Gele zone</value>
@@ -4575,14 +4575,14 @@
     </Placemark>
     <Placemark>
       <name/>
-      <description><![CDATA[beschrijving: <br>ID: TARGROEN<br>Zone: Groene zone<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/groene-tariefzone]]></description>
+      <description><![CDATA[beschrijving: <br>ID: 3<br>Zone: Groene zone<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/groene-tariefzone]]></description>
       <styleUrl>#poly-7CB342-1200-135</styleUrl>
       <ExtendedData>
         <Data name="beschrijving">
           <value/>
         </Data>
         <Data name="ID">
-          <value>TARGROEN</value>
+          <value>3</value>
         </Data>
         <Data name="Zone">
           <value>Groene zone</value>
@@ -5059,14 +5059,14 @@
     </Placemark>
     <Placemark>
       <name/>
-      <description><![CDATA[beschrijving: <br>ID: TARGROEN<br>Zone: Groene zone<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/groene-tariefzone]]></description>
+      <description><![CDATA[beschrijving: <br>ID: 3<br>Zone: Groene zone<br>URL: https://stad.gent/mobiliteitsplan/het-parkeerplan/parkeren-op-straat/groene-tariefzone]]></description>
       <styleUrl>#poly-7CB342-1200-138</styleUrl>
       <ExtendedData>
         <Data name="beschrijving">
           <value/>
         </Data>
         <Data name="ID">
-          <value>TARGROEN</value>
+          <value>3</value>
         </Data>
         <Data name="Zone">
           <value>Groene zone</value>
