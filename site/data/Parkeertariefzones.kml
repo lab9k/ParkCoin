@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Parkeertariefzones</name>
+    <NetworkLink>
+      <name>parkeerzones gent</name>
+      <Link>
+        <href><![CDATA[http://www.google.com/maps/d/kml?forcekml=1&mid=1LFi-OOa9AL3meBrmSiJ_dVGS7IE&lid=e9Q53dQEeD4]]></href>
+      </Link>
+    </NetworkLink>
+  </Document>
+</kml>

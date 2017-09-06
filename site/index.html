@@ -86,7 +86,7 @@
                                 };
 
                                 infoWindow.setPosition(pos);
-                                infoWindow.setContent('Location found.');
+                                infoWindow.setContent('You are here');
                                 infoWindow.open(map);
                                 map.setCenter(pos);
                             }, function () {
@@ -193,7 +193,6 @@
         window.addEventListener('load', function () {
             // Create a ParkingRegistry object
             let registry = new ParkingRegistry();
-
             // Update the page with the information of the ParkingRegistry object
             registry.update();
         });
