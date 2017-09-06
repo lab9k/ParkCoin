@@ -26,7 +26,6 @@ app.get('/', function (req, res) {
 app.get('/admin/:address', (req, res) => {
     let address = req.params.address;
     contract.isAdmin(address).then((value) => {
-        console.log("get was successful");
         if (value === true) {
             let fs = require('fs')
             fs.readFile('admin.html', 'utf8', function (err, data) {
@@ -39,7 +38,7 @@ app.get('/admin/:address', (req, res) => {
         } else {
             res.send("<section id='content3'>not an admin</section>");
         }
-    })
+    }).catch((error) => console.log(error))
 })
 
 app.listen(3000, () => {

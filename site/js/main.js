@@ -105,6 +105,7 @@ function ParkingRegistry() {
         let url = "/admin/" + address;
         $.get(url, (data) => {
             $(".appendable").append(data);
+            $("#tab3").unbind('click');
         });
     });
 
