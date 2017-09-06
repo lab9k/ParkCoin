@@ -72,7 +72,7 @@ contract ParkingToken is Mortal {
 
         uint temp = tickets[regio][hash];
 
-        if (temp > now){
+        if (temp > now) {
             tickets[regio][hash] += parkingtime;
         } else {
             tickets[regio][hash] = time;
