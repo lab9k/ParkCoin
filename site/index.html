@@ -7,15 +7,14 @@
 
     <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-        crossorigin="anonymous"></script>
+    <!--Libaries-->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="css/semantic.min.js"></script>
+
+    <!--Stylesheets-->
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
-    <style>
-
-    </style>
-
+    <!--Scripts-->
     <script src="js/main.js"></script>
 </head>
 
@@ -124,6 +123,7 @@
                     <button class="ui teal labeled icon button" id="buyBtn">
                         <i class="cart icon"></i> Koop!
                     </button>
+                    <input type="text"  id="priceEther">
                 </div>
             </div>
         </div>
@@ -161,6 +161,9 @@
 
             // Update the page with the information of the ParkingRegistry object
             registry.update();
+
+            // TODO: test
+            registry.getRegion(3.735406, 51.048912);
         });
     </script>
 </body>

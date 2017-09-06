@@ -40,16 +40,16 @@ contract ParkingToken is mortal {
         name = "ParkGent";                                    // Set the name for display purposes
         symbol = "P";                                    // Set the symbol for display purposes
         decimals = 0;                                    // Amount of decimals for display purposes
-        _totalSupply = 0;
+        totalSupply = 0;
         buyPrice = 26;
         regios[0] = 100;
         regios[1] = 50;
         regios[2] = 150;
-
+        regios[3] = 200;
     }
     
-    function park(uint id, uint regio, uint tokens)  {
-        require(balances[msg.sender] >= tokens);
+    function park(uint id, uint regio, uint tokens) returns (bool succes) {
+        if (balances[msg.sender] < tokens) return false;
         balances[msg.sender] -= tokens;
         totalSupply -= tokens;
         uint parkingtime = (tokens * (regios[regio]/100)) * 60;
@@ -62,6 +62,8 @@ contract ParkingToken is mortal {
         } else {
             tickets[regio][id] = time;
         }
+
+        return true;
         
     }
     
@@ -92,9 +94,10 @@ contract ParkingToken is mortal {
         buyPrice = newBuyPrice;
     }
     
-    function buy() payable {
-        uint tokens = (msg.value / 1000000000000000) * (buyPrice) /10 ;
+    function buy() payable returns (bool succes){
+        uint tokens = (msg.value / 1000000000000000) * (buyPrice) /10 +1;
         mintToken(msg.sender, tokens);
+        return true;
     }
     
 }
