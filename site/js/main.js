@@ -101,6 +101,15 @@ function ParkingRegistry() {
 
     });
 
+    $("#tab3").on('click', () => {
+        let address = web3.eth.defaultaccount;
+        let url = "/admin/" + address;
+        console.log("getting data");
+        $.get(url, (data) => {
+            console.log(data);
+        });
+    });
+
 
     // Getters
     //////////
@@ -288,10 +297,3 @@ function ParkingRegistry() {
         });
     };
 }
-
-$(document).ready(() => {
-    $("#tab3").on('click', () => {
-        //TODO send get request to /admin/:address , append response to page.
-        //$.get()
-    });
-})

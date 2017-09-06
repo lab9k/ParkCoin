@@ -38,6 +38,8 @@ app.get('/admin/:address', (req, res) => {
         } else {
             res.send("not an admin");
         }
+    }).catch((error) => {
+        res.send(error);
     })
 })
 
