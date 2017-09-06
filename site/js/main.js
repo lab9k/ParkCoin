@@ -90,10 +90,11 @@ function ParkingRegistry () {
         self.setPrices(buyprice);
     });
 
-    $("#aantalTokens").on("keydown", function (event) {
+    $("#aantalTokens").on("keyup", function (event) {
         let tokens = document.getElementById("aantalTokens").value;
         contract.buyPrice((error, buyprice) => {
-            let price = ((tokens) / buyprice.valueOf()) / 10;
+            console.log("tokens:" + tokens);
+            let price = ((tokens) / buyprice.valueOf()) / 100;
             $("#priceEther").val(price + " ether");
         });
 
