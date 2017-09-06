@@ -167,6 +167,7 @@ function ParkingRegistry () {
                     // TODO: calculate end time instead of returning amount of tokens
                     if(!error) {
                         $("#parkBtn").addClass("ui loading button");
+                        $("#parkBtn").prop('disabled', true);
                         self.confirmTransaction(enc);
                     }
                     else {
@@ -247,6 +248,7 @@ function ParkingRegistry () {
                 console.log(result);
                 if(result["args"]["nummerplaatEncrypted"] === enc) {
                     $("#parkBtn").removeClass("ui loading button");
+                    $("#parkBtn").prop('disabled', false);
                     alert("Transaction confirmed.");
                     event.stopWatching();
                 }
