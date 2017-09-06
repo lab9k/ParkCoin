@@ -1,8 +1,8 @@
 // Globals
 //////////
 
-const DAPPINTERFACE = [ { "constant": true, "inputs": [], "name": "name", "outputs": [ { "name": "", "type": "string", "value": "ParkGent" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "totalSupply", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "address" } ], "name": "balances", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "decimals", "outputs": [ { "name": "", "type": "uint8", "value": "0" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "kill", "outputs": [], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "id", "type": "uint256" }, { "name": "regio", "type": "uint256" }, { "name": "tokens", "type": "uint256" } ], "name": "park", "outputs": [ { "name": "succes", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "buyPrice", "outputs": [ { "name": "", "type": "uint256", "value": "26" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "symbol", "outputs": [ { "name": "", "type": "string", "value": "P" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "newBuyPrice", "type": "uint256" } ], "name": "setPrices", "outputs": [], "payable": false, "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "uint256" }, { "name": "", "type": "uint256" } ], "name": "tickets", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "buy", "outputs": [ { "name": "succes", "type": "bool" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [ { "name": "to", "type": "address" }, { "name": "amount", "type": "uint256" } ], "name": "transfer", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "regio", "type": "uint256" }, { "name": "price", "type": "uint256" } ], "name": "updateRegio", "outputs": [], "payable": false, "type": "function" }, { "inputs": [], "payable": false, "type": "constructor" }, { "anonymous": false, "inputs": [ { "indexed": true, "name": "_from", "type": "address" }, { "indexed": true, "name": "_to", "type": "address" }, { "indexed": false, "name": "_value", "type": "uint256" } ], "name": "Transfer", "type": "event" } ];
-const CONTRACTADDRESS = "0xc8Dda6269FFF5006066Ef15ff0B7b706cFec4A10";
+const DAPPINTERFACE = [ { "constant": false, "inputs": [ { "name": "nummerplaatEncrypted", "type": "string" }, { "name": "regio", "type": "uint256" }, { "name": "tokens", "type": "uint256" } ], "name": "park", "outputs": [ { "name": "succes", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "name", "outputs": [ { "name": "", "type": "string", "value": "ParkGent" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "totalSupply", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "address" } ], "name": "balances", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "decimals", "outputs": [ { "name": "", "type": "uint8", "value": "0" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "kill", "outputs": [], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "buyPrice", "outputs": [ { "name": "", "type": "uint256", "value": "26" } ], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "symbol", "outputs": [ { "name": "", "type": "string", "value": "P" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "newBuyPrice", "type": "uint256" } ], "name": "setPrices", "outputs": [], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "buy", "outputs": [ { "name": "succes", "type": "bool" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [ { "name": "to", "type": "address" }, { "name": "amount", "type": "uint256" } ], "name": "transfer", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "regio", "type": "uint256" }, { "name": "price", "type": "uint256" } ], "name": "updateRegio", "outputs": [], "payable": false, "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "uint256" }, { "name": "", "type": "bytes32" } ], "name": "tickets", "outputs": [ { "name": "", "type": "uint256", "value": "0" } ], "payable": false, "type": "function" }, { "inputs": [], "payable": false, "type": "constructor" }, { "anonymous": false, "inputs": [ { "indexed": true, "name": "_from", "type": "address" }, { "indexed": true, "name": "_to", "type": "address" }, { "indexed": false, "name": "_value", "type": "uint256" } ], "name": "Transfer", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "who", "type": "address" }, { "indexed": false, "name": "tokens", "type": "uint256" } ], "name": "Buy", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "nummerplaatEncrypted", "type": "string" }, { "indexed": false, "name": "key", "type": "bytes32" } ], "name": "Park", "type": "event" } ];
+const CONTRACTADDRESS = "0x4Ef51D61c88F77e55abE1653986E81C6a396251a";
 const MAPITSERVER = ""; // TODO: fill in!
 
 // TODO: add Internationalisation with Intl
@@ -25,14 +25,11 @@ function ParkingRegistry () {
         // Use Mist/MetaMask"s provider
         window.web3 = new Web3(web3.currentProvider);
     } else {
-        console.log("No web3? You should consider trying MetaMask!");
+        alert("No web3? You should consider trying MetaMask!");
         // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
     }
     // Now we have web3 locked and loaded
-    // TODO: private?
     let contract = web3.eth.contract(DAPPINTERFACE).at(CONTRACTADDRESS);
-
-    console.log(contract);
 
     // Event handlers
     /////////////////
@@ -78,7 +75,9 @@ function ParkingRegistry () {
     };
 
     self.defaultaccount = function () {
-        return web3.eth.defaultAccount;
+        // TODO: replace address with default account
+        return "0x4219473B52c3D8946057Ed7Ceec851B78d319D74";
+        // return web3.eth.defaultAccount;
     };
 
     // Methods
@@ -95,9 +94,8 @@ function ParkingRegistry () {
             field.prop("readonly", true);
         });
 
-        // update user"s balance
-        // TODO: replace address with default account
-        contract.balances("0x4219473B52c3D8946057Ed7Ceec851B78d319D74", (error, value) => {
+        // update user's balance
+        contract.balances(self.defaultaccount(), (error, value) => {
             let field = $("#aantalTokensVanGebruiker");
             field.val(value.valueOf());
             field.prop("readonly", true);
@@ -107,8 +105,8 @@ function ParkingRegistry () {
     // TODO: give alerts some nice styling
     // TODO: use whisper to confirm the transaction has been mined (if possible)
     self.park = function (licenseplate, region, payment) {
-        // TODO: connect to api to get id of given license plate
-        let id = null;
+        // TODO: encrypt the license plate with the server's public key
+        let encrypted = null;
 
         // First execute the method with the call function to check
         // whether or not the park function will resolve correctly
@@ -158,7 +156,7 @@ function ParkingRegistry () {
             // console.log("data: " + data["958855"]["name"]);
             // let items = [];
             // $.each( data, function( key, val ) {
-            //     items.push( "<li id="" + key + "">" + val + "</li>" );
+            //     items.push( "<li id='" + key + "'>" + val + "</li>" );
             // });
             //
             // items.forEach(function (element) {
