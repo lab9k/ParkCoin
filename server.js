@@ -27,13 +27,18 @@ app.get('/admin/:address', (req, res) => {
     let address = req.params.address;
     contract.isAdmin(address).then((value) => {
         if (value === true) {
-            res.send("this person is an admin");
-        } else{
+            let fs = require('fs')
+            fs.readFile('admin.html', 'utf8', function (err, data) {
+                if (err) {
+                    //TODO chenge to console.log
+                    res.send(err);
+                }
+                res.send(data);
+            });
+        } else {
             res.send("not an admin");
         }
     })
-    //TODO get admin.html content.toString();
-    // send content to page.
 })
 
 app.listen(3000, () => {
