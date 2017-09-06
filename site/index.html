@@ -19,6 +19,7 @@
 
     <!--Scripts-->
     <script src="js/main.js"></script>
+    <script src="js/CoordTuple.js"></script>
 </head>
 
 <body>
@@ -47,12 +48,12 @@
                     <form onsubmit="return false;">
                         <!-- <p>Pay parking ticket</p> -->
                         <select id="regio">
-                                        <option value="0">Regio 0 - RED</option>
-                                        <option value="1">Regio 1 - ORANGE</option>
-                                        <option value="2">Regio 2 - YELLOW</option>
-                                        <option value="3">Regio 3 - GREEN</option>
-                                        <option value="4">Regio 4 - BLUE</option>
-                                        <option value="5">Regio 5 - OLIVE</option>
+                                        <option id="RED" value="0">Regio 0 - RED</option>
+                                        <option id="ORANGE" value="1">Regio 1 - ORANGE</option>
+                                        <option id="YELLOW" value="2">Regio 2 - YELLOW</option>
+                                        <option id="GREEN" value="3">Regio 3 - GREEN</option>
+                                        <option id="BLUE" value="4">Regio 4 - BLUE</option>
+                                        <option id="OLIVE" value="5">Regio 5 - OLIVE</option>
                                 </select>
                         <input type="text" placeholder="License plate" id="licenseplate">
                         <input type="number" value="0" min="0" placeholder="tokens" id="time">
@@ -80,14 +81,16 @@
             <div id='left'>
                 <div id="map"></div>
                 <script>
+                    let pos = new CoordTuple(0, 0);
+
                     function initMap() {
-                        var map, infoWindow;
-                        var map = new google.maps.Map(document.getElementById('map'), {
+                        let map, infoWindow;
+                        map = new google.maps.Map(document.getElementById('map'), {
                             zoom: 4,
                             center: { lat: 49.496675, lng: -102.65625 }
                         });
 
-                        var georssLayer = new google.maps.KmlLayer({
+                        let georssLayer = new google.maps.KmlLayer({
                             url: 'https://raw.githubusercontent.com/lab9k/Parking/master/site/data/Parkeertariefzones.kml',
                             suppressInfoWindows: true
                         });
@@ -99,15 +102,13 @@
                         // Try HTML5 geolocation.
                         if (navigator.geolocation) {
                             navigator.geolocation.getCurrentPosition(function (position) {
-                                var pos = {
-                                    lat: position.coords.latitude,
-                                    lng: position.coords.longitude
-                                };
+                                pos.setLatitude(position.coords.latitude);
+                                pos.setLongitude(position.coords.longitude);
 
-                                infoWindow.setPosition(pos);
+                                infoWindow.setPosition(pos.toPlainObject());
                                 infoWindow.setContent('You are here');
                                 infoWindow.open(map);
-                                map.setCenter(pos);
+                                map.setCenter(pos.toPlainObject());
                             }, function () {
                                 handleLocationError(true, infoWindow, map.getCenter());
                             });
@@ -124,24 +125,23 @@
                             'Error: Your browser doesn\'t support geolocation.');
                         infoWindow.open(map);
                     }
-                </script>
-                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb0o70S4s8TX0Ab4GWDHaA-63nSBaBFa4&callback=initMap">
 
+
+                    // When the window is loaded
+                    window.addEventListener("load", function () {
+                        // Create a ParkingRegistry object
+                        let registry = new ParkingRegistry();
+                        // Update the page with the information of the ParkingRegistry object
+                        pos.addPropertyListerner(registry);
+                        pos.trigger();
+                    });
                 </script>
+
+                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb0o70S4s8TX0Ab4GWDHaA-63nSBaBFa4&callback=initMap"></script>
                 <!-- <iframe id="map" src="https://www.google.com/maps/d/embed?mid=1LFi-OOa9AL3meBrmSiJ_dVGS7IE&q=51.0485107,3.728064"></iframe> -->
             </div>
         </div>
     </div>
-
-    <script>
-                    // When the window is loaded
-                    window.addEventListener('load', function () {
-                        // Create a ParkingRegistry object
-                        let registry = new ParkingRegistry();
-                        // Update the page with the information of the ParkingRegistry object
-                        registry.update();
-                    });
-    </script>
 </body>
 
 </html>
