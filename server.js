@@ -23,6 +23,26 @@ app.get('/', function (req, res) {
 
 });
 
+app.get('/admin/:address', (req, res) => {
+    let address = req.params.address;
+    contract.isAdmin(address).then((value) => {
+        if (value === true) {
+            let fs = require('fs')
+            fs.readFile('admin.html', 'utf8', function (err, data) {
+                if (err) {
+                    //TODO chenge to console.log
+                    res.send(err);
+                }
+                res.send(data);
+            });
+        } else {
+            res.send("not an admin");
+        }
+    }).catch((error) => {
+        res.send(error);
+    })
+})
+
 app.listen(3000, () => {
     console.log('App listening on port 3000');
 });

@@ -12,8 +12,8 @@ contract Owned {
             _;
     }
 
-    function isOwner() returns (bool) {
-        return msg.sender == owner;
+    function isOwner(address toCheck) returns (bool) {
+        return toCheck == owner;
     }
 
     address owner;
