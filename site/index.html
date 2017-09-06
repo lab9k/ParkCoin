@@ -20,6 +20,67 @@
 
 <body>
 
+    <div id='browser'>
+        <div id='browser-bar' class='finder'>
+            <h1>ParkCoin</h1>
+            <span class='arrow entypo-resize-full'></span>
+        </div>
+        <div id='content'>
+            <div id='right'>
+                <div id='social'>
+                    <a class='social'>
+                        <span class='entypo-facebook'></span>
+                      </a>
+                    <a class='social'>
+                        <span class='entypo-twitter'></span>
+                      </a>
+                    <a class='social'>
+                        <span class='entypo-linkedin'></span>
+                      </a>
+                    <a class='social'>
+                        <span class='entypo-gplus'></span>
+                      </a>
+                    <a class='social'>
+                        <span class='entypo-instagrem'></span>
+                      </a>
+                </div>
+                <img src="https://stad.gent/sites/all/themes/contrib/gent_base/img/svg/logo--part1.svg" id="stadGentSymbol">
+
+                <form>
+                    <p>Pay parking ticket</p>
+                    <select id="regio">
+                            <option value="0">Regio 0</option>
+                            <option value="1">Regio 1</option>
+                            <option value="2">Regio 2</option>
+                            <option value="3">Regio 3</option>
+                    </select>                   
+                    <input type="text" placeholder="License plate" id="licenseplate">
+                    <input type="number" placeholder="tokens" id="time">
+                    <button id="parkBtn">Pay</button>
+                </form>
+            </div>
+            <div id='left'>
+                <iframe id="map" src="https://www.google.com/maps/d/embed?mid=1LFi-OOa9AL3meBrmSiJ_dVGS7IE&q=51.0485107,3.728064"></iframe>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        $(document).ready(function () {           
+                console.log("ready!");
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                }        
+
+            function showPosition(position) {
+                console.log("lat" + position.coords.latitude);
+                console.log("lon" + position.coords.longitude);
+            }
+        });
+    </script>
+
     <div class="ui grid container">
 
         <div class="ui segment">
@@ -64,24 +125,6 @@
                     </button>
                     <input type="text"  id="priceEther">
                 </div>
-
-            </div>
-
-        </div>
-
-        <div class="row">
-            <div class="eight wide column">
-                <h4>Parkeren</h4>
-                <select id="regio">
-                    <option value="0">Regio 1</option>
-                    <option value="1">Regio 2</option>
-                    <option value="2">Regio 3</option>
-                </select>
-                <input type="text" placeholder="licenseplate..." id="licenseplate">
-                <input type="number" placeholder="30" id="time">
-                <button class="ui teal labeled icon button" id="parkBtn">
-                    <i class="cart icon"></i> Park!
-                </button>
             </div>
         </div>
 
@@ -109,9 +152,7 @@
                 </button>
             </div>
         </div>
-
     </div>
-
     <script>
         // When the window is loaded
         window.addEventListener('load', function () {
