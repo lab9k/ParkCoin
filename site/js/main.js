@@ -211,16 +211,8 @@ function ParkingRegistry () {
         // Execute http request to mapit server to get json
         $.getJSON( MAPITSERVER + "/point/4326/" + longitude + "," + latitude + "?type=" + areatypes.join(","), function (data) {
             // We never get more than one zone back from mapit because none of the parking zones overlap
-            // and we only show those (see AREATYPES)
-            let zone = data[Object.keys(data)[0]]["type"];
-            if (zone === undefined) {
-                // No zone was found you're not in a parking zone
-                // Notify the user
-                alert("Couldn't find a parking zone for your location.")
-            } else {
-                // We did find a zone. Look the corresponding integer up in the mapping and get the rate for the zone
-                self.getRate(zone);
-            }
+            // and we only show those (see AREATYPES). Return the zone, undefined if none was found.
+            return data[Object.keys(data)[0]]["type"];
         });
     };
 
