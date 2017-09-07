@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>ParkCoin</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
 
     <!--Libaries-->
@@ -20,7 +20,8 @@
     <!--Scripts-->
     <script src="js/main.js"></script>
     <script src="js/CoordTuple.js"></script>
-
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb0o70S4s8TX0Ab4GWDHaA-63nSBaBFa4&callback=initMap"></script>
+    <script src="js/map.js"></script>
 </head>
 
 <body>
@@ -36,114 +37,54 @@
                     <img src="https://stad.gent/sites/all/themes/contrib/gent_base/img/svg/logo--part1.svg" id="stadGentSymbol">
                 </div>
 
-                <input id="tab1" type="radio" name="tabs" checked>
-                <label for="tab1">Buy ticket</label>
+                    <input id="tab1" type="radio" name="tabs" checked>
+                    <label for="tab1">Buy ticket</label>
 
-                <input id="tab2" type="radio" name="tabs">
-                <label for="tab2">Buy coins</label>
+                    <input id="tab2" type="radio" name="tabs">
+                    <label for="tab2">Buy coins</label>
 
-                <input id="tab3" type="radio" name="tabs">
-                <label for="tab3">Change price rate</label>
+                    <input id="tab3" type="radio" name="tabs">
+                    <label for="tab3">Change price rate</label>
 
                 <section id="content1">
                     <form onsubmit="return false;">
-                        <!-- <p>Pay parking ticket</p> -->
                         <select id="regio">
-                                        <option id="RED" value="0">Regio 0 - RED</option>
-                                        <option id="ORANGE" value="1">Regio 1 - ORANGE</option>
-                                        <option id="YELLOW" value="2">Regio 2 - YELLOW</option>
-                                        <option id="GREEN" value="3">Regio 3 - GREEN</option>
-                                        <option id="BLUE" value="4">Regio 4 - BLUE</option>
-                                        <option id="OLIVE" value="5">Regio 5 - OLIVE</option>
+                                        <option id="RED" value="0">Region 0 - RED</option>
+                                        <option id="ORANGE" value="1">Region 1 - ORANGE</option>
+                                        <option id="YELLOW" value="2">Region 2 - YELLOW</option>
+                                        <option id="GREEN" value="3">Region 3 - GREEN</option>
+                                        <option id="BLUE" value="4">Region 4 - BLUE</option>
+                                        <option id="OLIVE" value="5">Region 5 - OLIVE</option>
                                 </select>
                         <input type="text" placeholder="License plate" id="licenseplate">
                         <input type="number" value="0" min="0" placeholder="tokens" id="time">
+                        <input type="text" id="endTime" readonly>
                         <button id="parkBtn">Pay</button>
                     </form>
                      <p>Ticket rates</p>
-                     <p class="other">Regio 0 - RED</p>
-                     <p class="other">Regio 1 - ORANGE</p>
-                     <p class="other">Regio 2 - YELLOW</p>
-                     <p class="other">Regio 3 - GREEN</p>
-                     <p class="other">Regio 4 - BLUE</p>
-                     <p class="other">Regio 5 - OLIVE</p>
+                     <p class="other">Region 0 - RED</p>
+                     <p class="other">Region 1 - ORANGE</p>
+                     <p class="other">Region 2 - YELLOW</p>
+                     <p class="other">Region 3 - GREEN</p>
+                     <p class="other">Region 4 - BLUE</p>
+                     <p class="other">Region 5 - OLIVE</p>
                 </section>
 
                 <section id="content2">
                     <form onsubmit="return false;">
                         <input type="number" min="0" id="aantalTokens" placeholder="10">
                         <input type="text" id="priceEther" readonly>
-                        <input type="text" id="time" readonly>
                         <button id="buyBtn">Pay</button>
                     </form>
                 </section>
-
             </div>
 
             <div id='left'>
-                <div id="map"></div>
-                <script>
-                    let pos = new CoordTuple(0, 0);
-
-                    function initMap() {
-                        let map, infoWindow;
-                        map = new google.maps.Map(document.getElementById('map'), {
-                            zoom: 4,
-                            center: { lat: 49.496675, lng: -102.65625 }
-                        });
-
-                        let georssLayer = new google.maps.KmlLayer({
-                            url: 'https://raw.githubusercontent.com/lab9k/Parking/master/site/data/Parkeertariefzones.kml',
-                            suppressInfoWindows: true
-                        });
-
-                        georssLayer.setMap(map);
-
-                        infoWindow = new google.maps.InfoWindow;
-
-                        // Try HTML5 geolocation.
-                        if (navigator.geolocation) {
-                            navigator.geolocation.getCurrentPosition(function (position) {
-                                pos.setLatitude(position.coords.latitude);
-                                pos.setLongitude(position.coords.longitude);
-
-                                infoWindow.setPosition(pos.toPlainObject());
-                                infoWindow.setContent('You are here');
-                                infoWindow.open(map);
-                                map.setCenter(pos.toPlainObject());
-                            }, function () {
-                                handleLocationError(true, infoWindow, map.getCenter());
-                            });
-                        } else {
-                            // Browser doesn't support Geolocation
-                            handleLocationError(false, infoWindow, map.getCenter());
-                        }
-                    }
-
-                    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-                        infoWindow.setPosition(pos);
-                        infoWindow.setContent(browserHasGeolocation ?
-                            'Error: The Geolocation service failed.' :
-                            'Error: Your browser doesn\'t support geolocation.');
-                        infoWindow.open(map);
-                    }
-
-
-                    // When the window is loaded
-                    window.addEventListener("load", function () {
-                        // Create a ParkingRegistry object
-                        let registry = new ParkingRegistry();
-                        // Update the page with the information of the ParkingRegistry object
-                        pos.addPropertyListerner(registry);
-                        pos.trigger();
-                    });
-                </script>
-
-                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb0o70S4s8TX0Ab4GWDHaA-63nSBaBFa4&callback=initMap"></script>
-                <!-- <iframe id="map" src="https://www.google.com/maps/d/embed?mid=1LFi-OOa9AL3meBrmSiJ_dVGS7IE&q=51.0485107,3.728064"></iframe> -->
+                <div id="map"></div>    
             </div>
         </div>
     </div>
+    
 </body>
 
 </html>

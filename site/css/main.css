@@ -105,11 +105,22 @@ a {
   background: #7BC087;
   z-index:2;
 }
+
 @media all and (max-width: 780px) {
   #content #left {
     width: 100%;
   }
 }
+
+/* @media only screen and (min-width: 1200px) {
+  body {
+      background-color: red;
+  }
+  #content #left {
+    width: 100%;
+  }
+}  */
+
 #content #left #map {
   /* height: 468px; */
   position: relative;
