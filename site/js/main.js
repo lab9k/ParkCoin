@@ -116,8 +116,6 @@ function ParkingRegistry () {
     };
 
     self.defaultaccount = function () {
-        // TODO: replace address with default account
-        // return "0x4219473B52c3D8946057Ed7Ceec851B78d319D74";
         return web3.eth.defaultAccount;
     };
 
@@ -196,14 +194,9 @@ function ParkingRegistry () {
 
     // TODO: give alerts some nice styling
     self.park = function (licenseplate, region, payment) {
-        /*var NodeRSA = require('node-rsa');
-        var key = new NodeRSA(PUBLICKEY);
-        var enc = key.encrypt(licenseplate, 'base64');*/
         var crypt = new JSEncrypt();
         crypt.setKey(PUBLICKEY);
-
         var enc = crypt.encrypt(licenseplate);
-        console.log(enc);
 
         // First execute the method with the call function to check
         // whether or not the park function will resolve correctly
