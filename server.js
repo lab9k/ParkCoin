@@ -10,7 +10,7 @@ app.use(express.static('site'));
 
 const contract = require('./contract.js');
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
     res.sendFile("index.html", { root: __dirname + "/site/" })
 });
 
@@ -20,10 +20,9 @@ app.get('/admin/:address', (req, res) => {
         console.log("iets");
         if (value === true) {
             let fs = require('fs');
-            fs.readFile('admin.html', 'utf8', function (err, data) {
+            fs.readFile('admin.html', 'utf8', (err, data) => {
                 if (err) {
-                    //TODO chenge to console.log
-                    res.send(err);
+                    console.log(err);
                 }
                 res.send(data);
             });
