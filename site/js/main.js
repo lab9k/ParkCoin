@@ -247,6 +247,8 @@ function ParkingRegistry () {
             useGrouping: true,
             separator: '',
             decimal: '.',
+            prefix: 'You have ',
+            suffix: ' parktokens.'
         };
         console.log(from);
         var demo = new CountUp('tokensCountUser', from, to, 0, 2.5, options);
