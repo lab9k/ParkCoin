@@ -67,7 +67,12 @@ function ParkingRegistry () {
         let regio = document.getElementById("regio").value;
         let licenseplate = document.getElementById("licenseplate").value;
         let payedTokens = document.getElementById("payedTokens").value;
-
+        console.log($('input[name=plate]:checked').val());
+        if($('input[name=plate]:checked').val() === "normal") {
+            licenseplate = licenseplate.trim().replace(/[^a-z0-9]/gi,'');
+            console.log(licenseplate);
+        }
+        licenseplate = licenseplate.toUpperCase();
         // Validate input
         if (/[0-9]+/.test(payedTokens) && licenseplate !== "") {
             // Park

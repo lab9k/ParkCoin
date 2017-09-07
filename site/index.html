@@ -27,21 +27,22 @@
     <script src="js/CoordTuple.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb0o70S4s8TX0Ab4GWDHaA-63nSBaBFa4&callback=initMap"></script>
     <script src="js/map.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
 
-   
-    
+
+
         <!-- Optional theme -->
-        
-    
-        
-    
-    
+
+
+
+
+
 </head>
 
 <body>
@@ -77,6 +78,8 @@
                             <option id="BLUE" value="4">Region 4 - BLUE</option>
                             <option id="OLIVE" value="5">Region 5 - OLIVE</option>
                         </select>
+                        input type="radio" name="plate" value="normal"> Normal
+                        <input type="radio" name="plate" value="custom"> Custom
                         <input type="text" placeholder="License plate" id="licenseplate">
                         <input type="number" value="0" min="0" placeholder="tokens" id="payedTokens">
                        <!--  <input type="text" id="endTime" readonly> -->
@@ -86,7 +89,7 @@
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
                         </div>
-                                
+
                         <button id="parkBtn">Pay</button>
                     </form>
                     <p>Ticket rates</p>
