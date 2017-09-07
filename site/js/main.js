@@ -114,7 +114,7 @@ function ParkingRegistry () {
             let seconds = "0" + end.getSeconds();
 
             // Display the end time
-            $("#endTime").val(hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2));
+            $("#endTime").val("parked untill: " + hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2));
         });
     });
 
