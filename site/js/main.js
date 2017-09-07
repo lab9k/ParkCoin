@@ -58,16 +58,19 @@ function ParkingRegistry () {
     /////////////////
 
     $("#buyBtn").on("click", function (event) {
-        let tokens = document.getElementById("aantalTokens").value;
+        let tokens = $("#aantalTokens").val();
         self.buy(tokens);
     });
 
     $("#parkBtn").on("click", function (event) {
         // Get input
-        let regio = document.getElementById("regio").value;
-        let licenseplate = document.getElementById("licenseplate").value;
-        let payedTokens = document.getElementById("payedTokens").value;
-
+        let regio = $("#regio").val();
+        let licenseplate = $("#licenseplate").val();
+        let payedTokens = $("#payedTokens").val();
+        if(!$("#custom").checked) {
+            licenseplate = licenseplate.trim().replace(/[^a-z0-9]/gi,'');
+        }
+        licenseplate = licenseplate.toUpperCase();
         // Validate input
         if (/[0-9]+/.test(payedTokens) && licenseplate !== "") {
             // Park
@@ -78,18 +81,18 @@ function ParkingRegistry () {
     });
 
     $("#updateRegioBtn").on("click", function (event) {
-        let regioId = document.getElementById("regioUpdate").value;
-        let regioValue = document.getElementById("regioValue").value;
+        let regioId = $("#regioUpdate").val();
+        let regioValue = $("#regioValue").val();
         self.updateRegion(regioId, regioValue);
     });
 
     $("#buyPriceBtn").on("click", function (event) {
-        let buyprice = document.getElementById("buyprice").value;
+        let buyprice = $("#buyprice").val();
         self.setPrices(buyprice);
     });
 
     $("#aantalTokens").on("keyup change cut paste", (event) => {
-        let tokens = document.getElementById("aantalTokens").value;
+        let tokens = $("#aantalTokens").val();
 
         // Update buy price
         contract.buyPrice((error, buyprice) => {
@@ -98,24 +101,56 @@ function ParkingRegistry () {
         });
     });
 
-    // Update end time every 0.5 seconds
-    window.setInterval(function () {
-        let tokens = document.getElementById("payedTokens").value;
-        // Update end time
-        let regio = document.getElementById("regio").value;
-        self.getRate(regio).then((rate) => {
-            // Get the time until the car is permitted to park and display it
-            $("#endTime").val("Parked until: " + new Date(Date.now() + (tokens * rate * 600)).toLocaleString());
-        });
-    }, 500);
+    $("#payedTokens").on("keyup change cut paste", (event) => {
+        let tokens = $("#payedTokens").val();
 
-    $("#tab3").on('click', () => {
+        // Update end time
+        let regio = $("#regio").val();
+        self.getRate(regio).then((rate) => {
+            // Get the time until the car is permitted to park
+            let endTime = Date.now() + (tokens * rate * 600);
+            $("#datetimepicker1").data("DateTimePicker").date(new Date(endTime));
+        });
+    });
+
+    $("#time").on("keyup change cut paste", (event) => {
+        let endTime = $("#datetimepicker1").data("DateTimePicker").date().unix();
+
+        // Update amount of tokens to be payed
+        let regio = $("#regio").val();
+        self.getRate(regio).then((rate) => {
+            // Calculate the amount of tokens needed for the given time
+            console.log(endTime);
+            let tokens = (endTime - Date.now()) / (600 * rate);
+            $("#payedTokens").val(tokens);
+        });
+    });
+
+    // // Make sure the mindate
+    // window.setInterval(function () {
+    //
+    // }, 1000);
+
+    $("#tab3").on("click", () => {
         let address = web3.eth.accounts[0];
         let url = "/admin/" + address;
         $.get(url, (data) => {
             $(".appendable").append(data);
-            $("#tab3").unbind('click');
+            $("#tab3").unbind("click");
         });
+    });
+
+
+    // contract.isOwner(web3.eth.accounts[0], (error, value) => {
+    //TODO fix this?
+    //      console.log("error: ", error);
+    //      console.log("value: ", value);
+    //});
+
+    contract.isOwner.call(web3.eth.accounts[0], (error, value) => {
+        if (value === true) {
+            $(".admin_hidden").removeClass('admin_hidden');
+        }        
     });
 
 
@@ -193,8 +228,11 @@ function ParkingRegistry () {
     self.update = function (value) {
         // update user's balance
         contract.balances(self.defaultaccount(), (error, value) => {
+            console.log(value.valueOf());
             let field = $("#tokensCountUser");
-            field.val(value.valueOf());
+            field.val("You have " + value.valueOf() + " coins.");
+            let field2 = $("#tokensCountUser2");
+            field2.val("You have " + value.valueOf() + " coins.");
         });
 
         // update regio
@@ -205,9 +243,9 @@ function ParkingRegistry () {
 
     // TODO: give alerts some nice styling
     self.park = function (licenseplate, region, payment) {
-        var crypt = new JSEncrypt();
+        let crypt = new JSEncrypt();
         crypt.setKey(PUBLICKEY);
-        var enc = crypt.encrypt(licenseplate);
+        let enc = crypt.encrypt(licenseplate);
 
         // First execute the method with the call function to check
         // whether or not the park function will resolve correctly
@@ -248,8 +286,10 @@ function ParkingRegistry () {
             let wei = (amount * Math.pow(10, 16)) / buyprice.valueOf();
             contract.buy({ value: wei, gas: 210000 }, (error, val) => {
                 if (!error) {
-                    $("#buyBtn").addClass("ui loading button");
-                    $("#buyBtn").prop('disabled', true);
+                    console.log("buy buy buy");
+                    let buyBtn = $("#buyBtn");
+                    buyBtn.addClass("ui loading button");
+                    buyBtn.prop('disabled', true);
                     self.confirmTransactionBuy();
                 }
                 else {

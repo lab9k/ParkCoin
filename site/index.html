@@ -29,18 +29,11 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb0o70S4s8TX0Ab4GWDHaA-63nSBaBFa4&callback=initMap"></script>
     <script src="js/map.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-
-
-
-
-    <!-- Optional theme -->
-
-
-
-
 
 </head>
 
@@ -73,13 +66,14 @@
                 <input id="tab2" type="radio" name="tabs">
                 <label for="tab2">Buy coins</label>
 
-                <input id="tab3" type="radio" name="tabs">
-                <label for="tab3">Change price rate</label>
+                <input id="tab3" type="radio" class="admin_hidden" name="tabs">
+                <label for="tab3" class="admin_hidden">Change price rate</label>
 
                 <!-- BUY TICKET -->
                 <section id="content1">
 
                     <form onsubmit="return false;">
+                        <input type="text" id="tokensCountUser" readonly>
                         <select id="regio">
                             <option id="RED" value="0">Region 0 - RED</option>
                             <option id="ORANGE" value="1">Region 1 - ORANGE</option>
@@ -88,10 +82,12 @@
                             <option id="BLUE" value="4">Region 4 - BLUE</option>
                             <option id="OLIVE" value="5">Region 5 - OLIVE</option>
                         </select>
-                        <input type="text" placeholder="License plate" id="licenseplate">
-                        <input type="number" value="0" min="0" placeholder="tokens" id="time">
+                        <input type="checkbox" id="custom" value="custom" title="Check if you have a custom licenseplate!">
+                        <input type="text" placeholder="License plate" id="licenseplate" required>
+                        <input type="number" value="0" min="0" placeholder="tokens" id="payedTokens">
+                        <!--  <input type="text" id="endTime" readonly> -->
                         <div class='input-group date' id='datetimepicker1'>
-                            <input type='text' class="form-control" />
+                            <input id="time" type='text' class="form-control" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -112,6 +108,7 @@
                 <!-- BUY COINS -->
                 <section id="content2">
                     <form onsubmit="return false;">
+                        <input type="text" id="tokensCountUser2" readonly>
                         <input type="number" min="0" id="aantalTokens" placeholder="10">
                         <input type="text" id="priceEther" readonly>
                         <button id="buyBtn">Pay</button>
@@ -127,10 +124,19 @@
     </div>
     <script type="text/javascript">
         $(function () {
-            $('#datetimepicker1').datetimepicker({
-                /*         format:'LT',
-                        debug: true */
+            $("#datetimepicker1").datetimepicker({
+                locale: "nl-be",
+                minDate: Date.now()
             });
+        });
+
+        // When the window is loaded
+        window.addEventListener("load", function () {
+            // Create a ParkingRegistry object
+            let registry = new ParkingRegistry();
+            // Update the page with the information of the ParkingRegistry object
+            pos.addPropertyListerner(registry);
+            pos.trigger();
         });
     </script>
 </body>
