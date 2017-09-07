@@ -311,7 +311,7 @@ function ParkingRegistry () {
                     let buyBtn = $("#buyBtn");
                     buyBtn.addClass("ui loading button");
                     buyBtn.prop('disabled', true);
-                    self.confirmTransactionBuy();
+                    self.confirmTransactionBuy(amount);
                 }
                 else {
                     alert("User rejected transactions");
@@ -344,7 +344,7 @@ function ParkingRegistry () {
         });
     };
 
-    self.confirmTransactionBuy = function () {
+    self.confirmTransactionBuy = function (amountBought) {
         let event = contract.Buy();
 
         // watch for changes
