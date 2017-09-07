@@ -223,6 +223,8 @@ function ParkingRegistry () {
 
     /**
      * Update the page
+     *
+     * Optional arguments as a plain object
      */
     self.update = function (value) {
         // update user's balance
@@ -234,10 +236,13 @@ function ParkingRegistry () {
             field2.val("You have " + value.valueOf() + " coins.");
         });
 
-        // update regio
-        self.getRegion(value["lat"], value["lng"]).then((id) => {
-            $("#" + id).prop("selected", true);
-        });
+        // Only update if an argument was passed
+        if (value !== undefined) {
+            // update regio
+            self.getRegion(value["lat"], value["lng"]).then((id) => {
+                $("#" + id).prop("selected", true);
+            });
+        }
     };
 
     self.park = function (licenseplate, region, payment) {
