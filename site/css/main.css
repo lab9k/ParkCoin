@@ -449,3 +449,6 @@ input:checked + label {
 }
 
 
+.admin_hidden{
+visibility: hidden;
+}
