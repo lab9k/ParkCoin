@@ -66,14 +66,12 @@ function ParkingRegistry () {
         // Get input
         let regio = document.getElementById("regio").value;
         let licenseplate = document.getElementById("licenseplate").value;
-        let time = document.getElementById("time").value;
-
-        console.log(licenseplate);
+        let payedTokens = document.getElementById("payedTokens").value;
 
         // Validate input
-        if (/[0-9]+/.test(time) && licenseplate !== "") {
+        if (/[0-9]+/.test(payedTokens) && licenseplate !== "") {
             // Park
-            self.park(licenseplate, regio, time);
+            self.park(licenseplate, regio, payedTokens);
         } else {
             // Wrong input
         }
@@ -92,11 +90,24 @@ function ParkingRegistry () {
 
     $("#aantalTokens").on("keyup change cut paste", (event) => {
         let tokens = document.getElementById("aantalTokens").value;
+
+        // Update buy price
         contract.buyPrice((error, buyprice) => {
             let price = ((tokens) / buyprice.valueOf()) / 100;
             $("#priceEther").val(price + " ether");
         });
     });
+
+    // Update end time every 0.5 seconds
+    window.setInterval(function () {
+        let tokens = document.getElementById("payedTokens").value;
+        // Update end time
+        let regio = document.getElementById("regio").value;
+        self.getRate(regio).then((rate) => {
+            // Get the time until the car is permitted to park and display it
+            $("#endTime").val("Parked until: " + new Date(Date.now() + (tokens * rate * 600)).toLocaleString());
+        });
+    }, 500);
 
     $("#tab3").on('click', () => {
         let address = web3.eth.accounts[0];
@@ -116,8 +127,6 @@ function ParkingRegistry () {
     };
 
     self.defaultaccount = function () {
-        // TODO: replace address with default account
-        // return "0x4219473B52c3D8946057Ed7Ceec851B78d319D74";
         return web3.eth.defaultAccount;
     };
 
@@ -129,7 +138,7 @@ function ParkingRegistry () {
      */
     self.getRate = function (zone) {
         return new Promise((resolve, reject) => {
-            contract.regios(zoneMapping[zone], (error, value) => {
+            contract.regios(zone, (error, value) => {
                 if (error) {
                     reject(error);
                 } else {
@@ -196,14 +205,9 @@ function ParkingRegistry () {
 
     // TODO: give alerts some nice styling
     self.park = function (licenseplate, region, payment) {
-        /*var NodeRSA = require('node-rsa');
-        var key = new NodeRSA(PUBLICKEY);
-        var enc = key.encrypt(licenseplate, 'base64');*/
         var crypt = new JSEncrypt();
         crypt.setKey(PUBLICKEY);
-
         var enc = crypt.encrypt(licenseplate);
-        console.log(enc);
 
         // First execute the method with the call function to check
         // whether or not the park function will resolve correctly
@@ -242,11 +246,8 @@ function ParkingRegistry () {
     self.buy = function (amount) {
         contract.buyPrice((error, buyprice) => {
             let wei = (amount * Math.pow(10, 16)) / buyprice.valueOf();
-            console.log("start");
             contract.buy({ value: wei, gas: 210000 }, (error, val) => {
-                console.log("callback");
                 if (!error) {
-                    console.log("succes?");
                     $("#buyBtn").addClass("ui loading button");
                     $("#buyBtn").prop('disabled', true);
                     self.confirmTransactionBuy();
@@ -255,7 +256,6 @@ function ParkingRegistry () {
                     alert("User rejected transactions");
                 }
             });
-            console.log("gedaan");
         });
     };
 
@@ -292,9 +292,13 @@ function ParkingRegistry () {
             if (!error) {
                 console.log(result);
                 if (result["args"]["who"].toUpperCase() === self.defaultaccount().toUpperCase()) {
-                    $("#buyBtn").removeClass("ui loading button");
-                    $("#buyBtn").prop('disabled', false);
-                    alert("Transaction confirmed. " + result["args"]["tokens"] + " tokens added.");
+                    let buyBtn = $("#buyBtn");
+                    buyBtn.removeClass("ui loading button");
+                    buyBtn.prop('disabled', false);
+                    alert(
+                        "Transaction confirmed. " + result["args"]["tokens"] + " tokens added.\n" +
+                        "We gave you one for free to compensate you for the gas price you payed :)!"
+                    );
                     event.stopWatching();
                 }
             }
