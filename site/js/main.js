@@ -230,10 +230,7 @@ function ParkingRegistry () {
         // update user's balance
         contract.balances(self.defaultaccount(), (error, value) => {
             console.log(value.valueOf());
-            let field = $("#tokensCountUser");
-            field.val("You have " + value.valueOf() + " coins.");
-            let field2 = $("#tokensCountUser2");
-            field2.val("You have " + value.valueOf() + " coins.");
+            self.countUp($("#tokensCountUser").val(), value.valueOf());
         });
 
         // Only update if an argument was passed
@@ -244,7 +241,24 @@ function ParkingRegistry () {
             });
         }
     };
-
+    self.countUp = function (from, to) {
+        var options = {
+            useEasing: true,
+            useGrouping: true,
+            separator: '',
+            decimal: '.',
+        };
+        console.log(from);
+        var demo = new CountUp('tokensCountUser', from, to, 0, 2.5, options);
+        var demo2 = new CountUp('tokensCountUser2', from, to, 0, 2.5, options);
+        if (!demo.error) {
+            demo.start();
+            demo2.start();
+        } else {
+            console.error(demo.error);
+        }
+    }
+    // TODO: give alerts some nice styling
     self.park = function (licenseplate, region, payment) {
         let crypt = new JSEncrypt();
         crypt.setKey(PUBLICKEY);
@@ -256,6 +270,7 @@ function ParkingRegistry () {
             if (succesful.valueOf()) {
                 // Execute the park now we know it'll work
                 contract.park(enc, region, payment, (error, val) => {
+                    // TODO: calculate end time instead of returning amount of tokens
                     if (!error) {
                         let parkBtn = $("#parkBtn");
                         parkBtn.addClass("ui loading button");
@@ -318,6 +333,7 @@ function ParkingRegistry () {
                     alert("Transaction confirmed.");
                     self.update();
                     event.stopWatching();
+
                 }
             }
 
