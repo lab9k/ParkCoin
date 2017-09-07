@@ -229,8 +229,9 @@ function ParkingRegistry () {
     self.update = function (value) {
         // update user's balance
         contract.balances(self.defaultaccount(), (error, value) => {
-            console.log(value.valueOf());
-            self.countUp($("#tokensCountUser").val(), value.valueOf());
+            let to = value.valueOf();
+            let from = /[^0-9]*([0-9]*)[^0-9]*/.exec($("#tokensCountUser").val())[1];
+            countUp(from, to);
         });
 
         // Only update if an argument was passed
@@ -241,8 +242,9 @@ function ParkingRegistry () {
             });
         }
     };
-    self.countUp = function (from, to) {
-        var options = {
+
+    let countUp = function (from, to) {
+        let options = {
             useEasing: true,
             useGrouping: true,
             separator: '',
@@ -251,15 +253,16 @@ function ParkingRegistry () {
             suffix: ' parktokens.'
         };
         console.log(from);
-        var demo = new CountUp('tokensCountUser', from, to, 0, 2.5, options);
-        var demo2 = new CountUp('tokensCountUser2', from, to, 0, 2.5, options);
+        let demo = new CountUp('tokensCountUser', from, to, 0, 2.5, options);
+        let demo2 = new CountUp('tokensCountUser2', from, to, 0, 2.5, options);
         if (!demo.error) {
             demo.start();
             demo2.start();
         } else {
             console.error(demo.error);
         }
-    }
+    };
+
     // TODO: give alerts some nice styling
     self.park = function (licenseplate, region, payment) {
         let crypt = new JSEncrypt();
@@ -305,7 +308,6 @@ function ParkingRegistry () {
             let wei = (amount * Math.pow(10, 16)) / buyprice.valueOf();
             contract.buy({ value: wei, gas: 210000 }, (error, val) => {
                 if (!error) {
-                    console.log("buy buy buy");
                     let buyBtn = $("#buyBtn");
                     buyBtn.addClass("ui loading button");
                     buyBtn.prop('disabled', true);
