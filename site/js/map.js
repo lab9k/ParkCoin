@@ -40,12 +40,3 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setContent('You are here');
     infoWindow.open(map);
 }
-
-// When the window is loaded
-window.addEventListener("load", function () {
-    // Create a ParkingRegistry object
-    let registry = new ParkingRegistry();
-    // Update the page with the information of the ParkingRegistry object
-    pos.addPropertyListerner(registry);
-    pos.trigger();
-});
