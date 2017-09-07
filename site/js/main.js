@@ -98,7 +98,8 @@ function ParkingRegistry () {
         });
     });
 
-    $("#payedTokens").on("keyup change cut paste", (event) => {
+    // Update end time every 0.5 seconds
+    window.setInterval(function () {
         let tokens = document.getElementById("payedTokens").value;
         // Update end time
         let regio = document.getElementById("regio").value;
@@ -106,7 +107,7 @@ function ParkingRegistry () {
             // Get the time until the car is permitted to park and display it
             $("#endTime").val("Parked until: " + new Date(Date.now() + (tokens * rate * 600)).toLocaleString());
         });
-    });
+    }, 500);
 
     $("#tab3").on('click', () => {
         let address = web3.eth.accounts[0];
@@ -291,9 +292,13 @@ function ParkingRegistry () {
             if (!error) {
                 console.log(result);
                 if (result["args"]["who"].toUpperCase() === self.defaultaccount().toUpperCase()) {
-                    $("#buyBtn").removeClass("ui loading button");
-                    $("#buyBtn").prop('disabled', false);
-                    alert("Transaction confirmed. " + result["args"]["tokens"] + " tokens added.");
+                    let buyBtn = $("#buyBtn");
+                    buyBtn.removeClass("ui loading button");
+                    buyBtn.prop('disabled', false);
+                    alert(
+                        "Transaction confirmed. " + result["args"]["tokens"] + " tokens added.\n" +
+                        "We gave you one for free to compensate you for the gas price you payed :)!"
+                    );
                     event.stopWatching();
                 }
             }
