@@ -442,6 +442,7 @@ function ParkingRegistry() {
         });
     });
 
+
     // contract.isOwner(web3.eth.accounts[0], (error, value) => {
     //TODO fix this?
     //      console.log("error: ", error);
@@ -523,8 +524,11 @@ function ParkingRegistry() {
     self.update = function (value) {
         // update user's balance
         contract.balances(self.defaultaccount(), (error, value) => {
+            console.log(value.valueOf());
             let field = $("#tokensCountUser");
-            field.val(value.valueOf());
+            field.val("You have " + value.valueOf() + " coins.");
+            let field2 = $("#tokensCountUser2");
+            field2.val("You have " + value.valueOf() + " coins.");
         });
 
         // update regio
