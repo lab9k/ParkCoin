@@ -83,7 +83,7 @@
                         <input type="number" value="0" min="0" placeholder="tokens" id="payedTokens">
                        <!--  <input type="text" id="endTime" readonly> -->
                         <div class='input-group date' id='datetimepicker1'>
-                            <input type='text' class="form-control" />
+                            <input id="time" type='text' class="form-control" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -119,7 +119,8 @@
     <script type="text/javascript">
         $(function () {
             $("#datetimepicker1").datetimepicker({
-                locale: "nl-be"
+                locale: "nl-be",
+                minDate: Date.now()
             });
         });
 
