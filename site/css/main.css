@@ -480,8 +480,8 @@ input:checked + label {
 
 .btn-primary {
   color: #fff;
-  background-color: #000000;
-  border-color: #000000;
+  background-color: #7bc087;
+  border-color: #7bc087;
   width: 100%;
 }
 
@@ -491,10 +491,25 @@ input:checked + label {
   border-color: #7BC087;
 }
 
-
-
-
-
-.admin_hidden{
+.admin_hidden {
 visibility: hidden;
+}
+
+.toggle-on.btn {
+  padding-right: 145px;
+}
+
+.toggle-on.btn:active {
+  color: #fff;
+  background-color: #7BC087;
+  border-color: #7BC087;
+}
+
+.input-group {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+#tokensCountUser,#regio,#licenseplate,#payedTokens {
+  margin-bottom: 4px;
+  margin-top: 4px;
 }

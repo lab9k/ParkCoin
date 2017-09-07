@@ -27,9 +27,16 @@
     <!--Stylesheets-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+
+
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
     <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    
 
     <!--Scripts-->
     <script src="js/main.js"></script>
@@ -85,7 +92,11 @@
                             <option id="BLUE" value="4">Region 4 - BLUE</option>
                             <option id="OLIVE" value="5">Region 5 - OLIVE</option>
                         </select>
-                        <input type="checkbox" id="custom" value="custom" title="Check if you have a custom licenseplate!">
+<!--                         <input type="checkbox" id="custom" value="custom" title="Check if you have a custom licenseplate!">
+ -->                        
+                        <div class='input-group' >
+                            <input type="checkbox" id="custom" checked data-toggle="toggle" data-on="Normal plate" data-off="Custom plate">
+                        </div>
                         <input type="text" placeholder="License plate" id="licenseplate" required>
                         <input type="number" value="0" min="0" placeholder="tokens" id="payedTokens">
                         <!--  <input type="text" id="endTime" readonly> -->
@@ -100,12 +111,12 @@
 
                     </form>
                     <p>Ticket rates</p>
-                    <p class="other">Region 0 - RED</p>
+                    <!-- <p class="other">Region 0 - RED</p>
                     <p class="other">Region 1 - ORANGE</p>
                     <p class="other">Region 2 - YELLOW</p>
                     <p class="other">Region 3 - GREEN</p>
                     <p class="other">Region 4 - BLUE</p>
-                    <p class="other">Region 5 - OLIVE</p>
+                    <p class="other">Region 5 - OLIVE</p> -->
                 </section>
 
                 <!-- BUY COINS -->
