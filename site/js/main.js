@@ -214,14 +214,9 @@ function ParkingRegistry () {
 
     // TODO: give alerts some nice styling
     self.park = function (licenseplate, region, payment) {
-        /*var NodeRSA = require('node-rsa');
-        var key = new NodeRSA(PUBLICKEY);
-        var enc = key.encrypt(licenseplate, 'base64');*/
         var crypt = new JSEncrypt();
         crypt.setKey(PUBLICKEY);
-
         var enc = crypt.encrypt(licenseplate);
-        console.log(enc);
 
         // First execute the method with the call function to check
         // whether or not the park function will resolve correctly
@@ -260,11 +255,8 @@ function ParkingRegistry () {
     self.buy = function (amount) {
         contract.buyPrice((error, buyprice) => {
             let wei = (amount * Math.pow(10, 16)) / buyprice.valueOf();
-            console.log("start");
             contract.buy({ value: wei, gas: 210000 }, (error, val) => {
-                console.log("callback");
                 if (!error) {
-                    console.log("succes?");
                     $("#buyBtn").addClass("ui loading button");
                     $("#buyBtn").prop('disabled', true);
                     self.confirmTransactionBuy();
@@ -273,7 +265,6 @@ function ParkingRegistry () {
                     alert("User rejected transactions");
                 }
             });
-            console.log("gedaan");
         });
     };
 
