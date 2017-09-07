@@ -448,6 +448,12 @@ function ParkingRegistry() {
     //      console.log("value: ", value);
     //});
 
+    contract.isOwner.call(web3.eth.accounts[0], (error, value) => {
+        if (value === true) {
+            $(".admin_hidden").removeClass('admin_hidden');
+        }        
+    });
+
 
     // Getters
     //////////
