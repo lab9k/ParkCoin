@@ -1,8 +1,8 @@
 // Globals
 //////////
 
-const DAPPINTERFACE = [{ "constant": false, "inputs": [{ "name": "nummerplaatEncrypted", "type": "string" }, { "name": "regio", "type": "uint256" }, { "name": "tokens", "type": "uint256" }], "name": "park", "outputs": [{ "name": "succes", "type": "bool" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "name", "outputs": [{ "name": "", "type": "string" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "totalSupply", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "address" }], "name": "balances", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "uint256" }], "name": "regios", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "decimals", "outputs": [{ "name": "", "type": "uint8" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [], "name": "kill", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "buyPrice", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "symbol", "outputs": [{ "name": "", "type": "string" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [{ "name": "newBuyPrice", "type": "uint256" }], "name": "setPrices", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [], "name": "buy", "outputs": [{ "name": "succes", "type": "bool" }], "payable": true, "stateMutability": "payable", "type": "function" }, { "constant": false, "inputs": [{ "name": "to", "type": "address" }, { "name": "amount", "type": "uint256" }], "name": "transfer", "outputs": [{ "name": "", "type": "bool" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [{ "name": "regio", "type": "uint256" }, { "name": "price", "type": "uint256" }], "name": "updateRegio", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "uint256" }, { "name": "", "type": "bytes32" }], "name": "tickets", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "inputs": [], "payable": false, "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_from", "type": "address" }, { "indexed": true, "name": "_to", "type": "address" }, { "indexed": false, "name": "_value", "type": "uint256" }], "name": "Transfer", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "who", "type": "address" }, { "indexed": false, "name": "tokens", "type": "uint256" }], "name": "Buy", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "nummerplaatEncrypted", "type": "string" }, { "indexed": false, "name": "key", "type": "bytes32" }], "name": "Park", "type": "event" }];
-const CONTRACTADDRESS = "0xae8fbebdb5f8386b0bc5eba80f24318da74e1389";
+const DAPPINTERFACE = [{"constant":false,"inputs":[{"name":"nummerplaatEncrypted","type":"string"},{"name":"regio","type":"uint256"},{"name":"tokens","type":"uint256"}],"name":"park","outputs":[{"name":"succes","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balances","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"regios","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"toCheck","type":"address"}],"name":"isOwner","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"kill","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"buyPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"newBuyPrice","type":"uint256"}],"name":"setPrices","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"buy","outputs":[{"name":"succes","type":"bool"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"to","type":"address"},{"name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"regio","type":"uint256"},{"name":"price","type":"uint256"}],"name":"updateRegio","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"},{"name":"","type":"bytes32"}],"name":"tickets","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"who","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"Buy","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"nummerplaatEncrypted","type":"string"},{"indexed":false,"name":"key","type":"bytes32"}],"name":"Park","type":"event"}];
+const CONTRACTADDRESS = "0x08cf893df7c265549ff698e5e2434750fbf85dd4";
 
 const PUBLICKEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHOGTKyEAAiNMuWe2niVKKCvXu\n" +
     "qHn/CL+GlGnFbQE5DpKIgyp+b/UYDL5OnNP9BigK6G80KwNsptk0OuWobN6DhBZy\n" +
@@ -20,7 +20,7 @@ const MAPITSERVER = "http://ushahidi.lab9k.gent:8000";
  * Should only be created after the window is loaded.
  * @constructor
  */
-function ParkingRegistry() {
+function ParkingRegistry () {
     let self = this;
     // Load web3
     ////////////
@@ -90,23 +90,20 @@ function ParkingRegistry() {
         self.setPrices(buyprice);
     });
 
-    $("#aantalTokens").on("keyup", function (event) {
+    $("#aantalTokens").on("keyup change cut paste", (event) => {
         let tokens = document.getElementById("aantalTokens").value;
         contract.buyPrice((error, buyprice) => {
-            console.log("tokens:" + tokens);
             let price = ((tokens) / buyprice.valueOf()) / 100;
             $("#priceEther").val(price + " ether");
         });
-
-
     });
 
     $("#tab3").on('click', () => {
-        let address = web3.eth.defaultaccount;
+        let address = web3.eth.accounts[0];
         let url = "/admin/" + address;
-        console.log("getting data");
         $.get(url, (data) => {
-            console.log(data);
+            $(".appendable").append(data);
+            $("#tab3").unbind('click');
         });
     });
 
@@ -120,8 +117,8 @@ function ParkingRegistry() {
 
     self.defaultaccount = function () {
         // TODO: replace address with default account
-        return "0x4219473B52c3D8946057Ed7Ceec851B78d319D74";
-        // return web3.eth.defaultAccount;
+        // return "0x4219473B52c3D8946057Ed7Ceec851B78d319D74";
+        return web3.eth.defaultAccount;
     };
 
     /**
@@ -140,60 +137,6 @@ function ParkingRegistry() {
                 }
             })
         });
-    };
-
-    // Methods
-    //////////
-
-    /**
-     * Update the page
-     */
-    self.update = function () {
-        // update user's balance
-        contract.balances(self.defaultaccount(), (error, value) => {
-            let field = $("#tokensCountUser");
-            field.val(value.valueOf());
-            field.prop("readonly", true);
-        });
-    };
-
-    // TODO: give alerts some nice styling
-    self.park = function (licenseplate, region, payment) {
-        let crypt = new JSEncrypt();
-        crypt.setKey(PUBLICKEY);
-        let enc = crypt.encrypt(licenseplate);
-
-        // First execute the method with the call function to check
-        // whether or not the park function will resolve correctly
-        contract.park.call(enc, region, payment, (error, succesful) => {
-            if (succesful.valueOf()) {
-                // Execute the park now we know it'll work
-                contract.park(enc, region, payment, (error, val) => {
-                    // TODO: calculate end time instead of returning amount of tokens
-                    if (!error) {
-                        $("#parkBtn").addClass("ui loading button");
-                        $("#parkBtn").prop('disabled', true);
-                        self.confirmTransactionPark(enc);
-                    }
-                    else {
-                        alert("User rejected transactions");
-                    }
-                });
-            } else {
-                // The park method cannot execute properly
-                // Show an error message to notify the user
-                alert("Couldn't park. Insufficient parking tokens.");
-            }
-        });
-    };
-
-    // TODO: what if not owner? js error message?
-    self.updateRegion = function (region, price) {
-        contract.updateRegion(region, price, (error, value) => console.log(error, value));
-    };
-
-    self.setPrice = function (newPrice) {
-        contract.setPrices(newPrice, (error, value) => console.log(error, value));
     };
 
     /**
@@ -219,19 +162,81 @@ function ParkingRegistry() {
         }
 
         // Execute http request to mapit server to get json
-        $.getJSON(MAPITSERVER + "/point/4326/" + longitude + "," + latitude + "?type=" + areatypes.join(","), function (data) {
-            // We never get more than one zone back from mapit because none of the parking zones overlap
-            // and we only show those (see AREATYPES)
-            let zone = data[Object.keys(data)[0]]["type"];
-            if (zone === undefined) {
-                // No zone was found you're not in a parking zone
-                // Notify the user
-                alert("Couldn't find a parking zone for your location.")
+        return new Promise((resolve, reject) => {
+            $.getJSON( MAPITSERVER + "/point/4326/" + longitude + "," + latitude + "?type=" + areatypes.join(","), function (data) {
+                // We never get more than one zone back from mapit because none of the parking zones overlap
+                // and we only show those (see AREATYPES). Return the zone, undefined if none was found.
+                if (data[Object.keys(data)[0]] !== undefined) {
+                    resolve( data[Object.keys(data)[0]]["type"]);
+                } else {
+                    reject();
+                }
+            })
+        });
+    };
+
+    // Methods
+    //////////
+
+    /**
+     * Update the page
+     */
+    self.update = function (value) {
+        // update user's balance
+        contract.balances(self.defaultaccount(), (error, value) => {
+            let field = $("#tokensCountUser");
+            field.val(value.valueOf());
+        });
+
+        // update regio
+        self.getRegion(value["lat"], value["lng"]).then((id) => {
+            $("#" + id).prop("selected", true);
+        });
+    };
+
+    // TODO: give alerts some nice styling
+    self.park = function (licenseplate, region, payment) {
+        /*var NodeRSA = require('node-rsa');
+        var key = new NodeRSA(PUBLICKEY);
+        var enc = key.encrypt(licenseplate, 'base64');*/
+        var crypt = new JSEncrypt();
+        crypt.setKey(PUBLICKEY);
+
+        var enc = crypt.encrypt(licenseplate);
+        console.log(enc);
+
+        // First execute the method with the call function to check
+        // whether or not the park function will resolve correctly
+        contract.park.call(enc, region, payment, (error, succesful) => {
+            if (succesful.valueOf()) {
+                // Execute the park now we know it'll work
+                contract.park(enc, region, payment, (error, val) => {
+                    // TODO: calculate end time instead of returning amount of tokens
+                    if (!error) {
+                        let parkBtn = $("#parkBtn");
+                        parkBtn.addClass("ui loading button");
+                        parkBtn.prop('disabled', true);
+                        self.confirmTransactionPark(enc);
+                    }
+                    else {
+                        alert("User rejected transactions");
+                    }
+                });
             } else {
-                // We did find a zone. Look the corresponding integer up in the mapping and get the rate for the zone
-                self.getRate(zone);
+                // The park method cannot execute properly
+                // Show an error message to notify the user
+                alert("Couldn't park. Insufficient parking tokens.");
             }
         });
+    };
+
+    // TODO: what if not owner? js error message?
+    self.updateRegion = function (region, price) {
+        contract.updateRegion(region, price, (error, value) => console.log(error, value));
+    };
+
+    self.setPrice = function (newPrice) {
+        contract.setPrices(newPrice, (error, value) => console.log(error, value));
     };
 
     self.buy = function (amount) {

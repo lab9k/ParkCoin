@@ -6,7 +6,7 @@ app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
 }));
-app.use(express.static('site'))
+app.use(express.static('site'));
 
 const contract = require('./contract.js');
 
@@ -27,7 +27,7 @@ app.get('/admin/:address', (req, res) => {
     let address = req.params.address;
     contract.isAdmin(address).then((value) => {
         if (value === true) {
-            let fs = require('fs')
+            let fs = require('fs');
             fs.readFile('admin.html', 'utf8', function (err, data) {
                 if (err) {
                     //TODO chenge to console.log
@@ -36,12 +36,10 @@ app.get('/admin/:address', (req, res) => {
                 res.send(data);
             });
         } else {
-            res.send("not an admin");
+            res.send("<section id='content3'>not an admin</section>");
         }
-    }).catch((error) => {
-        res.send(error);
-    })
-})
+    }).catch((error) => console.log(error))
+});
 
 app.listen(3000, () => {
     console.log('App listening on port 3000');

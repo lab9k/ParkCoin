@@ -19,6 +19,7 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
+    "node-rsa": "^0.4.2",
     "web3": "^1.0.0-beta.18"
   },
   "homepage": "https://github.com/lab9k/Parking#readme",
