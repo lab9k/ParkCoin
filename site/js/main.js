@@ -101,7 +101,9 @@ function ParkingRegistry () {
         });
     });
 
-    $("#payedTokens").on("keyup change cut paste", (event) => {
+    $("#payedTokens").on("keyup change cut paste", (event) => updateTime());
+
+    let updateTime = function () {
         let tokens = $("#payedTokens").val();
 
         // Update end time
@@ -111,25 +113,22 @@ function ParkingRegistry () {
             let endTime = Date.now() + (tokens * rate * 600);
             $("#datetimepicker1").data("DateTimePicker").date(new Date(endTime));
         });
-    });
+    };
 
-    $("#time").on("keyup change cut paste", (event) => {
-        let endTime = $("#datetimepicker1").data("DateTimePicker").date().unix();
+    $("#time").on("keyup change cut paste", (event) => updatePayedTokens());
+
+    let updatePayedTokens = function () {
+        let endTime = $("#datetimepicker1").data("DateTimePicker").date().unix()*1000;
 
         // Update amount of tokens to be payed
         let regio = $("#regio").val();
         self.getRate(regio).then((rate) => {
             // Calculate the amount of tokens needed for the given time
-            console.log(endTime);
-            let tokens = (endTime - Date.now()) / (600 * rate);
+            let tokens = Math.ceil((endTime - Date.now()) / (600 * rate));
             $("#payedTokens").val(tokens);
+            updateTime();
         });
-    });
-
-    // // Make sure the mindate
-    // window.setInterval(function () {
-    //
-    // }, 1000);
+    };
 
     $("#tab3").on("click", () => {
         let address = web3.eth.accounts[0];
