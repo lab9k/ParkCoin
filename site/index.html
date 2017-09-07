@@ -28,6 +28,7 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb0o70S4s8TX0Ab4GWDHaA-63nSBaBFa4&callback=initMap"></script>
     <script src="js/map.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
@@ -115,7 +116,9 @@
     </div>
     <script type="text/javascript">
         $(function () {
-            $('#datetimepicker1').datetimepicker();
+            $("#datetimepicker1").datetimepicker({
+                locale: "nl-be"
+            });
         });
     </script>
 </body>
