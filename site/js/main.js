@@ -242,11 +242,8 @@ function ParkingRegistry () {
     self.buy = function (amount) {
         contract.buyPrice((error, buyprice) => {
             let wei = (amount * Math.pow(10, 16)) / buyprice.valueOf();
-            console.log("start");
             contract.buy({ value: wei, gas: 210000 }, (error, val) => {
-                console.log("callback");
                 if (!error) {
-                    console.log("succes?");
                     $("#buyBtn").addClass("ui loading button");
                     $("#buyBtn").prop('disabled', true);
                     self.confirmTransactionBuy();
@@ -255,7 +252,6 @@ function ParkingRegistry () {
                     alert("User rejected transactions");
                 }
             });
-            console.log("gedaan");
         });
     };
 
