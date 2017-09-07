@@ -311,6 +311,7 @@ function ParkingRegistry () {
                     parkbutton.removeClass("ui loading button");
                     parkbutton.prop('disabled', false);
                     alert("Transaction confirmed.");
+                    self.update();
                     event.stopWatching();
                 }
             }
@@ -333,8 +334,7 @@ function ParkingRegistry () {
                     buyBtn.removeClass("ui loading button");
                     buyBtn.prop('disabled', false);
                     alert(
-                        "Transaction confirmed. " + result["args"]["tokens"] + " tokens added.\n" +
-                        "We gave you one for free to compensate you for the gas price you payed :)!"
+                        "Transaction confirmed. " + result["args"]["tokens"] + " tokens added."
                     );
                     self.update();
                     event.stopWatching();
