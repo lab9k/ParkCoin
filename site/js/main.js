@@ -115,7 +115,7 @@ function ParkingRegistry () {
         });
     };
 
-    $("#time").on("keyup change cut paste", (event) => updatePayedTokens());
+    $("#time").on("keyup change cut paste focus focusout", (event) => updatePayedTokens());
 
     let updatePayedTokens = function () {
         let endTime = $("#datetimepicker1").data("DateTimePicker").date().unix()*1000;
