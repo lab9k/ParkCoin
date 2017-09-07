@@ -199,9 +199,14 @@ function ParkingRegistry () {
 
     // TODO: give alerts some nice styling
     self.park = function (licenseplate, region, payment) {
-        var NodeRSA = require('node-rsa');
+        /*var NodeRSA = require('node-rsa');
         var key = new NodeRSA(PUBLICKEY);
-        var enc = key.encrypt(licenseplate, 'base64');
+        var enc = key.encrypt(licenseplate, 'base64');*/
+        var crypt = new JSEncrypt();
+        crypt.setKey(PUBLICKEY);
+
+        var enc = crypt.encrypt(licenseplate);
+        console.log(enc);
 
         // First execute the method with the call function to check
         // whether or not the park function will resolve correctly
