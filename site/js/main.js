@@ -240,7 +240,6 @@ function ParkingRegistry () {
         });
     };
 
-    // TODO: give alerts some nice styling
     self.park = function (licenseplate, region, payment) {
         let crypt = new JSEncrypt();
         crypt.setKey(PUBLICKEY);
@@ -252,7 +251,6 @@ function ParkingRegistry () {
             if (succesful.valueOf()) {
                 // Execute the park now we know it'll work
                 contract.park(enc, region, payment, (error, val) => {
-                    // TODO: calculate end time instead of returning amount of tokens
                     if (!error) {
                         let parkBtn = $("#parkBtn");
                         parkBtn.addClass("ui loading button");
@@ -338,6 +336,7 @@ function ParkingRegistry () {
                         "Transaction confirmed. " + result["args"]["tokens"] + " tokens added.\n" +
                         "We gave you one for free to compensate you for the gas price you payed :)!"
                     );
+                    self.update();
                     event.stopWatching();
                 }
             }
