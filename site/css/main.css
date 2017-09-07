@@ -22,7 +22,7 @@ input {
 
 body {
   font-family: 'Open Sans', sans-serif;
-  font-size: 100%;
+  /* font-size: 100%; */
   background: #829292;
 }
 
@@ -421,7 +421,28 @@ input:checked + label {
   display: block;
 }
 
-
 #logo {
   margin-bottom: 10px;
 }
+
+.bootstrap-datetimepicker-widget table {
+  color:black;
+  background-color: white;
+}
+
+.datepicker table tr td.active:active, 
+.datepicker table tr td.active.highlighted:active, 
+.datepicker table tr td.active.active, 
+.datepicker table tr td.active.highlighted.active {
+  background-color: #7BC087;
+}
+
+#datetimepicker1 {
+  padding-top: 5px;
+}
+
+#datetimepicker1 input {
+  border: 0;
+}
+
+
