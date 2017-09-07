@@ -117,8 +117,8 @@ function ParkingRegistry () {
 
     self.defaultaccount = function () {
         // TODO: replace address with default account
-        return "0x4219473B52c3D8946057Ed7Ceec851B78d319D74";
-        // return web3.eth.defaultAccount;
+        // return "0x4219473B52c3D8946057Ed7Ceec851B78d319D74";
+        return web3.eth.defaultAccount;
     };
 
     /**
