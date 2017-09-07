@@ -66,14 +66,12 @@ function ParkingRegistry () {
         // Get input
         let regio = document.getElementById("regio").value;
         let licenseplate = document.getElementById("licenseplate").value;
-        let time = document.getElementById("time").value;
-
-        console.log(licenseplate);
+        let payedTokens = document.getElementById("payedTokens").value;
 
         // Validate input
-        if (/[0-9]+/.test(time) && licenseplate !== "") {
+        if (/[0-9]+/.test(payedTokens) && licenseplate !== "") {
             // Park
-            self.park(licenseplate, regio, time);
+            self.park(licenseplate, regio, payedTokens);
         } else {
             // Wrong input
         }
@@ -92,9 +90,31 @@ function ParkingRegistry () {
 
     $("#aantalTokens").on("keyup change cut paste", (event) => {
         let tokens = document.getElementById("aantalTokens").value;
+
+        // Update buy price
         contract.buyPrice((error, buyprice) => {
             let price = ((tokens) / buyprice.valueOf()) / 100;
             $("#priceEther").val(price + " ether");
+        });
+    });
+
+    $("#payedTokens").on("keyup change cut paste", (event) => {
+        let tokens = document.getElementById("payedTokens").value;
+        // Update end time
+        let regio = document.getElementById("regio").value;
+        self.getRate(regio).then((rate) => {
+            // Get the time until the car is permitted to park
+            let end = new Date(Date.now() + (tokens * rate * 600));
+
+            // Hours part from the timestamp
+            let hours = end.getHours();
+            // Minutes part from the timestamp
+            let minutes = "0" + end.getMinutes();
+            // Seconds part from the timestamp
+            let seconds = "0" + end.getSeconds();
+
+            // Display the end time
+            $("#endTime").val(hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2));
         });
     });
 
@@ -116,8 +136,6 @@ function ParkingRegistry () {
     };
 
     self.defaultaccount = function () {
-        // TODO: replace address with default account
-        // return "0x4219473B52c3D8946057Ed7Ceec851B78d319D74";
         return web3.eth.defaultAccount;
     };
 
@@ -129,7 +147,7 @@ function ParkingRegistry () {
      */
     self.getRate = function (zone) {
         return new Promise((resolve, reject) => {
-            contract.regios(zoneMapping[zone], (error, value) => {
+            contract.regios(zone, (error, value) => {
                 if (error) {
                     reject(error);
                 } else {
