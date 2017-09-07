@@ -447,3 +447,8 @@ input:checked + label {
 #datetimepicker1 input {
   border: 0;
 }
+
+
+.admin_hidden{
+visibility: hidden;
+}

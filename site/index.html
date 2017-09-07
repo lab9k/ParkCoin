@@ -19,7 +19,8 @@
     <!--Stylesheets-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css"
+    />
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
     <!--Scripts-->
@@ -37,7 +38,7 @@
 
 
 
-        <!-- Optional theme -->
+    <!-- Optional theme -->
 
 
 
@@ -64,8 +65,8 @@
                 <input id="tab2" type="radio" name="tabs">
                 <label for="tab2">Buy coins</label>
 
-                <input id="tab3" type="radio" name="tabs">
-                <label for="tab3">Change price rate</label>
+                <input id="tab3" type="radio" class="admin_hidden" name="tabs">
+                <label for="tab3" class="admin_hidden">Change price rate</label>
 
                 <!-- BUY TICKET -->
                 <section id="content1">
@@ -79,16 +80,17 @@
                             <option id="BLUE" value="4">Region 4 - BLUE</option>
                             <option id="OLIVE" value="5">Region 5 - OLIVE</option>
                         </select>
-                        <input type="checkbox" id="custom" value="custom" title="Check if you have a custom licenseplate!" class=".squaredFour">
-                        <input type="text" placeholder="License plate" id="licenseplate">
+                        <input type="checkbox" id="custom" value="custom" title="Check if you have a custom licenseplate!">
+                        <input type="text" placeholder="License plate" id="licenseplate" required>
                         <input type="number" value="0" min="0" placeholder="tokens" id="payedTokens">
-                       <!--  <input type="text" id="endTime" readonly> -->
+                        <!--  <input type="text" id="endTime" readonly> -->
                         <div class='input-group date' id='datetimepicker1'>
-                            <input type='text' class="form-control" />
+                            <input id="time" type='text' class="form-control" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
                         </div>
+
                         <button id="parkBtn">Pay</button>
                     </form>
                     <p>Ticket rates</p>
@@ -120,7 +122,8 @@
     <script type="text/javascript">
         $(function () {
             $("#datetimepicker1").datetimepicker({
-                locale: "nl-be"
+                locale: "nl-be",
+                minDate: Date.now()
             });
         });
 

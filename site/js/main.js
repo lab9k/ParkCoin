@@ -1,325 +1,7 @@
 // Globals
 //////////
 
-const DAPPINTERFACE = [
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "nummerplaatEncrypted",
-                "type": "string"
-            },
-            {
-                "name": "regio",
-                "type": "uint256"
-            },
-            {
-                "name": "tokens",
-                "type": "uint256"
-            }
-        ],
-        "name": "park",
-        "outputs": [
-            {
-                "name": "succes",
-                "type": "bool"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "name",
-        "outputs": [
-            {
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "totalSupply",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "name": "balances",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "name": "regios",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "toCheck",
-                "type": "address"
-            }
-        ],
-        "name": "isOwner",
-        "outputs": [
-            {
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "decimals",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint8"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [],
-        "name": "kill",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "buyPrice",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "symbol",
-        "outputs": [
-            {
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "newBuyPrice",
-                "type": "uint256"
-            }
-        ],
-        "name": "setPrices",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [],
-        "name": "buy",
-        "outputs": [
-            {
-                "name": "succes",
-                "type": "bool"
-            }
-        ],
-        "payable": true,
-        "stateMutability": "payable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "to",
-                "type": "address"
-            },
-            {
-                "name": "amount",
-                "type": "uint256"
-            }
-        ],
-        "name": "transfer",
-        "outputs": [
-            {
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "regio",
-                "type": "uint256"
-            },
-            {
-                "name": "price",
-                "type": "uint256"
-            }
-        ],
-        "name": "updateRegio",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            },
-            {
-                "name": "",
-                "type": "bytes32"
-            }
-        ],
-        "name": "tickets",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "name": "_from",
-                "type": "address"
-            },
-            {
-                "indexed": true,
-                "name": "_to",
-                "type": "address"
-            },
-            {
-                "indexed": false,
-                "name": "_value",
-                "type": "uint256"
-            }
-        ],
-        "name": "Transfer",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "name": "who",
-                "type": "address"
-            },
-            {
-                "indexed": false,
-                "name": "tokens",
-                "type": "uint256"
-            }
-        ],
-        "name": "Buy",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "name": "nummerplaatEncrypted",
-                "type": "string"
-            },
-            {
-                "indexed": false,
-                "name": "key",
-                "type": "bytes32"
-            }
-        ],
-        "name": "Park",
-        "type": "event"
-    }
-];
+const DAPPINTERFACE = [{"constant":false,"inputs":[{"name":"nummerplaatEncrypted","type":"string"},{"name":"regio","type":"uint256"},{"name":"tokens","type":"uint256"}],"name":"park","outputs":[{"name":"succes","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balances","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"regios","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"toCheck","type":"address"}],"name":"isOwner","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"kill","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"buyPrice","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"newBuyPrice","type":"uint256"}],"name":"setPrices","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"buy","outputs":[{"name":"succes","type":"bool"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"to","type":"address"},{"name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"regio","type":"uint256"},{"name":"price","type":"uint256"}],"name":"updateRegio","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"},{"name":"","type":"bytes32"}],"name":"tickets","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"who","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"Buy","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"nummerplaatEncrypted","type":"string"},{"indexed":false,"name":"key","type":"bytes32"}],"name":"Park","type":"event"}];
 const CONTRACTADDRESS = "0x08cf893df7c265549ff698e5e2434750fbf85dd4";
 
 const PUBLICKEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHOGTKyEAAiNMuWe2niVKKCvXu\n" +
@@ -338,7 +20,7 @@ const MAPITSERVER = "http://ushahidi.lab9k.gent:8000";
  * Should only be created after the window is loaded.
  * @constructor
  */
-function ParkingRegistry() {
+function ParkingRegistry () {
     let self = this;
     // Load web3
     ////////////
@@ -376,17 +58,17 @@ function ParkingRegistry() {
     /////////////////
 
     $("#buyBtn").on("click", function (event) {
-        let tokens = document.getElementById("aantalTokens").value;
+        let tokens = $("#aantalTokens").val();
         self.buy(tokens);
     });
 
     $("#parkBtn").on("click", function (event) {
         // Get input
-        let regio = document.getElementById("regio").value;
-        let licenseplate = document.getElementById("licenseplate").value;
-        let payedTokens = document.getElementById("payedTokens").value;
-        if (!document.getElementById("custom").checked) {
-            licenseplate = licenseplate.trim().replace(/[^a-z0-9]/gi, '');
+        let regio = $("#regio").val();
+        let licenseplate = $("#licenseplate").val();
+        let payedTokens = $("#payedTokens").val();
+        if(!$("#custom").checked) {
+            licenseplate = licenseplate.trim().replace(/[^a-z0-9]/gi,'');
         }
         licenseplate = licenseplate.toUpperCase();
         // Validate input
@@ -398,21 +80,19 @@ function ParkingRegistry() {
         }
     });
 
-
-
     $("#updateRegioBtn").on("click", function (event) {
-        let regioId = document.getElementById("regioUpdate").value;
-        let regioValue = document.getElementById("regioValue").value;
+        let regioId = $("#regioUpdate").val();
+        let regioValue = $("#regioValue").val();
         self.updateRegion(regioId, regioValue);
     });
 
     $("#buyPriceBtn").on("click", function (event) {
-        let buyprice = document.getElementById("buyprice").value;
+        let buyprice = $("#buyprice").val();
         self.setPrices(buyprice);
     });
 
     $("#aantalTokens").on("keyup change cut paste", (event) => {
-        let tokens = document.getElementById("aantalTokens").value;
+        let tokens = $("#aantalTokens").val();
 
         // Update buy price
         contract.buyPrice((error, buyprice) => {
@@ -421,17 +101,35 @@ function ParkingRegistry() {
         });
     });
 
-    // Update end time every 0.5 seconds
-    /* window.setInterval(function () {
-         let tokens = document.getElementById("payedTokens").value;
-         // Update end time
-         let regio = document.getElementById("regio").value;
-         self.getRate(regio).then((rate) => {
-             // Get the time until the car is permitted to park and display it
-             // console.log("Parked until: " + $("#datetimepicker1").data("DateTimePicker").date().toLocaleString());
-             // $("#endTime").val("Parked until: " + new Date(Date.now() + (tokens * rate * 600)).toLocaleString());
-         });
-     }, 500);*/
+    $("#payedTokens").on("keyup change cut paste", (event) => {
+        let tokens = $("#payedTokens").val();
+
+        // Update end time
+        let regio = $("#regio").val();
+        self.getRate(regio).then((rate) => {
+            // Get the time until the car is permitted to park
+            let endTime = Date.now() + (tokens * rate * 600);
+            $("#datetimepicker1").data("DateTimePicker").date(new Date(endTime));
+        });
+    });
+
+    $("#time").on("keyup change cut paste", (event) => {
+        let endTime = $("#datetimepicker1").data("DateTimePicker").date().unix();
+
+        // Update amount of tokens to be payed
+        let regio = $("#regio").val();
+        self.getRate(regio).then((rate) => {
+            // Calculate the amount of tokens needed for the given time
+            console.log(endTime);
+            let tokens = (endTime - Date.now()) / (600 * rate);
+            $("#payedTokens").val(tokens);
+        });
+    });
+
+    // // Make sure the mindate
+    // window.setInterval(function () {
+    //
+    // }, 1000);
 
     $("#tab3").on("click", () => {
         let address = web3.eth.accounts[0];
@@ -448,6 +146,12 @@ function ParkingRegistry() {
     //      console.log("error: ", error);
     //      console.log("value: ", value);
     //});
+
+    contract.isOwner.call(web3.eth.accounts[0], (error, value) => {
+        if (value === true) {
+            $(".admin_hidden").removeClass('admin_hidden');
+        }        
+    });
 
 
     // Getters
@@ -503,11 +207,11 @@ function ParkingRegistry() {
 
         // Execute http request to mapit server to get json
         return new Promise((resolve, reject) => {
-            $.getJSON(MAPITSERVER + "/point/4326/" + longitude + "," + latitude + "?type=" + areatypes.join(","), function (data) {
+            $.getJSON( MAPITSERVER + "/point/4326/" + longitude + "," + latitude + "?type=" + areatypes.join(","), function (data) {
                 // We never get more than one zone back from mapit because none of the parking zones overlap
                 // and we only show those (see AREATYPES). Return the zone, undefined if none was found.
                 if (data[Object.keys(data)[0]] !== undefined) {
-                    resolve(data[Object.keys(data)[0]]["type"]);
+                    resolve( data[Object.keys(data)[0]]["type"]);
                 } else {
                     reject();
                 }
@@ -539,9 +243,9 @@ function ParkingRegistry() {
 
     // TODO: give alerts some nice styling
     self.park = function (licenseplate, region, payment) {
-        var crypt = new JSEncrypt();
+        let crypt = new JSEncrypt();
         crypt.setKey(PUBLICKEY);
-        var enc = crypt.encrypt(licenseplate);
+        let enc = crypt.encrypt(licenseplate);
 
         // First execute the method with the call function to check
         // whether or not the park function will resolve correctly
@@ -582,8 +286,10 @@ function ParkingRegistry() {
             let wei = (amount * Math.pow(10, 16)) / buyprice.valueOf();
             contract.buy({ value: wei, gas: 210000 }, (error, val) => {
                 if (!error) {
-                    $("#buyBtn").addClass("ui loading button");
-                    $("#buyBtn").prop('disabled', true);
+                    console.log("buy buy buy");
+                    let buyBtn = $("#buyBtn");
+                    buyBtn.addClass("ui loading button");
+                    buyBtn.prop('disabled', true);
                     self.confirmTransactionBuy();
                 }
                 else {
