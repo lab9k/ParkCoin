@@ -300,6 +300,9 @@ button {
 
 #parkBtn,#buyBtn,#updateRegioBtn {
     padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
 }
 
 #content #right form input[type='submit']:hover,
