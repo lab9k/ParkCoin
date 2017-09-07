@@ -103,18 +103,8 @@ function ParkingRegistry () {
         // Update end time
         let regio = document.getElementById("regio").value;
         self.getRate(regio).then((rate) => {
-            // Get the time until the car is permitted to park
-            let end = new Date(Date.now() + (tokens * rate * 600));
-
-            // Hours part from the timestamp
-            let hours = end.getHours();
-            // Minutes part from the timestamp
-            let minutes = "0" + end.getMinutes();
-            // Seconds part from the timestamp
-            let seconds = "0" + end.getSeconds();
-
-            // Display the end time
-            $("#endTime").val("parked untill: " + hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2));
+            // Get the time until the car is permitted to park and display it
+            $("#endTime").val("Parked until: " + new Date(Date.now() + (tokens * rate * 600)).toLocaleString());
         });
     });
 
