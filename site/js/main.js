@@ -90,14 +90,12 @@ function ParkingRegistry () {
         self.setPrices(buyprice);
     });
 
-    $("#aantalTokens").on("keyup", function (event) {
+    $("#aantalTokens").on("keyup change cut paste", (event) => {
         let tokens = document.getElementById("aantalTokens").value;
         contract.buyPrice((error, buyprice) => {
             let price = ((tokens) / buyprice.valueOf()) / 100;
             $("#priceEther").val(price + " ether");
         });
-
-
     });
 
     $("#tab3").on('click', () => {
@@ -188,7 +186,6 @@ function ParkingRegistry () {
         contract.balances(self.defaultaccount(), (error, value) => {
             let field = $("#tokensCountUser");
             field.val(value.valueOf());
-            field.prop("readonly", true);
         });
 
         // update regio
@@ -216,8 +213,9 @@ function ParkingRegistry () {
                 contract.park(enc, region, payment, (error, val) => {
                     // TODO: calculate end time instead of returning amount of tokens
                     if (!error) {
-                        $("#parkBtn").addClass("ui loading button");
-                        $("#parkBtn").prop('disabled', true);
+                        let parkBtn = $("#parkBtn");
+                        parkBtn.addClass("ui loading button");
+                        parkBtn.prop('disabled', true);
                         self.confirmTransactionPark(enc);
                     }
                     else {
