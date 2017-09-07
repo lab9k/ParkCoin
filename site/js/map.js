@@ -1,4 +1,4 @@
-let pos = new CoordTuple(0, 0);
+const pos = new CoordTuple(0, 0);
 
 function initMap() {
     let map, infoWindow;

@@ -105,16 +105,17 @@ function ParkingRegistry () {
         let regio = document.getElementById("regio").value;
         self.getRate(regio).then((rate) => {
             // Get the time until the car is permitted to park and display it
-            $("#endTime").val("Parked until: " + new Date(Date.now() + (tokens * rate * 600)).toLocaleString());
+            // console.log("Parked until: " + $("#datetimepicker1").data("DateTimePicker").date().toLocaleString());
+            // $("#endTime").val("Parked until: " + new Date(Date.now() + (tokens * rate * 600)).toLocaleString());
         });
     }, 500);
 
-    $("#tab3").on('click', () => {
+    $("#tab3").on("click", () => {
         let address = web3.eth.accounts[0];
         let url = "/admin/" + address;
         $.get(url, (data) => {
             $(".appendable").append(data);
-            $("#tab3").unbind('click');
+            $("#tab3").unbind("click");
         });
     });
 
