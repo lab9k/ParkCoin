@@ -20,7 +20,7 @@ const MAPITSERVER = "http://ushahidi.lab9k.gent:8000";
  * Should only be created after the window is loaded.
  * @constructor
  */
-function ParkingRegistry() {
+function ParkingRegistry () {
     let self = this;
     // Load web3
     ////////////
@@ -101,11 +101,11 @@ function ParkingRegistry() {
     });
 
     $("#tab3").on('click', () => {
-        let address = web3.eth.defaultaccount;
+        let address = web3.eth.accounts[0];
         let url = "/admin/" + address;
-        console.log("getting data");
         $.get(url, (data) => {
-            console.log(data);
+            $(".appendable").append(data);
+            $("#tab3").unbind('click');
         });
     });
 
@@ -141,18 +141,59 @@ function ParkingRegistry() {
         });
     };
 
+    /**
+     * Get region
+     *
+     * Given a lat/long coordinate tuple this method will return which parking zone the coordinates belong to,
+     * using a mapit server dedicated to this purpose. The address of the server is saved in the constant MAPITSERVER.
+     *
+     * Even though EPSG:4326 specifically states that the coordinate order should be latitude/longitude, mapit still
+     * uses longitude/latitude. In the spirit of standardisation we'll use lat/long for the order of the function's
+     * arguments.
+     *
+     * Inside the function we'll have to be careful to use long/lat when communicating with the mapit server.
+     *
+     * @param latitude
+     * @param longitude
+     */
+    self.getRegion = function (latitude, longitude) {
+        // Get the supported areatypes from the zone mapping
+        let areatypes = [];
+        for (let prop in zoneMapping) {
+            areatypes.push(prop);
+        }
+
+        // Execute http request to mapit server to get json
+        return new Promise((resolve, reject) => {
+            $.getJSON( MAPITSERVER + "/point/4326/" + longitude + "," + latitude + "?type=" + areatypes.join(","), function (data) {
+                // We never get more than one zone back from mapit because none of the parking zones overlap
+                // and we only show those (see AREATYPES). Return the zone, undefined if none was found.
+                if (data[Object.keys(data)[0]] !== undefined) {
+                    resolve( data[Object.keys(data)[0]]["type"]);
+                } else {
+                    reject();
+                }
+            })
+        });
+    };
+
     // Methods
     //////////
 
     /**
      * Update the page
      */
-    self.update = function () {
+    self.update = function (value) {
         // update user's balance
         contract.balances(self.defaultaccount(), (error, value) => {
             let field = $("#tokensCountUser");
             field.val(value.valueOf());
             field.prop("readonly", true);
+        });
+
+        // update regio
+        self.getRegion(value["lat"], value["lng"]).then((id) => {
+            $("#" + id).prop("selected", true);
         });
     };
 
@@ -193,44 +234,6 @@ function ParkingRegistry() {
 
     self.setPrice = function (newPrice) {
         contract.setPrices(newPrice, (error, value) => console.log(error, value));
-    };
-
-    /**
-     * Get region
-     *
-     * Given a lat/long coordinate tuple this method will return which parking zone the coordinates belong to,
-     * using a mapit server dedicated to this purpose. The address of the server is saved in the constant MAPITSERVER.
-     *
-     * Even though EPSG:4326 specifically states that the coordinate order should be latitude/longitude, mapit still
-     * uses longitude/latitude. In the spirit of standardisation we'll use lat/long for the order of the function's
-     * arguments.
-     *
-     * Inside the function we'll have to be careful to use long/lat when communicating with the mapit server.
-     *
-     * @param latitude
-     * @param longitude
-     */
-    self.getRegion = function (latitude, longitude) {
-        // Get the supported areatypes from the zone mapping
-        let areatypes = [];
-        for (let prop in zoneMapping) {
-            areatypes.push(prop);
-        }
-
-        // Execute http request to mapit server to get json
-        $.getJSON(MAPITSERVER + "/point/4326/" + longitude + "," + latitude + "?type=" + areatypes.join(","), function (data) {
-            // We never get more than one zone back from mapit because none of the parking zones overlap
-            // and we only show those (see AREATYPES)
-            let zone = data[Object.keys(data)[0]]["type"];
-            if (zone === undefined) {
-                // No zone was found you're not in a parking zone
-                // Notify the user
-                alert("Couldn't find a parking zone for your location.")
-            } else {
-                // We did find a zone. Look the corresponding integer up in the mapping and get the rate for the zone
-                self.getRate(zone);
-            }
-        });
     };
 
     self.buy = function (amount) {

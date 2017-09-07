@@ -36,11 +36,9 @@ app.get('/admin/:address', (req, res) => {
                 res.send(data);
             });
         } else {
-            res.send("not an admin");
+            res.send("<section id='content3'>not an admin</section>");
         }
-    }).catch((error) => {
-        res.send(error);
-    })
+    }).catch((error) => console.log(error))
 })
 
 app.listen(3000, () => {
