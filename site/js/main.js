@@ -338,7 +338,6 @@ function ParkingRegistry () {
                     parkbutton.removeClass("ui loading button");
                     parkbutton.prop('disabled', false);
                     let time = $("#time").val();
-                    console.log(time);
                     $("#succes").html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Success!</strong> Succesfully bought a parking ticket untill " + time);
                     $("#succes").show();
                     self.update();
