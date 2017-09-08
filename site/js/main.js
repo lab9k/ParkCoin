@@ -114,7 +114,6 @@ function ParkingRegistry () {
     };
 
     $("#time").on("keyup change cut paste focus focusout", (event) => updatePayedTokens());
-    $("#payedTokens").on("keyup change cut paste focus focusout", (event) => updateDateTimePicker());
 
     let updatePayedTokens = function () {
         let endTime = $("#datetimepicker1").data("DateTimePicker").date().unix()*1000;
@@ -125,19 +124,6 @@ function ParkingRegistry () {
             // Calculate the amount of tokens needed for the given time
             let tokens = Math.ceil((endTime - Date.now()) / (600 * rate));
             $("#payedTokens").val(tokens);
-            updateTime();
-        });
-    };
-
-    let updateDateTimePicker = function () {
-        let amountOfTokens = $("#payedTokens").val();
-
-        // Update time until the car can stay
-        let regio = $("#regio").val();
-        self.getRate(regio).then((rate) => {
-            // Calculate the amount of time a car can stay
-            let endTime = Date.now() + (amountOfTokens * rate);          
-            $("#datetimepicker1").val(endTime);
             updateTime();
         });
     };
