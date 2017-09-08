@@ -16,7 +16,6 @@
     <script src="css/semantic.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/2.3.1/jsencrypt.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -92,14 +91,12 @@
                             <option id="BLUE" value="4">Region 4 - BLUE</option>
                             <option id="OLIVE" value="5">Region 5 - OLIVE</option>
                         </select>
-<!--                         <input type="checkbox" id="custom" value="custom" title="Check if you have a custom licenseplate!">
- -->                        
+                       
                         <div class='input-group' >
                             <input type="checkbox" id="custom" checked data-toggle="toggle" data-on="Normal plate" data-off="Custom plate">
                         </div>
                         <input type="text" placeholder="License plate" id="licenseplate" required>
-                        <input type="number" value="0" min="0" placeholder="tokens" id="payedTokens">
-                        <!--  <input type="text" id="endTime" readonly> -->
+                        <input type="number"  min="0" max="" placeholder="Amount of tokens" id="payedTokens">
                         <div class='input-group date' id='datetimepicker1'>
                             <input id="time" type='text' class="form-control" />
                             <span class="input-group-addon">
