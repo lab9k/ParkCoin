@@ -67,10 +67,7 @@ function ParkingRegistry () {
         let regio = $("#regio").val();
         let licenseplate = $("#licenseplate").val();
         let payedTokens = $("#payedTokens").val();
-        if($("#custom").is(":checked")) {
-            licenseplate = licenseplate.trim().replace(/[^a-z0-9]/gi,'');
-        }
-
+        licenseplate = licenseplate.trim().replace(/[^a-z0-9]/gi,'');
         licenseplate = licenseplate.toUpperCase();
         // Validate input
         if (/[0-9]+/.test(payedTokens) && licenseplate !== "") {
@@ -117,7 +114,6 @@ function ParkingRegistry () {
     };
 
     $("#time").on("keyup change cut paste focus focusout", (event) => updatePayedTokens());
-    $("#payedTokens").on("keyup change cut paste focus focusout", (event) => updateDateTimePicker());
 
     let updatePayedTokens = function () {
         let endTime = $("#datetimepicker1").data("DateTimePicker").date().unix()*1000;
@@ -128,19 +124,6 @@ function ParkingRegistry () {
             // Calculate the amount of tokens needed for the given time
             let tokens = Math.ceil((endTime - Date.now()) / (600 * rate));
             $("#payedTokens").val(tokens);
-            updateTime();
-        });
-    };
-
-    let updateDateTimePicker = function () {
-        let amountOfTokens = $("#payedTokens").val();
-
-        // Update time until the car can stay
-        let regio = $("#regio").val();
-        self.getRate(regio).then((rate) => {
-            // Calculate the amount of time a car can stay
-            let endTime = Date.now() + (amountOfTokens * rate);          
-            $("#datetimepicker1").val(endTime);
             updateTime();
         });
     };
@@ -256,7 +239,8 @@ function ParkingRegistry () {
             self.getRegion(value["lat"], value["lng"]).then((id) => {
                 $("#" + id).prop("selected", true);
             }).catch(function () {
-                alert("No parking region");
+                $("#error").html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Failed!</strong> No parking region");
+                $("#error").show();
             });
         }
     };
@@ -309,7 +293,6 @@ function ParkingRegistry () {
                 // Show an error message to notify the user
                 $("#error").html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Failed!</strong> Couldn't park. Insufficient parking tokens.");
                 $("#error").show();
-                //alert("Couldn't park. Insufficient parking tokens.");
             }
         });
     };
@@ -354,7 +337,9 @@ function ParkingRegistry () {
                     let parkbutton = $("#parkBtn");
                     parkbutton.removeClass("ui loading button");
                     parkbutton.prop('disabled', false);
-                    $("#succes").html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Success!</strong> Succesfully bought a parking ticket");
+                    let time = $("#time").val();
+                    console.log(time);
+                    $("#succes").html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Success!</strong> Succesfully bought a parking ticket untill " + time);
                     $("#succes").show();
                     self.update();
                     event.stopWatching();
