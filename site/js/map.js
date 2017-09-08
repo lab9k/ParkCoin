@@ -11,16 +11,6 @@ function initMap() {
         center: myLatlng
     });
 
-    map.addListener('center_changed', function() {
-        // 3 seconds after the center of the map has changed, pan back to the
-        // marker.
-        if (marker !== undefined) {
-            window.setTimeout(function () {
-                map.panTo(marker.getPosition());
-            }, 3000);
-        }
-    });
-
     map.addListener('click', function(e) {
         placeMarkerAndPanTo(e.latLng, map);
     });
@@ -39,12 +29,6 @@ function initMap() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             placeMarkerAndPanTo({lat: position.coords.latitude, lng: position.coords.longitude}, map);
-            // pos.setPosition({lat: position.coords.latitude, lng: position.coords.longitude});
-
-            // infoWindow.setPosition(pos.toPlainObject());
-            // infoWindow.setContent('You are here');
-            // infoWindow.open(map);
-            // map.setCenter(pos.toPlainObject());
         }, function () {
             handleLocationError(true, infoWindow, map.getCenter());
         });
