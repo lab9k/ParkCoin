@@ -27,7 +27,7 @@ you're in when the user specifies their location, using our own [MapIt](http://g
 ![architecture](https://raw.githubusercontent.com/lab9k/Parking/master/site/img/structure.png)
 
 
-##Authors
+## Authors
 * **Hans Fraiponts**
 * **Ruben Alliet**
 * **Wannes Vereecken**
@@ -36,7 +36,7 @@ you're in when the user specifies their location, using our own [MapIt](http://g
 * **Tom Lauwaerts**
 * **Michiel Derveeuw**
 
-##License
+## License
 This project is licensed under the MIT License
 
 
