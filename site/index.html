@@ -94,9 +94,9 @@
                             <option id="OLIVE" value="5">Region 5 - OLIVE</option>
                         </select>
                        
-                        <div class='input-group' >
+                        <!-- <div class='input-group' >
                             <input type="checkbox" id="custom" checked data-toggle="toggle" data-on="Normal plate" data-off="Custom plate">
-                        </div>
+                        </div> -->
                         <input type="text" placeholder="License plate" id="licenseplate" required>
                         <input type="number"  min="0" max="" placeholder="Amount of tokens" id="payedTokens">
                         <div class='input-group date' id='datetimepicker1'>
@@ -109,21 +109,14 @@
                         <button id="parkBtn">Pay</button>
 
                     </form>
-                    <p>Ticket rates</p>
-                    <!-- <p class="other">Region 0 - RED</p>
-                    <p class="other">Region 1 - ORANGE</p>
-                    <p class="other">Region 2 - YELLOW</p>
-                    <p class="other">Region 3 - GREEN</p>
-                    <p class="other">Region 4 - BLUE</p>
-                    <p class="other">Region 5 - OLIVE</p> -->
                 </section>
 
                 <!-- BUY COINS -->
                 <section id="content2">
                     <form onsubmit="return false;">
                         <input type="text" id="tokensCountUser2" readonly>
-                        <input type="number" min="0" id="aantalTokens" placeholder="10">
-                        <input type="text" id="priceEther" readonly>
+                        <input type="number" min="0" id="aantalTokens" placeholder="Amount of parking tokens">
+                        <input placeholder="Amount of Ethers" type="text" id="priceEther" readonly>
                         <button id="buyBtn">Pay</button>
                     </form>
                 </section>
