@@ -112,15 +112,6 @@ a {
   }
 }
 
-/* @media only screen and (min-width: 1200px) {
-  body {
-      background-color: red;
-  }
-  #content #left {
-    width: 100%;
-  }
-}  */
-
 #content #left #map {
   /* height: 468px; */
   position: relative;
@@ -365,7 +356,6 @@ h1 {
         margin-bottom: -5px;
         color: black;
 }
-
 
 section {
   display: none;

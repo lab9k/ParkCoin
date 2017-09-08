@@ -17,15 +17,15 @@ you're in when the user specifies their location, using our own [MapIt](http://g
 ## Technologies
 * Node.js - Platform for API & Server
 * Express.js - Regulates exchange between API and DB 
-* jsencypt.js - Encryption of license plates
-* node-rsa.js - Decryption of license plates
+* Jsencypt.js - Encryption of license plates
+* Node-rsa.js - Decryption of license plates
 * Web3.js - Regulates exchange between API and Ethereum contracts
 * MongoDB - Stores all the license plates
 
 ## Architecture
 
 ![architecture](https://raw.githubusercontent.com/lab9k/Parking/master/site/img/structure.png)
-
+1. 
 
 ## Authors
 * **Hans Fraiponts**
