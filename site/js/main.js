@@ -133,7 +133,7 @@ function ParkingRegistry () {
     };
 
     let updateDateTimePicker = function () {
-        let amountOfTokens = $("#payedTokens").val(tokens);
+        let amountOfTokens = $("#payedTokens").val();
 
         // Update time until the car can stay
         let regio = $("#regio").val();
