@@ -108,7 +108,7 @@ More specifics about the MapIt API can be found at the official website of [Glob
 ## Architecture
 
 ![architecture](https://raw.githubusercontent.com/lab9k/Parking/master/site/img/structure.png)
-
+1. 
 
 ## Authors
 * **Hans Fraiponts**
