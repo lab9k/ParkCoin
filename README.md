@@ -15,6 +15,6 @@ The front-end strives to make everying as easy as possible for everyone. It auto
 you're in when the user specifies their location, using our own [MapIt](http://global.mapit.mysociety.org/) deployment.
 
 ## The architecture
-![alt text](https://github.com/lab9k/Parking/tree/master/site/img/structure.png)
+![architecture](https://raw.githubusercontent.com/lab9k/Parking/master/site/img/structure.png)
 
 
