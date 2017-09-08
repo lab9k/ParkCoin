@@ -1,11 +1,11 @@
 const pos = new CoordTuple(0, 0);
 const myLatlng = { lat: 51.053970, lng: 3.721015 };
 
-let marker;
+let map, marker, service;
 
 function initMap() {
 
-    let map, infoWindow;
+    // let map, infoWindow;
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
         center: myLatlng
@@ -68,6 +68,7 @@ function placeMarkerAndPanTo(latLng, map) {
         });
     } else {
         marker.setPosition(latLng);
+        pos.setPosition(latLng);
         map.panTo(latLng);
     }
 }
