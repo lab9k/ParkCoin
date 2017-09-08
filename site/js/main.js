@@ -252,9 +252,12 @@ function ParkingRegistry () {
 
         // Only update if an argument was passed
         if (value !== undefined) {
+            console.log(value["lat"] + ", " + value["lng"]);
             // update regio
             self.getRegion(value["lat"], value["lng"]).then((id) => {
                 $("#" + id).prop("selected", true);
+            }).catch(function () {
+                alert("No parking region");
             });
         }
     };
@@ -268,7 +271,6 @@ function ParkingRegistry () {
             prefix: 'You have ',
             suffix: ' parktokens.'
         };
-        console.log(from);
         let demo = new CountUp('tokensCountUser', from, to, 0, 2.5, options);
         let demo2 = new CountUp('tokensCountUser2', from, to, 0, 2.5, options);
         if (!demo.error) {
@@ -349,7 +351,6 @@ function ParkingRegistry () {
             // including the argumets given to the Deposit
             // call.
             if (!error) {
-                console.log(result);
                 if (result["args"]["nummerplaatEncrypted"] === enc) {
                     let parkbutton = $("#parkBtn");
                     parkbutton.removeClass("ui loading button");
@@ -373,7 +374,6 @@ function ParkingRegistry () {
             // including the argumets given to the Deposit
             // call.
             if (!error) {
-                console.log(result);
                 if (result["args"]["who"].toUpperCase() === self.defaultaccount().toUpperCase()) {
                     let buyBtn = $("#buyBtn");
                     buyBtn.removeClass("ui loading button");
