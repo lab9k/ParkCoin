@@ -284,15 +284,17 @@ function ParkingRegistry () {
                         self.confirmTransactionPark(enc);
                     }
                     else {
-                        $("#error").html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Failed!</strong> User rejected transaction");
-                        $("#error").show();
+                        let error = $("#error");
+                        error.html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Failed!</strong> User rejected transaction");
+                        error.show();
                     }
                 });
             } else {
                 // The park method cannot execute properly
                 // Show an error message to notify the user
-                $("#error").html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Failed!</strong> Couldn't park. Insufficient parking tokens.");
-                $("#error").show();
+                let error = $("#error");
+                error.html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Failed!</strong> Couldn't park. Insufficient parking tokens.");
+                error.show();
             }
         });
     };
@@ -317,8 +319,9 @@ function ParkingRegistry () {
                     self.confirmTransactionBuy(amount);
                 }
                 else {
-                    $("#error").html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Failed!</strong> User rejected transaction");
-                    $("#error").show();
+                    let error = $("#error");
+                    error.html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Failed!</strong> User rejected transaction");
+                    error.show();
                 }
             });
         });
@@ -338,9 +341,10 @@ function ParkingRegistry () {
                     parkbutton.removeClass("ui loading button");
                     parkbutton.prop('disabled', false);
                     let time = $("#time").val();
-                    console.log(time);
-                    $("#succes").html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Success!</strong> Succesfully bought a parking ticket untill " + time);
-                    $("#succes").show();
+
+                    let succes = $("#succes");
+                    succes.html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Success!</strong> Succesfully bought a parking ticket untill " + time);
+                    succes.show();
                     self.update();
                     event.stopWatching();
                 }

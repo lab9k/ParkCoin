@@ -111,7 +111,7 @@ contract ParkingToken is Mortal {
     }
     
     function buy() payable returns (bool succes) {
-        uint tokens = (msg.value / 1000000000000000000) * (buyPrice) / 10 + 1;
+        uint tokens = ( msg.value * buyPrice ) / 1000000000000000000  + 1;
         mintToken(msg.sender, tokens);
         Buy(msg.sender, tokens);
         return true;
