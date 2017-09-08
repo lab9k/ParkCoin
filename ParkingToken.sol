@@ -53,7 +53,7 @@ contract ParkingToken is Mortal {
         symbol = "P";                                    // Set the symbol for display purposes
         decimals = 0;                                    // Amount of decimals for display purposes
         totalSupply = 0;
-        buyPrice = 26;
+        buyPrice = 2600;
         regios[0] = 100;
         regios[1] = 50;
         regios[2] = 150;
@@ -111,7 +111,7 @@ contract ParkingToken is Mortal {
     }
     
     function buy() payable returns (bool succes) {
-        uint tokens = (msg.value / 1000000000000000) * (buyPrice) / 10 + 1;
+        uint tokens = (msg.value / 1000000000000000000) * (buyPrice) / 10 + 1;
         mintToken(msg.sender, tokens);
         Buy(msg.sender, tokens);
         return true;

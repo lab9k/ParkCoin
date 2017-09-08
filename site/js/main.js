@@ -308,7 +308,7 @@ function ParkingRegistry () {
 
     self.buy = function (amount) {
         contract.buyPrice((error, buyprice) => {
-            let wei = (amount * Math.pow(10, 16)) / buyprice.valueOf();
+            let wei = (amount * Math.pow(10, 18)) / buyprice.valueOf();
             contract.buy({ value: wei, gas: 210000 }, (error, val) => {
                 if (!error) {
                     let buyBtn = $("#buyBtn");
