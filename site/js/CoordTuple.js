@@ -36,6 +36,13 @@ function CoordTuple(lat, lng) {
         self.trigger();
     };
 
+    self.setPosition = function (tuple) {
+        latitude = tuple["lat"];
+        longitude = tuple["lng"];
+        self.trigger();
+
+    };
+
     // Public methods
     /////////////////
 

@@ -9,7 +9,7 @@ const PUBLICKEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHOGTKyEAAiNMuWe2niVKKC
     "qOL4mT6T62vb3o4OpdrYA+z1nGsXsnuLW0UW1N5dLgNzhq9+XeOUP+DYp5msG8s4\n" +
     "EgXYf5U1LqEK/Xy4AQIDAQAB";
 
-const MAPITSERVER = "http://ushahidi.lab9k.gent:8000";
+const MAPITSERVER = "https://ushahidi.lab9k.gent:8443";
 
 // TODO: add Internationalisation with Intl
 // TODO: add account switching?
@@ -255,6 +255,8 @@ function ParkingRegistry () {
             // update regio
             self.getRegion(value["lat"], value["lng"]).then((id) => {
                 $("#" + id).prop("selected", true);
+            }).catch(function () {
+                alert("No parking region");
             });
         }
     };
@@ -268,7 +270,6 @@ function ParkingRegistry () {
             prefix: 'You have ',
             suffix: ' parktokens.'
         };
-        console.log(from);
         let demo = new CountUp('tokensCountUser', from, to, 0, 2.5, options);
         let demo2 = new CountUp('tokensCountUser2', from, to, 0, 2.5, options);
         if (!demo.error) {
@@ -349,7 +350,6 @@ function ParkingRegistry () {
             // including the argumets given to the Deposit
             // call.
             if (!error) {
-                console.log(result);
                 if (result["args"]["nummerplaatEncrypted"] === enc) {
                     let parkbutton = $("#parkBtn");
                     parkbutton.removeClass("ui loading button");
@@ -373,7 +373,6 @@ function ParkingRegistry () {
             // including the argumets given to the Deposit
             // call.
             if (!error) {
-                console.log(result);
                 if (result["args"]["who"].toUpperCase() === self.defaultaccount().toUpperCase()) {
                     let buyBtn = $("#buyBtn");
                     buyBtn.removeClass("ui loading button");
