@@ -239,7 +239,8 @@ function ParkingRegistry () {
             self.getRegion(value["lat"], value["lng"]).then((id) => {
                 $("#" + id).prop("selected", true);
             }).catch(function () {
-                alert("No parking region");
+                $("#error").html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Failed!</strong> No parking region");
+                $("#error").show();
             });
         }
     };
