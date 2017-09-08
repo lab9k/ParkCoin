@@ -9,7 +9,7 @@ const PUBLICKEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHOGTKyEAAiNMuWe2niVKKC
     "qOL4mT6T62vb3o4OpdrYA+z1nGsXsnuLW0UW1N5dLgNzhq9+XeOUP+DYp5msG8s4\n" +
     "EgXYf5U1LqEK/Xy4AQIDAQAB";
 
-const MAPITSERVER = "http://ushahidi.lab9k.gent:8443";
+const MAPITSERVER = "https://ushahidi.lab9k.gent:8443";
 
 // TODO: add Internationalisation with Intl
 // TODO: add account switching?
