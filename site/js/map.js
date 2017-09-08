@@ -1,7 +1,7 @@
 const pos = new CoordTuple(0, 0);
 const myLatlng = { lat: 51.053970, lng: 3.721015 };
 
-let map, marker, service;
+let map, marker;
 
 function initMap() {
 
@@ -14,9 +14,11 @@ function initMap() {
     map.addListener('center_changed', function() {
         // 3 seconds after the center of the map has changed, pan back to the
         // marker.
-        window.setTimeout(function() {
-            map.panTo(marker.getPosition());
-        }, 3000);
+        if (marker !== undefined) {
+            window.setTimeout(function () {
+                map.panTo(marker.getPosition());
+            }, 3000);
+        }
     });
 
     map.addListener('click', function(e) {
@@ -36,8 +38,8 @@ function initMap() {
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
-            pos.setLatitude(position.coords.latitude);
-            pos.setLongitude(position.coords.longitude);
+            placeMarkerAndPanTo({lat: position.coords.latitude, lng: position.coords.longitude}, map);
+            // pos.setPosition({lat: position.coords.latitude, lng: position.coords.longitude});
 
             // infoWindow.setPosition(pos.toPlainObject());
             // infoWindow.setContent('You are here');
@@ -48,6 +50,7 @@ function initMap() {
         });
     } else {
         // Browser doesn't support Geolocation
+        pos.setPosition(myLatlng);
         handleLocationError(false, infoWindow, map.getCenter());
     }
 }
@@ -59,7 +62,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 
 function placeMarkerAndPanTo(latLng, map) {
-    console.log("set location");
     if (marker === undefined) {
         marker = new google.maps.Marker({
             position: latLng,
@@ -68,7 +70,8 @@ function placeMarkerAndPanTo(latLng, map) {
         });
     } else {
         marker.setPosition(latLng);
-        pos.setPosition(latLng);
         map.panTo(latLng);
     }
+
+    pos.setPosition({lat: marker.getPosition().lat(), lng:marker.getPosition().lng()});
 }
