@@ -25,7 +25,8 @@ function initMap() {
 
     let georssLayer = new google.maps.KmlLayer({
         url: 'https://raw.githubusercontent.com/lab9k/Parking/master/site/data/Parkeertariefzones.kml',
-        suppressInfoWindows: true
+        suppressInfoWindows: true,
+        clickable : false
     });
 
     georssLayer.setMap(map);
@@ -58,10 +59,12 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 
 function placeMarkerAndPanTo(latLng, map) {
+    console.log("set location");
     if (marker === undefined) {
         marker = new google.maps.Marker({
             position: latLng,
-            map: map
+            map: map,
+            draggable: true
         });
     } else {
         marker.setPosition(latLng);
