@@ -1,9 +1,12 @@
 # Parking: Front-end
-See the project in action at [this website](https://parkcoin.lab9k.gent/).
+See the project in action at [this website](https://parkcoin.lab9k.gent/). The contract is deployed on the Rinkeby test 
+network, so you can use test ethers when you check it out. If you don't have any, you can get some [free Rinkeby ethers here](https://faucet.rinkeby.io/).
 
 ## The idea
-A distributed webapplication (or dapp) for the new parking system using the distributed database ethereum. It brings 
-parking your car to the twenty first century!
+A distributed webapplication (or dapp) for a new parking system using the [Ethereum](https://www.ethereum.org/) 
+network. More specifically, we want a smart contract on the Etherium blockchain on which anyone can register their car 
+when they park. Secondly we want to create a user-friendly interface to interact with that contract and simplify the 
+registration process. It brings parking your car to the twenty first century!
 
 Using this online user interface anyone can easily register their parked car on their phone and pay with parking tokens.
  Those parking tokens can even be bought beforehand with ether.
@@ -62,38 +65,38 @@ The most common query is a lookup by point. With the following format:
  
 Here is an example URL:
 
-        https://mapit.lab9k.gent/point/4326/3.735406,51.048912
+    https://mapit.lab9k.gent/point/4326/3.735406,51.048912
 
 This returns the following json:
 
-        {
-            "26": {
-                "parent_area": null,
-                "generation_high": 1,
-                "all_names": {},
-                "id": 26,
-                "codes": {},
-                "name": "Binnenstad",
-                "country": "BE",
-                "type_name": "Wijken",
-                "generation_low": 1,
-                "country_name": "België",
-                "type": "WIJK"
-            },
-            "51": {
-                "parent_area": null,
-                "generation_high": 1,
-                "all_names": {},
-                "id": 51,
-                "codes": {},
-                "name": "zone11",
-                "country": "BE",
-                "type_name": "rood",
-                "generation_low": 1,
-                "country_name": "België",
-                "type": "RED"
-            }
+    {
+        "26": {
+            "parent_area": null,
+            "generation_high": 1,
+            "all_names": {},
+            "id": 26,
+            "codes": {},
+            "name": "Binnenstad",
+            "country": "BE",
+            "type_name": "Wijken",
+            "generation_low": 1,
+            "country_name": "België",
+            "type": "WIJK"
+        },
+        "51": {
+            "parent_area": null,
+            "generation_high": 1,
+            "all_names": {},
+            "id": 51,
+            "codes": {},
+            "name": "zone11",
+            "country": "BE",
+            "type_name": "rood",
+            "generation_low": 1,
+            "country_name": "België",
+            "type": "RED"
         }
+    }
 
 From the json we can extrapolate that the coordinate is situated in distric (WIJK) "Binnenstad" and parking zone RED.
 With that last bit of information we can ask the contract for the tariff that applies within the RED zone.
