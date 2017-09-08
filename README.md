@@ -13,3 +13,8 @@ automatically caught by the back-end system (discover more at our other reposito
 
 The front-end strives to make everying as easy as possible for everyone. It automatically detects the parking zone 
 you're in when the user specifies their location, using our own [MapIt](http://global.mapit.mysociety.org/) deployment.
+
+## The architecture
+![alt text](https://github.com/lab9k/Parking/tree/master/site/img/structure.png)
+
+
