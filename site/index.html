@@ -59,14 +59,14 @@
 
                 <div id="logo">
                     <img src="https://stad.gent/sites/all/themes/contrib/gent_base/img/svg/logo--part1.svg" id="stadGentSymbol">
-                    <div class="alert alert-success alert-dismissable fade in">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <div class="alert alert-success alert-dismissable fade in" style="display: none" id="succes">
+                        <a href="#" class="close" onclick="$('.alert').hide()" aria-label="close">&times;</a>
                         <strong>Success!</strong> Succesfully bought a parking ticket
                     </div>
-                    <!-- <div class="alert alert-danger alert-dismissable fade in">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <div class="alert alert-danger alert-dismissable fade in" style="display: none" id="error">
+                            <a href="#" class="close" onclick="$('.alert').hide()" aria-label="close">&times;</a>
                             <strong>Danger!</strong> Something went wrong, please try again.
-                        </div> -->
+                    </div>
                 </div>
 
                 <input id="tab1" type="radio" name="tabs" checked>
