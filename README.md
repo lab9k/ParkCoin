@@ -9,8 +9,11 @@ Using this online user interface anyone can easily register their parked car on 
  Those parking tokens can even be bought beforehand with ether.
 
 ## The implementation
-The application was made by [lab9k](https://github.com/lab9k) especially for the city of Ghent. Registrations on the ethereum contract are 
-automatically caught by the back-end system (discover more at our other repository: [lab9k/ParkingREST](https://github.com/lab9k/ParkingREST)).
+The application was made by [lab9k](https://github.com/lab9k) especially for the city of Ghent. 
+
+Registrations of the 'Park' event on the ethereum contract are automatically caught by the REST api. 
+A simple GET request to this api will return all the registered timestamps for each region for a given license plate. 
+Discover more at our other repository: [lab9k/ParkingREST](https://github.com/lab9k/ParkingREST).
 
 ### The contract
 The backbone of our dapp is our smart contract, via which anyone can buy parking tokens and paying for parking with those.
@@ -108,7 +111,6 @@ More specifics about the MapIt API can be found at the official website of [Glob
 ## Architecture
 
 ![architecture](https://raw.githubusercontent.com/lab9k/Parking/master/site/img/structure.png)
-1. 
 
 ## Authors
 * **Hans Fraiponts**
