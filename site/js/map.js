@@ -29,12 +29,6 @@ function initMap() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             placeMarkerAndPanTo({lat: position.coords.latitude, lng: position.coords.longitude}, map);
-            // pos.setPosition({lat: position.coords.latitude, lng: position.coords.longitude});
-
-            // infoWindow.setPosition(pos.toPlainObject());
-            // infoWindow.setContent('You are here');
-            // infoWindow.open(map);
-            // map.setCenter(pos.toPlainObject());
         }, function () {
             handleLocationError(true, infoWindow, map.getCenter());
         });
