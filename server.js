@@ -17,7 +17,6 @@ app.get('/', (req, res) => {
 app.get('/admin/:address', (req, res) => {
     let address = req.params.address;
     contract.isAdmin(address).then((value) => {
-        console.log("iets");
         if (value === true) {
             let fs = require('fs');
             fs.readFile('admin.html', 'utf8', (err, data) => {
