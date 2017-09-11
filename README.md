@@ -52,6 +52,7 @@ and lastly these events that anyone can listen to:
 ### MapIt
 The front-end strives to make everything as easy as possible for everyone. One way to achieve this is by automatically 
 detecting the parking zone of the location specified by the user, using our own [MapIt deployment](https://mapit.lab9k.gent/).
+You can run the server by executing the following command in the /usr/work/mapit folder; **python manage.py runserver 0.0.0.0:8000 --insecure**.
 Ofcourse the user can also let our dapp calculate their location automatically if the give their permission.
 Aside from all the current parking zones the server also has information on the bounderies of 
 [the 25 official districts of Ghent](https://stad.gent/over-gent-en-het-stadsbestuur/over-gent/gent-25-wijken).
