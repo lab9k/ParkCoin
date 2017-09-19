@@ -1,5 +1,5 @@
 # Parking: Front-end
-See the project in action at [this website](https://parkcoin.lab9k.gent/). The contract is deployed on the Rinkeby test 
+See the project in action at [this website](https://lab9k.github.io/ParkCoin). The contract is deployed on the Rinkeby test 
 network, so you can use test ethers when you check it out. If you don't have any, you can get some [free Rinkeby ethers here](https://faucet.rinkeby.io/).
 
 ## The idea
