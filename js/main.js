@@ -127,29 +127,6 @@ function ParkingRegistry () {
             updateTime();
         });
     };
-    
-
-    $("#tab3").on("click", () => {
-        let address = web3.eth.accounts[0];
-        let url = "/admin/" + address;
-        $.get(url, (data) => {
-            $(".appendable").append(data);
-            $("#tab3").unbind("click");
-        });
-    });
-
-
-    // contract.isOwner(web3.eth.accounts[0], (error, value) => {
-    //TODO fix this?
-    //      console.log("error: ", error);
-    //      console.log("value: ", value);
-    //});
-
-    contract.isOwner.call(web3.eth.accounts[0], (error, value) => {
-        if (value === true) {
-            $(".admin_hidden").removeClass('admin_hidden');
-        }        
-    });
 
 
     // Getters
