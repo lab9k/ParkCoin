@@ -229,7 +229,7 @@ function ParkingRegistry () {
             separator: '',
             decimal: '.',
             prefix: 'You have ',
-            suffix: ' parktokens.'
+            suffix: ' ParkCoins.'
         };
         let demo = new CountUp('tokensCountUser', from, to, 0, 2.5, options);
         let demo2 = new CountUp('tokensCountUser2', from, to, 0, 2.5, options);
@@ -270,7 +270,7 @@ function ParkingRegistry () {
                 // The park method cannot execute properly
                 // Show an error message to notify the user
                 let error = $("#error");
-                error.html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Failed!</strong> Couldn't park. Insufficient parking tokens.");
+                error.html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Failed!</strong> Couldn't park. Insufficient ParkCoins.");
                 error.show();
             }
         });
