@@ -212,12 +212,16 @@ function ParkingRegistry () {
 
         // Only update if an argument was passed
         if (value !== undefined) {
-            // update regio
+            // update region
             self.getRegion(value["lat"], value["lng"]).then((id) => {
                 $("#" + id).prop("selected", true);
+
+                // A new region means a new rate, so update time
+                updateTime();
             }).catch(function () {
-                $("#error").html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Failed!</strong> No parking region");
-                $("#error").show();
+                let error = $("#error");
+                error.html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Failed!</strong> No parking region");
+                error.show();
             });
         }
     };
