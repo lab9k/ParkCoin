@@ -99,7 +99,7 @@ function ParkingRegistry () {
         });
     });
 
-    $("#payedTokens").on("keyup change cut paste", (event) => updateTime());
+    $("#payedTokens").on("keyup change cut paste focus focusout", (event) => updateTime());
 
     let updateTime = function () {
         let tokens = $("#payedTokens").val();
