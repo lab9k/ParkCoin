@@ -509,7 +509,6 @@ visibility: hidden;
   width: 40%;
   background-color: white;
   position: absolute;
-  padding: 8px;
   box-shadow: rgba(0, 0, 0, 0.3) 0 1px 4px -1px;
   border-bottom-left-radius: 2px;
   border-top-left-radius: 2px;
@@ -527,4 +526,5 @@ visibility: hidden;
 #pac-input {
   width: 100%;
   color: black;
+  padding: 8px;
 }
