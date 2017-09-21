@@ -214,7 +214,11 @@ function ParkingRegistry () {
         if (value !== undefined) {
             // update region
             self.getRegion(value["lat"], value["lng"]).then((id) => {
+                // Change region
                 $("#" + id).prop("selected", true);
+
+                // Hide error
+                $("#error").hide();
 
                 // A new region means a new rate, so update time
                 updateTime();
@@ -347,8 +351,9 @@ function ParkingRegistry () {
                     let buyBtn = $("#buyBtn");
                     buyBtn.removeClass("ui loading button");
                     buyBtn.prop('disabled', false);
-                    $("#succes").html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Success!</strong> Succesfully bought " + result["args"]["tokens"] + " tokens");
-                    $("#succes").show();
+                    let succes = $("#succes");
+                    succes.html("<a href=\"#\" class=\"close\" onclick=\"$('.alert').hide()\" aria-label=\"close\">&times;</a><strong>Success!</strong> Succesfully bought " + result["args"]["tokens"] + " tokens");
+                    succes.show();
                     self.update();
                     event.stopWatching();
                 }
