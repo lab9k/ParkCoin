@@ -16,7 +16,7 @@ function initMap() {
     });
 
     let georssLayer = new google.maps.KmlLayer({
-        url: 'https://raw.githubusercontent.com/lab9k/Parking/master/site/data/Parkeertariefzones.kml',
+        url: 'https://raw.githubusercontent.com/lab9k/ParkCoin/master/data/Parkeertariefzones.kml',
         suppressInfoWindows: true,
         clickable : false
     });
